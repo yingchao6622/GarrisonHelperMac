@@ -1,6 +1,6 @@
 # 卫戍协议小助手 for Mac
 
-作者在《明日方舟》卫戍协议里打了 40 局，只过了 3 局。想找个小助手帮忙，搜了一圈才发现现有的几个（StrongholdAssistant、ASP_Assistant、鸿雪·卫戍助手）都只有 Windows 版，于是参考这三个项目，把它们的功能移植到了 Mac 上，并按 Mac 客户端的画面重新调了识别。
+我在《明日方舟》卫戍协议里打了 40 局，只过了 3 局。想找个小助手帮忙，搜了一圈才发现现有的几个（StrongholdAssistant、ASP_Assistant、鸿雪·卫戍助手）都只有 Windows 版，于是参考这三个项目，把它们的功能移植到了 Mac 上，并按 Mac 客户端的画面重新调了识别。
 
 开着它打一局，它看着游戏画面，告诉你**这回合买谁、升不升本、谁站哪**，并直接在游戏画面上框出来。
 
@@ -120,7 +120,8 @@ flowchart LR
 - [LBEILC/StrongholdAssistant](https://github.com/LBEILC/StrongholdAssistant)：干员 / 装备 / 盟约 / 策略 / 首领数据，场上认人（角标、小人模型），地图与敌人路线
 - [Moonfair/ASP_Assistant](https://github.com/Moonfair/ASP_Assistant)：商店名称栏识别、准备页盟约禁用判断、图标
 - [bingyunhe/hongxue-stronghold-companion](https://github.com/bingyunhe/hongxue-stronghold-companion)：阵容规划器、自动推荐路线、购买识别规则
+- [Claude](https://claude.com/claude-code)（Anthropic）：和我一起写了大部分代码、文档和测试
 
-三者都以 Apache-2.0 发布，上游的许可与 NOTICE 原文在 `licenses/`，派生关系见 [`NOTICE`](NOTICE)。本项目的**代码**以 Apache-2.0 发布（[`LICENSE`](LICENSE)）。
+三个上游项目都以 Apache-2.0 发布，上游的许可与 NOTICE 原文在 `licenses/`，派生关系见 [`NOTICE`](NOTICE)。本项目的**代码**以 Apache-2.0 发布（[`LICENSE`](LICENSE)）。
 
 游戏美术、数据、角色名称归上海鹰角网络所有，**不在** Apache-2.0 许可范围内；用到了哪些、从哪来，见 [ASSETS.md](ASSETS.md)。本项目与鹰角网络无关，权利方要求时会移除相关内容。
