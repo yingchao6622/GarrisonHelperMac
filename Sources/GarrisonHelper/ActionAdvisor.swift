@@ -197,7 +197,7 @@ enum ActionAdvisor {
             }
             let have = ownedCount[name, default: 0]
             let inRoute = laterNames.contains(name) || finalNames.contains(name)
-            if have >= 2 && inRoute { return (110, "第三张：合成精锐，还送一张高一阶") }
+            if have >= 2 && inRoute { return (110, "第三张：合成精锐，还得一张晋升调配特许（商店刷出几名高一阶干员，免费选 1 名）") }
             if keys.contains(name) && have == 0 { return (100, "本阶段关键牌") }
             if stageNames.contains(name) && have == 0 { return (70, "本阶段阵容") }
             if finalNames.contains(name) && have == 0 { return (55, "成型阵容，先留") }

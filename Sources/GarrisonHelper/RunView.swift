@@ -763,11 +763,11 @@ struct OpTile: View {
         if let obtain = o?.obtain { return ("赠送", .purple, obtain) }
         if o?.isSelfSelected == true { return ("自选", .purple, "开局自选干员，商店不刷") }
         let copies = run.owned.filter { $0 == op.name }.count
-        if copies >= 2 { return ("\(copies)/3 差1精锐", .green, "再买 1 张合成精锐，合成时还送一张高一阶干员") }
+        if copies >= 2 { return ("\(copies)/3 差1精锐", .green, "再买 1 张合成精锐；合成后得到晋升调配特许：商店刷出几名比当前终端高一阶的干员，免费选 1 名") }
         if copies == 1 { return ("1/3", .green, "已有 1 张；3 张合成精锐") }
         guard let level = scanner.hud.level else { return ("\(op.tier)本起", .secondary, "终端 \(op.tier) 本及以上才刷得到") }
         if op.tier <= level { return ("现在能刷", .blue, "当前 \(level) 本，商店刷得到 \(op.tier) 阶") }
-        if op.tier == level + 1 { return ("三连送/升本", .orange, "高一阶：同名 3 张合精锐时送一张，或升到 \(op.tier) 本再刷") }
+        if op.tier == level + 1 { return ("精锐奖励/升本", .orange, "高一阶：合成精锐后的晋升调配特许会随机刷出几名高一阶干员（不一定有它），或升到 \(op.tier) 本再刷") }
         return ("\(op.tier)本才出", .secondary, "当前 \(level) 本，要升到 \(op.tier) 本才刷得到")
     }
 
