@@ -12,21 +12,25 @@
 <img alt="Swift 5.9" src="https://img.shields.io/badge/Swift-5.9-F05138">
 <img alt="game 卫戍协议" src="https://img.shields.io/badge/game-%E5%8D%AB%E6%88%8D%E5%8D%8F%E8%AE%AE-E37933">
 <img alt="license Apache 2.0" src="https://img.shields.io/badge/license-Apache%202.0-4CAF50">
+<a href="https://github.com/yingchao6622/GarrisonHelperMac/releases"><img alt="release v0.3.0" src="https://img.shields.io/badge/release-v0.3.0-2EA043"></a>
 
 </div>
 
 ---
 
-我在 "明日方舟" 卫戍协议里打了 40 局, 只过了 3 局. 想找个小助手帮忙, 搜了一圈才发现现有的几个 (StrongholdAssistant, ASP_Assistant, 鸿雪·卫戍助手) 都只有 Windows 版, 于是参考这三个项目, 把它们的功能移植到了 Mac 上, 并按 Mac 客户端的画面重新调了识别.
+我在 "明日方舟" 卫戍协议里打了 40 局, 只过了 3 局. 想找个小助手帮忙, 搜了一圈才发现现有的几个 ([StrongholdAssistant](https://github.com/LBEILC/StrongholdAssistant), [ASP_Assistant](https://github.com/Moonfair/ASP_Assistant), [鸿雪·卫戍助手](https://github.com/bingyunhe/hongxue-stronghold-companion)) 都只有 Windows 版, 于是参考这三个项目, 把它们的功能移植到了 Mac 上, 并按 Mac 客户端的画面重新调了识别.
 
 开着它打一局, 它看着游戏画面, 告诉你**这回合买谁, 升不升本, 谁站哪**, 并直接在游戏画面上框出来.
 
-- **苹果原生实现**: 用 Swift 和 SwiftUI 从头写成的 Mac 应用, 截图用 ScreenCaptureKit, 文字识别用 Vision, 认人用 Core ML, 全是 macOS 自带的框架; 不是 Windows 版套壳, 不需要 Wine, 虚拟机或 .NET 运行时.
-- **只读屏幕**: 不点击, 不改游戏.
-- **尽量用硬件加速**: 文字识别用系统自带的 Apple Vision; 场上认人用 Core ML 跑在 Apple 芯片的神经网络引擎上 (11 个单位约 5 毫秒); 画面没变就不重新识别. 全部在本机运行, 不需要独立显卡, 也不联网 (可选的 AI 教练除外).
-- **之后会另开一个 MaaFramework 分支**: 用上游项目同款的识别框架做一版, 和现在的 Vision + Core ML 对比.
+- **苹果原生, 硬件加速**: Swift + SwiftUI 写的原生 Mac 应用, 只用 macOS 自带的框架; 认人跑在 Apple 芯片的神经网络引擎上, **11 个单位约 5 毫秒**, 画面没变就不重新识别. 不是 Windows 版套壳, 不需要 Wine, 虚拟机或 .NET.
+- **只读屏幕, 本机运行**: 不点击, 不改游戏; 识别全在本机完成, 不联网.
+- **AI 教练 (可选)**: 一键问 "这回合怎么做", 弹窗开着时问选哪张. 支持 DeepSeek, 通义千问, Claude 或任意 OpenAI 兼容接口; Key 只存在本机, 只有用它时才联网.
 
-当前版本见 [`VERSION`](VERSION), 更新记录见 [CHANGELOG.md](CHANGELOG.md).
+<div align="center">
+
+**[⬇️ 下载最新版](https://github.com/yingchao6622/GarrisonHelperMac/releases/latest)** · [安装说明](#下载) · [更新记录](CHANGELOG.md)
+
+</div>
 
 ## 目录
 

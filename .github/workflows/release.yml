@@ -41,6 +41,8 @@ jobs:
         run: |
           v="v$(cat VERSION)"
           if [ "$v" != "$TAG" ]; then echo "VERSION says $v but the tag is $TAG"; exit 1; fi
+          # The README's release badge is static (a dynamic one can't read a private repository): it must say this version.
+          grep -q "badge/release-$TAG-" README.md || { echo "README release badge is not $TAG"; exit 1; }
 
       - name: Privacy check (keys, paths, commit authors)
         run: ./scripts/privacy-check.sh
