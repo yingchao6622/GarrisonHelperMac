@@ -1,0 +1,53 @@
+Hongxue Stronghold Companion / 鸿雪·卫戍助手
+Formerly ASP Assistant · Arknights.
+
+This project is a modified derivative of ASP Assistant:
+https://github.com/Moonfair/ASP_Assistant
+Upstream author: Moonfair and upstream contributors.
+Upstream revision: 93b2ba8514f6591a67e4cbf5a6169dee7d065bf6
+
+The upstream project is distributed under the Apache License, Version 2.0.
+The original upstream license text is retained verbatim in LICENSE.upstream.
+The upstream copyright notice is: Copyright 2026 caihaojun.
+LICENSE contains the standard Apache License, Version 2.0 from apache.org.
+The modifications are licensed under that standard license. This does not
+remove or override the retained upstream license or its attribution notices.
+
+Modifications copyright (c) 2026 ASP Assistant Regulation contributors.
+This distribution contains modifications for the Regulation season, interface,
+themes, tracking, equipment comparison, tests, documentation and release setup.
+Modification notices are kept in the source headers of each changed file.
+This derivative is not an official release from the upstream author.
+
+Lineup planning, covenant effect data and related UI/Ban integration were
+contributed by Jiayu Ding (CarlosDJY) in pull request #1:
+https://github.com/bingyunhe/hongxue-stronghold-companion/pull/1
+Original contribution commit: 2498a019db155903419f2109c8651d73ebb4da6d
+The original commit is retained; subsequent integration fixes have separate commits.
+
+Bundled fonts Oswald, Silkscreen, Barlow Semi Condensed and Noto Sans SC (subset
+to GB2312 plus the app's own text) are licensed under
+the SIL Open Font License 1.1 (src/ASPAssistant.App/Resources/Fonts/OFL-*.txt).
+
+The shop HUD reader (ShopEconomyReader) follows the reading regions of the
+EconomyReader in StrongholdAssistant (https://github.com/LBEILC/StrongholdAssistant,
+Apache License 2.0). Four full-frame shop test images (shop-*-ui100-2000x1125.png,
+shop-closure-round1-1600x1024.png) come from that project's test data.
+Round enemy panel layout and recognition draw on its RoundEnemyReader.
+Live field badge matching, tier icons and reduced sprite samples adapt its FieldReader
+and sprite templates at revision 16fea906 (Apache License 2.0).
+Round-route matching uses enemy groups, gates and templates from the 路标档案馆
+Garrison Protocol spawn preview with permission (https://www.lubiao.wiki/tools/garrison-spawn-preview).
+Stage data comes from the zh_CN ArknightsGameData repository (Kengxxiao/ArknightsGameData).
+Board ID mapping and ground path reconstruction reference StrongholdAssistant.
+
+MaaFramework and other third-party dependencies retain their own licenses.
+Game data, character names and artwork retain the rights and attribution of
+their respective owners; the software license does not relicense these assets.
+Data and image source references are retained in data/fetch_spdatabase.py.
+This project is not affiliated with or endorsed by Hypergryph / 鹰角网络.
+
+Solo-layout and scrolled covenant recognition adapt lemon-n-orange's contribution in PR #7:
+https://github.com/bingyunhe/hongxue-stronghold-companion/pull/7
+Original contribution commit: d4c5434662bf9599c4abd1535b571ca521a99f63
+The local adaptation retains the existing UI-scale, OCR and strategy-piece fixes.

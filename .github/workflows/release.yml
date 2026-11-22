@@ -1,0 +1,89 @@
+# Builds the app on GitHub's macOS runner when a version tag (v0.3.0 …) is pushed, and puts it on a *draft* Release:
+# the maintainer downloads it, tries it and publishes the Release by hand.
+# - Built from the tagged commit only: nothing from the maintainer's Mac (debug recordings, keys, local files) can end
+#   up in the download.
+# - No secrets are used. Third-party actions are pinned to commit hashes.
+# - The zip gets a SHA-256 checksum and a build provenance attestation
+#   (`gh attestation verify <zip> --repo <owner>/<repo>` proves it was built here from this commit).
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag to build (e.g. v0.3.0)
+        required: true
+
+permissions:
+  contents: write      # create the draft Release
+  id-token: write      # build provenance attestation
+  attestations: write
+
+concurrency:
+  group: release-${{ github.event.inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: macos-15
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ env.TAG }}
+          fetch-depth: 0          # build number = commit count
+          persist-credentials: false
+
+      - name: Tag matches VERSION
+        run: |
+          v="v$(cat VERSION)"
+          if [ "$v" != "$TAG" ]; then echo "VERSION says $v but the tag is $TAG"; exit 1; fi
+
+      - name: Privacy check (keys, paths, commit authors)
+        run: ./scripts/privacy-check.sh
+
+      - name: Build and package
+        run: ./scripts/build-app.sh
+
+      - name: Self-tests that need no recordings
+        run: |
+          BIN=".build/apple/Products/Release/GarrisonHelper"
+          [ -x "$BIN" ] || BIN=".build/release/GarrisonHelper"
+          "$BIN" --trackertest | tee tracker.txt
+          grep -q "board first, report late (want 0 1 1 1 1): 0 1 1 1 1" tracker.txt
+          "$BIN" --plan "" "" | grep -q "^candidates: "
+          strings -a "dist/卫戍协议小助手.app/Contents/MacOS/GarrisonHelper" | grep -i -E "/Users/[a-z]" && exit 1 || true
+
+      - name: Zip and checksum
+        run: |
+          ZIP="GarrisonHelperMac-$TAG-macOS.zip"
+          ditto -c -k --keepParent "dist/卫戍协议小助手.app" "$ZIP"
+          shasum -a 256 "$ZIP" > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+          echo "ZIP=$ZIP" >> "$GITHUB_ENV"
+
+      # GitHub only stores attestations for public repositories (and organisation plans); a private user repository
+      # skips this step.
+      - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        if: ${{ !github.event.repository.private }}
+        with:
+          subject-path: ${{ env.ZIP }}
+
+      - name: Draft Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PRIVATE: ${{ github.event.repository.private }}
+        run: |
+          # Release notes: this version's section of CHANGELOG.md, plus how to open an unsigned app.
+          awk -v v="## ${TAG#v} " 'index($0, v) == 1 {on=1; next} /^## / && on {exit} on' CHANGELOG.md > notes.md
+          cat >> notes.md <<'EOF'
+
+          ---
+          **安装**：下载 zip，解压后把「卫戍协议小助手」拖进「应用程序」。应用没有 Apple 开发者签名，第一次打开会提示无法验证开发者：到 系统设置 → 隐私与安全性，点「仍要打开」。之后在「屏幕与系统录音」里勾选它，再重新打开。
+          **校验**：`shasum -a 256 -c SHA256SUMS.txt`
+          EOF
+          if [ "$PRIVATE" != "true" ]; then echo "；构建来源：\`gh attestation verify <zip> --repo ${{ github.repository }}\`" >> notes.md; fi
+          gh release create "$TAG" --draft --verify-tag --title "卫戍协议小助手 $TAG" --notes-file notes.md "$ZIP" SHA256SUMS.txt

@@ -1,0 +1,10 @@
+.build/
+.swiftpm/
+dist/
+references/
+fixtures/
+# Debug recordings (written next to the binary when run from the repo)
+卫戍助手调试/
+.DS_Store
+*.xcuserstate
+xcuserdata/

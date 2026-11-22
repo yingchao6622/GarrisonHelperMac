@@ -1,0 +1,6887 @@
+[
+  {
+    "id": "enemy_10001_trslim",
+    "name": "简饲源石虫",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 4500,
+    "atk": 200,
+    "def": 50,
+    "res": 0,
+    "attackTime": 1.7,
+    "speed": 1,
+    "weight": 1,
+    "abilities": [
+      "生命值降至一半以下时，伸出脚逃跑！移动速度提升且不可阻挡一段时间"
+    ],
+    "description": "在人工饲养环境中成长的源石虫，感染程度较低，肉质一般，具有野生源石虫不具备的身体结构。"
+  },
+  {
+    "id": "enemy_10003_trwlpl_2",
+    "name": "暴走食人花",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "WALK",
+    "hp": 13000,
+    "atk": 0,
+    "def": 250,
+    "res": 10,
+    "attackTime": 0,
+    "speed": 0.6,
+    "weight": 2,
+    "abilities": [
+      "会吞食周围一个目标，每次吞食需要长时间原地消化"
+    ],
+    "description": "某实验室培育的生物武器，虽为植物，但拥有惊人的咬合力和消化能力——更可怕的是这种植物已经出现在了野外。"
+  },
+  {
+    "id": "enemy_1000_gopro_2",
+    "name": "猎狗pro",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 1700,
+    "atk": 260,
+    "def": 0,
+    "res": 20,
+    "attackTime": 1.4,
+    "speed": 1.9,
+    "weight": 0,
+    "abilities": [],
+    "description": "整合运动技术侦察部队操纵的生物，比一般猎狗更具有作战能力。身上装备着某个牌子的监控设备。由于优良的隐蔽性和行动速度，较为容易突破防御造成大量破坏，需要注意。"
+  },
+  {
+    "id": "enemy_10018_sgrobh",
+    "name": "“独轮车玩具”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 7500,
+    "atk": 450,
+    "def": 280,
+    "res": 50,
+    "attackTime": 4.5,
+    "speed": 0.7,
+    "weight": 2,
+    "abilities": [
+      "同时攻击两个目标",
+      "初始攻击范围较小，位于结晶上时进行超远距离攻击"
+    ],
+    "description": "一种独轮驱动的宝石构装体。在它还愿意待在展台的时候，人们以为它只是一个给孩子们取乐用的杂耍玩具。"
+  },
+  {
+    "id": "enemy_1001_bigbo",
+    "name": "大鲍勃",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 22000,
+    "atk": 1900,
+    "def": 800,
+    "res": 30,
+    "attackTime": 6,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [],
+    "description": "整合运动干部。穿着沉重的防爆护具，且使用电锯进行攻击。出现在一些不起眼的作战地区，似乎默默参与了一些周边行动，拥有丰富的作战和指挥经验。造成大量破坏的同时极难被击溃，需要特别注意。"
+  },
+  {
+    "id": "enemy_10027_vtsk",
+    "name": "“帝国的甲胄”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 30000,
+    "atk": 1020,
+    "def": 1800,
+    "res": 5,
+    "attackTime": 5,
+    "speed": 0.5,
+    "weight": 6,
+    "abilities": [
+      "出场时锁定我方当前生命值最高的单位，对其周围当前生命值最高的单位造成多次物理伤害",
+      "可以进行远程攻击",
+      "攻击数次后，进行一次蓄力攻击，造成更高的三次伤害"
+    ],
+    "description": "君主的护卫，立誓忠于维多利亚。在君王的回忆里，钢铁之躯连成山脉，白色蒸汽遮蔽天空。"
+  },
+  {
+    "id": "enemy_10028_vtswd",
+    "name": "未装配刀片",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "FLY",
+    "hp": 100,
+    "atk": 100,
+    "def": 0,
+    "res": 0,
+    "attackTime": 10,
+    "speed": 0,
+    "weight": 0,
+    "abilities": [
+      "我方干员持有时",
+      "持有装备的干员攻击力提升",
+      "敌方持有时",
+      "持有装备的单位攻击力提升",
+      "获得一定量的屏障",
+      "屏障被击破后装备消失"
+    ],
+    "description": "伦蒂尼姆军工厂生产的制式近战武器组件，还没有运输到装配车间。空手握持十分危险，但至少会使人显得比赤手空拳更有威胁性。"
+  },
+  {
+    "id": "enemy_10029_vtshld",
+    "name": "防护背心",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "FLY",
+    "hp": 100,
+    "atk": 100,
+    "def": 0,
+    "res": 0,
+    "attackTime": 10,
+    "speed": 0,
+    "weight": 0,
+    "abilities": [
+      "我方干员持有时",
+      "持有装备的干员防御力提升",
+      "敌方持有时",
+      "持有装备的单位获得指定方向的受到的伤害降低",
+      "获得一定量的屏障",
+      "屏障被击破后装备消失"
+    ],
+    "description": "伦蒂尼姆军工厂生产的制式防护服面料，尺寸只够防护身体的一面。大家都希望自己在重伤倒下之前再抢到一块，然后回家把两块面料缝起来。"
+  },
+  {
+    "id": "enemy_10030_vtwand",
+    "name": "冲击式施术单元",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "FLY",
+    "hp": 100,
+    "atk": 100,
+    "def": 0,
+    "res": 0,
+    "attackTime": 10,
+    "speed": 0,
+    "weight": 0,
+    "abilities": [
+      "我方干员持有时",
+      "持有装备的干员开启技能后一小段时间内的伤害使敌人战栗一定时间，并造成额外法术伤害。",
+      "敌方持有时",
+      "持有装备的单位攻击变为法术伤害，且拾取装备后的首次攻击使目标无法攻击或治疗一段时间",
+      "获得一定量的屏障",
+      "屏障被击破后装备消失"
+    ],
+    "description": "伦蒂尼姆军工厂生产的制式法杖组件，还没有运输到装配车间。容易出现故障，但总好过让感染者徒手施术。"
+  },
+  {
+    "id": "enemy_10031_cnvsld",
+    "name": "业余竞演者",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 4000,
+    "atk": 300,
+    "def": 100,
+    "res": 0,
+    "attackTime": 2,
+    "speed": 1.5,
+    "weight": 1,
+    "abilities": [
+      "隐匿",
+      "狂欢时刻失去隐匿"
+    ],
+    "description": "狂欢节上参与戏剧竞演的业余演员，平时从事什么工作没人知道。"
+  },
+  {
+    "id": "enemy_10034_cnvsax",
+    "name": "节日爵士乐手",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理",
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 650,
+    "def": 300,
+    "res": 10,
+    "attackTime": 1,
+    "speed": 0.7,
+    "weight": 2,
+    "abilities": [
+      "隐匿，平时不攻击，失去隐匿时反击",
+      "技能期间持续造成法术伤害和灼燃损伤",
+      "狂欢时刻失去隐匿"
+    ],
+    "description": "穿上节日装扮、在街头演奏音乐的乐手，乐器还用不顺手，乐声也混乱不堪——还好是狂欢节。"
+  },
+  {
+    "id": "enemy_10040_cnvbln",
+    "name": "节日气球",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "FLY",
+    "hp": 2000,
+    "atk": 0,
+    "def": 0,
+    "res": 0,
+    "attackTime": 1,
+    "speed": 1,
+    "weight": 0,
+    "abilities": [
+      "飞行单位",
+      "不计入歼灭数",
+      "狂欢时刻被击破可为“烟花发射器”回复一定生命值"
+    ],
+    "description": "狂欢节期间遍布全城的气球，击破之后会发出巨响——虽然不是铳响，但依然能让人群沸腾。"
+  },
+  {
+    "id": "enemy_10042_prtrop",
+    "name": "架桥船工",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 6000,
+    "atk": 600,
+    "def": 150,
+    "res": 30,
+    "attackTime": 2,
+    "speed": 0.65,
+    "weight": 4,
+    "abilities": [
+      "隐匿",
+      "可以架设可通行的悬索桥"
+    ],
+    "description": "用于连接两艘盐船的悬索桥携带方便、搭建快捷，但它的结构稳定性实在太差，以至于需要一直有人扶着——这个费时费力的工作通常由架桥船工来负责。"
+  },
+  {
+    "id": "enemy_10042_prtrop_2",
+    "name": "扶桥老手",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 8000,
+    "atk": 720,
+    "def": 300,
+    "res": 30,
+    "attackTime": 2,
+    "speed": 0.65,
+    "weight": 4,
+    "abilities": [
+      "隐匿",
+      "可以架设可通行的悬索桥"
+    ],
+    "description": "用于连接两艘盐船的悬索桥携带方便、搭建快捷，但它的结构稳定性实在太差，以至于需要一直有人扶着——扶桥老手在长期的扶桥生涯中练就了一双稳健的手，却依然没想出怎么解决悬索桥的结构缺陷。"
+  },
+  {
+    "id": "enemy_10043_sailor",
+    "name": "寻险水手",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 5500,
+    "atk": 350,
+    "def": 50,
+    "res": 10,
+    "attackTime": 2,
+    "speed": 0.9,
+    "weight": 1,
+    "abilities": [
+      "经过悬索桥或被<盐坨子炮>传送时，移动速度短暂提升"
+    ],
+    "description": "尽管在盐漠行船本身就是一件险事，但偶尔仍有船员会追求更极致的刺激，比如把自己挂在飞鳞底下穿越盐漠，或是把自己装进“盐坨子炮”发射出去。"
+  },
+  {
+    "id": "enemy_10044_wintun",
+    "name": "咸鳞汁推荐者",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 9000,
+    "atk": 850,
+    "def": 500,
+    "res": 20,
+    "attackTime": 3,
+    "speed": 0.5,
+    "weight": 3,
+    "abilities": [
+      "携带酒桶时移动速度提升",
+      "首次攻击消耗酒桶造成大量物理伤害并生成一片区域，区域内敌人攻击速度提升且获得物理闪避"
+    ],
+    "description": "船员们有时候会互相推荐自己喜欢的事物，咸鳞汁也在其列。只不过，有些船员推荐咸鳞汁的方式太过直接——他们喜欢把桶子直接滚到对方脸上。"
+  },
+  {
+    "id": "enemy_10045_parrot",
+    "name": "吉兆飞鳞",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 100,
+    "def": 0,
+    "res": 10,
+    "attackTime": 1,
+    "speed": 0.6,
+    "weight": 0,
+    "abilities": [
+      "近地悬浮，失去近地悬浮后晕眩一定时间重新起飞",
+      "首次受到伤害后移动速度短暂提升，有时会携带<寻险水手>"
+    ],
+    "description": "繁殖期会频繁跃出盐层的雌性飞鳞，它会在空中短暂地滑翔，并散播清香的信息素。若在出航时遇到一头栽倒在甲板上的它，船员们便会将之视作吉兆。"
+  },
+  {
+    "id": "enemy_10054_cjhot",
+    "name": "鼎沸",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 140,
+    "def": 250,
+    "res": 60,
+    "attackTime": 1,
+    "speed": 0.8,
+    "weight": 3,
+    "abilities": [
+      "持续对周围造成法术伤害和灼燃损伤",
+      "免疫停顿"
+    ],
+    "description": "受岁的代理人能力影响而生的化物。二荆条，灯笼椒，鼎中沸汤，满街飘香。若是被香味吸引，吃得太急可容易烫伤。"
+  },
+  {
+    "id": "enemy_1005_yokai",
+    "name": "妖怪",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "FLY",
+    "hp": 800,
+    "atk": 0,
+    "def": 50,
+    "res": 0,
+    "attackTime": 2.3,
+    "speed": 0.9,
+    "weight": 0,
+    "abilities": [
+      "飞行单位"
+    ],
+    "description": "敌方人员操纵的无人机，被其内部某些人称为妖怪。装备有远程操控施术单元，可能是由附近隐蔽的术师远程操作。虽然不一定能对穿戴防具的人体构成大量损害，但仍然会对一般人员对构成一定威胁。"
+  },
+  {
+    "id": "enemy_1005_yokai_2",
+    "name": "妖怪MKII",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "FLY",
+    "hp": 1550,
+    "atk": 220,
+    "def": 50,
+    "res": 0,
+    "attackTime": 3,
+    "speed": 0.9,
+    "weight": 0,
+    "abilities": [
+      "飞行单位"
+    ],
+    "description": "敌方人员操纵的无人机，妖怪的改进版，继承了原版的名字，称为妖怪MKII。装备有可发射的小型铳和远程操控施术单元，可能是由附近隐蔽的术师远程操作。虽然不一定能对穿戴防具的人体构成大量损害，但仍然会对一般人员构成一定威胁。"
+  },
+  {
+    "id": "enemy_1005_yokai_3",
+    "name": "威龙",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "FLY",
+    "hp": 30000,
+    "atk": 660,
+    "def": 170,
+    "res": 0,
+    "attackTime": 3.8,
+    "speed": 0.5,
+    "weight": 0,
+    "abilities": [
+      "飞行单位"
+    ],
+    "description": "敌方人员操纵的无人机，某太空游戏的粉丝制作的外观，因此被称为威龙。装备有高射速的小型速射铳和远程操控施术单元，可能是由附近隐蔽的术师远程操作。优秀的隐蔽和攻击性能让他会对作战人员构成较大威胁。"
+  },
+  {
+    "id": "enemy_10065_ftzlc",
+    "name": "卷心籽",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 3800,
+    "atk": 240,
+    "def": 0,
+    "res": 5,
+    "attackTime": 1.7,
+    "speed": 1,
+    "weight": 1,
+    "abilities": [
+      "可以被<灼藤>或<灼芯>点燃",
+      "点燃状态下死亡后对周围造成大量法术伤害"
+    ],
+    "description": "小而常见的精怪，巡游草叶的原形。只要将它们与火隔开就全然无害。"
+  },
+  {
+    "id": "enemy_10067_ftsjc",
+    "name": "灼藤",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 13000,
+    "atk": 800,
+    "def": 250,
+    "res": 65,
+    "attackTime": 3.5,
+    "speed": 0.85,
+    "weight": 4,
+    "abilities": [
+      "攻击额外造成灼燃损伤",
+      "首次攻击前，攻击力不断提升且首次攻击对目标和周围造成法术伤害和灼燃损伤"
+    ],
+    "description": "热情的精怪，胸中火烧，肖似一扇奇异的拱门。柔美的花朵与藤蔓攀附其上，但它们只是装饰，只是装饰。"
+  },
+  {
+    "id": "enemy_1006_shield",
+    "name": "重装防御者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 6000,
+    "atk": 600,
+    "def": 800,
+    "res": 0,
+    "attackTime": 2.6,
+    "speed": 0.75,
+    "weight": 3,
+    "abilities": [],
+    "description": "整合运动的近身作战人员。装备有沉重的全套防具，且能熟练参与战斗，极难被击溃，可能是受过正规训练的作战人员，需要小心应对。"
+  },
+  {
+    "id": "enemy_1006_shield_2",
+    "name": "重装防御组长",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 600,
+    "def": 1000,
+    "res": 0,
+    "attackTime": 2.6,
+    "speed": 0.75,
+    "weight": 3,
+    "abilities": [],
+    "description": "整合运动的近身作战人员，比一般重装防御者更具威胁。装备有沉重的全套防具，且能熟练参与战斗，极难被击溃，可能是受过正规训练的作战人员，需要小心应对。"
+  },
+  {
+    "id": "enemy_1006_shield_3",
+    "name": "重装五十夫长",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 40000,
+    "atk": 1000,
+    "def": 1200,
+    "res": 0,
+    "attackTime": 2.6,
+    "speed": 0.75,
+    "weight": 4,
+    "abilities": [],
+    "description": "整合运动的近身作战人员，比重装防御组长更具威胁。装备有沉重的全套防具，通常都伴随大量配合进攻的人员，极难被击溃，需要特别注意。"
+  },
+  {
+    "id": "enemy_10073_mpcar",
+    "name": "迷茫的修理小助手",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2000,
+    "atk": 300,
+    "def": 200,
+    "res": 25,
+    "attackTime": 2,
+    "speed": 1.9,
+    "weight": 1,
+    "abilities": [],
+    "description": "被源石干扰了寻路模块的修理小助手，连工程部干员特意添加的送餐功能都很难实现了。“你说维护功能？我们的工程师够多了。至于华法琳提出的食品安全警告，我们正在努力改进。”"
+  },
+  {
+    "id": "enemy_10077_mpbarr",
+    "name": "内测版自助出餐终端",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 6000,
+    "atk": 800,
+    "def": 1000,
+    "res": 40,
+    "attackTime": 2,
+    "speed": 0.6,
+    "weight": 3,
+    "abilities": [
+      "每隔一段时间召唤1个<迷茫的修理小助手>"
+    ],
+    "description": "仍在测试的食堂自助出餐终端。为了免去从宿舍走到食堂的麻烦，某位分秒必争的干员灵光一现，特意接入了修理小助手。可惜这次测试的时机不对，本是图个方便却造成了更多的麻烦。"
+  },
+  {
+    "id": "enemy_1007_slime",
+    "name": "源石虫",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 550,
+    "atk": 130,
+    "def": 0,
+    "res": 0,
+    "attackTime": 1.7,
+    "speed": 1,
+    "weight": 0,
+    "abilities": [],
+    "description": "野生的被感染生物。这种低智能生物极有可能会被敌方术师操纵，以进入人工设施内发动集群攻击。"
+  },
+  {
+    "id": "enemy_10081_mpplai",
+    "name": "转译基底·α",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "WALK",
+    "hp": 2500,
+    "atk": 100,
+    "def": 450,
+    "res": 40,
+    "attackTime": 1,
+    "speed": 1,
+    "weight": 1,
+    "abilities": [
+      "初始不进行攻击，满足特定条件时会变化形态",
+      "累计受到4次物理攻击后、累计受到4次法术攻击后，或在被阻挡时，会分别变化为不同的形态"
+    ],
+    "description": "在未知区域Abyss中诞生的未知个体，未受到特定伤害的情况下不会展现出任何侵略行为。但它……好像在学习我们的行动模式？"
+  },
+  {
+    "id": "enemy_10083_hlbird",
+    "name": "“萨科塔之翼”",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "FLY",
+    "hp": 1500,
+    "atk": 0,
+    "def": 0,
+    "res": 30,
+    "attackTime": 1,
+    "speed": 0.9,
+    "weight": 0,
+    "abilities": [
+      "飞行单位",
+      "生命值首次降至一半以下时，在数秒内陷入恐惧"
+    ],
+    "description": "长出光环的羽兽，被“律法”判定为萨科塔。它们还不适应“太阳”和自己的脑袋挨得这么近，为了甩开“太阳”，它们四散惊飞。"
+  },
+  {
+    "id": "enemy_10084_hlegle",
+    "name": "“萨科塔之眼”",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "FLY",
+    "hp": 5500,
+    "atk": 1000,
+    "def": 150,
+    "res": 30,
+    "attackTime": 3,
+    "speed": 0.7,
+    "weight": 1,
+    "abilities": [
+      "飞行单位",
+      "生命值首次降至一半以下时，在数秒内陷入恐惧",
+      "攻击时尝试夺走目标1发弹药，若无法夺走弹药则造成高额物理伤害"
+    ],
+    "description": "长出光环并畸变的羽兽，被“律法”判定为萨科塔。它们多数时间都茫然地栖息在大教堂的屋顶，不知道自己该看向何处。"
+  },
+  {
+    "id": "enemy_10085_hllevi_2",
+    "name": "“萨科塔昂首”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "FLY",
+    "hp": 80000,
+    "atk": 0,
+    "def": 50,
+    "res": 30,
+    "attackTime": 1,
+    "speed": 0.4,
+    "weight": 5,
+    "abilities": [
+      "飞行单位",
+      "生命值首次降至一半以下时，在数秒内陷入恐惧",
+      "【祈祷邀约】降低全场我方单位的攻击速度，持续一定时间"
+    ],
+    "description": "长出光环的水栖生物，被“律法”判定为萨科塔，已学会祈祷。它们会拦住每一个懒散的人，邀请对方与自己共同祈祷，如果被拒绝——它们不会允许你拒绝。"
+  },
+  {
+    "id": "enemy_10087_hlchgr",
+    "name": "圣堂剑士",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 6000,
+    "atk": 400,
+    "def": 350,
+    "res": 0,
+    "attackTime": 1.3,
+    "speed": 1.2,
+    "weight": 1,
+    "abilities": [
+      "消耗弹药使自身的移动速度和攻击力永久提升；弹药上限：5"
+    ],
+    "description": "为确保降生仪式顺利进行而遴选的育婴圣堂巡卫，负责常规的地面巡逻工作。他们战斗经验不算丰富，经常被保育员叫去帮忙清洁巨型奶瓶。"
+  },
+  {
+    "id": "enemy_10094_crstf",
+    "name": "临时收音师",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 4000,
+    "atk": 350,
+    "def": 150,
+    "res": 15,
+    "attackTime": 2,
+    "speed": 0.9,
+    "weight": 1,
+    "abilities": [
+      "处于摄影区域外时，攻击附带神经损伤"
+    ],
+    "description": "临时从蓝卡坞移动拍摄地块上找来的工作人员。第一次进入剧组，他很努力地想要完成自己的工作，但不知为什么设备总是无法成功收音？"
+  },
+  {
+    "id": "enemy_10097_crshd",
+    "name": "心虚设计师",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 400,
+    "def": 450,
+    "res": 30,
+    "attackTime": 1,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "减少来自正面的物理/法术伤害",
+      "不敢面对镜头。在摄影区域内时，如果面对摄影机则会转身",
+      "对阻挡自己的单位持续造成神经损伤"
+    ],
+    "description": "不能按时交稿的设计师。很是心虚，他发现自己不小心误入了镜头，立刻仓皇地逃走。"
+  },
+  {
+    "id": "enemy_10098_crhro",
+    "name": "主角阵营角色",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 720,
+    "def": 600,
+    "res": 20,
+    "attackTime": 5,
+    "speed": 0.65,
+    "weight": 3,
+    "abilities": [
+      "攻击附带神经损伤",
+      "处于摄影区域内攻击范围扩大，且优先攻击<反派阵营角色>和<命定的反派>",
+      "重生"
+    ],
+    "description": "影片中主角阵营的角色。“永远不会倒下”是角色的信条，为了维护主角走向最终的胜利，他会与反派阵营战斗到最后一刻。"
+  },
+  {
+    "id": "enemy_10099_crvln",
+    "name": "反派阵营角色",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 480,
+    "def": 450,
+    "res": 60,
+    "attackTime": 5,
+    "speed": 0.65,
+    "weight": 3,
+    "abilities": [
+      "攻击附带神经损伤",
+      "处于摄影区域内攻击变为二连击，且优先攻击<主角阵营角色>和<命定的主角>"
+    ],
+    "description": "影片中反派阵营的角色。“永远不会认输”是角色的信条，为了让头领获得最终的胜利，它会与主角阵营战斗到最后一刻。"
+  },
+  {
+    "id": "enemy_1009_lurker",
+    "name": "潜伏者",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2200,
+    "atk": 300,
+    "def": 90,
+    "res": 20,
+    "attackTime": 2,
+    "speed": 1,
+    "weight": 1,
+    "abilities": [
+      "隐匿"
+    ],
+    "description": "整合运动的特殊作战人员。行动敏捷且难以被发现，在交战前几乎无法被其他协同作战的单位辨认，需要配合击溃。"
+  },
+  {
+    "id": "enemy_1010_demon",
+    "name": "萨卡兹大剑手",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 7500,
+    "atk": 600,
+    "def": 230,
+    "res": 50,
+    "attackTime": 2,
+    "speed": 0.85,
+    "weight": 2,
+    "abilities": [],
+    "description": "萨卡兹雇佣兵。体内源石可能更进一步强化了他的体能，使他可以自如运用更大的武器，且更难以被击倒。"
+  },
+  {
+    "id": "enemy_1010_demon_2",
+    "name": "萨卡兹大剑组长",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 750,
+    "def": 250,
+    "res": 50,
+    "attackTime": 2,
+    "speed": 0.85,
+    "weight": 2,
+    "abilities": [],
+    "description": "萨卡兹雇佣兵，比一般萨卡兹大剑手更具威胁。体内源石可能更进一步强化了他的体能，使他可以自如运用更大的武器，且更难以被击倒。"
+  },
+  {
+    "id": "enemy_10112_ymgds",
+    "name": "冒失的小弟",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 5000,
+    "atk": 500,
+    "def": 80,
+    "res": 0,
+    "attackTime": 5,
+    "speed": 0.7,
+    "weight": 3,
+    "abilities": [
+      "失衡移动后晕眩一段时间"
+    ],
+    "description": "金石会的普通成员。一旦摔倒，他们便会陷入深沉的自我怀疑，暂时抛弃战斗思考人生。所以一直在当小弟。"
+  },
+  {
+    "id": "enemy_10116_ymgtop",
+    "name": "水遁忍者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 600,
+    "def": 500,
+    "res": 20,
+    "attackTime": 1.5,
+    "speed": 0.7,
+    "weight": 2,
+    "abilities": [
+      "旋转时持续对周围造成物理伤害，失衡移动后停止旋转",
+      "弹开<“某种天命”>"
+    ],
+    "description": "能原地转很长时间的忍者，坚称自己转起来周身就是有水，只是旁边的人视力太差看不到。除非在旋转时绊他一跤，否则不会停止。"
+  },
+  {
+    "id": "enemy_10118_ymgprc",
+    "name": "澪",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 50000,
+    "atk": 777,
+    "def": 900,
+    "res": 50,
+    "attackTime": 3,
+    "speed": 0.6,
+    "weight": 5,
+    "abilities": [
+      "攻击变为二连击",
+      "【寒晖】数次攻击后下次攻击造成更高伤害的二连击",
+      "弹开<“某种天命”>"
+    ],
+    "description": "送走恶鬼，也送走愿望；收下诅咒，也收下温柔。不辨轻重，不问善恶，她只是沉默着出鞘。"
+  },
+  {
+    "id": "enemy_10122_uacann_2",
+    "name": "集团军重型火炮",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 500,
+    "def": 350,
+    "res": 0,
+    "attackTime": 5,
+    "speed": 0.8,
+    "weight": 2,
+    "abilities": [
+      "攻击会留下燃烧区域",
+      "受到指挥官指令时优先攻击<矿工游击队>"
+    ],
+    "description": "乌萨斯集团军生产的重型火炮，于五年前的圣骏堡大阅兵首次亮相。据传闻，它发射一颗炮弹就能让整个街区陷入火海，但具体的装备数量至今依然是个谜。"
+  },
+  {
+    "id": "enemy_10123_uareap",
+    "name": "破城者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 25000,
+    "atk": 800,
+    "def": 1300,
+    "res": 20,
+    "attackTime": 3.5,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "只能被阻挡数大于等于3的单位阻挡，能和3名<矿工游击队>交战",
+      "发射数枚飞弹造成范围伤害",
+      "受到指挥官指令时飞弹数量增加"
+    ],
+    "description": "乌萨斯第一军工厂研发的战争机器，代表着乌萨斯最先进的武器技术，由于破城者能耗巨大，一般只在极其重要的战役中使用。"
+  },
+  {
+    "id": "enemy_10124_uashld_2",
+    "name": "集团军中坚盾卫",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 25000,
+    "atk": 950,
+    "def": 1800,
+    "res": 60,
+    "attackTime": 3.8,
+    "speed": 0.7,
+    "weight": 4,
+    "abilities": [
+      "容易受到我方单位的攻击，能和3名<矿工游击队>交战",
+      "受到指挥官指令时受到伤害降低"
+    ],
+    "description": "乌萨斯集团军的中坚盾卫，负责守卫整支军队的中央指挥部。敌人也许能侥幸突破至此，但绝跨不过这最后一道防线。"
+  },
+  {
+    "id": "enemy_10127_rkmbst_2",
+    "name": "异质裂兽·α",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 27500,
+    "atk": 1250,
+    "def": 100,
+    "res": 20,
+    "attackTime": 3,
+    "speed": 0.5,
+    "weight": 3,
+    "abilities": [
+      "更容易受到我方的攻击，受到伤害降低，攻击速度提升",
+      "被<矿工游击队>攻击数次后失去能力"
+    ],
+    "description": "盘踞在矿井深处的变异野兽，地底的活物越来越少，饥饿至发狂的野兽在岩壁上划出了一道道爪印，黑色的矿石顺着血迹生长，直到爬上野兽消瘦的身躯。它们的身躯再次变得庞大而可怖。"
+  },
+  {
+    "id": "enemy_10138_xdsnow",
+    "name": "雪孩子",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 5500,
+    "atk": 200,
+    "def": 200,
+    "res": 10,
+    "attackTime": 5,
+    "speed": 0.6,
+    "weight": 1,
+    "abilities": [
+      "撞上高台时受到额外伤害"
+    ],
+    "description": "在谢拉格人迹罕至的雪原中蹦蹦跳跳的小东西，性格冒失，容易磕碰。一旦到了春天，就会从雪白变成灰扑扑的样子，并长出茂盛的绒毛。"
+  },
+  {
+    "id": "enemy_10141_xdpeng_2",
+    "name": "拥霜羽兽",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 400,
+    "def": 200,
+    "res": 20,
+    "attackTime": 3.5,
+    "speed": 0.7,
+    "weight": 3,
+    "abilities": [
+      "失衡移动后失去蛋，移动速度提升并变为不可阻挡"
+    ],
+    "description": "谢拉格本土特有的羽兽。受到降临在圣山上的神秘物质的影响，获得了更好的视力和嗅觉，可也变得更有攻击性。它怀中抱着的无法孵化的蛋变成的冰岩，可以轻松地刨开泥土挖掘果实，也可以用来狠狠地敲击敌人的脑袋。"
+  },
+  {
+    "id": "enemy_10146_nscola",
+    "name": "开天汽水瓶",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "FLY",
+    "hp": 5000,
+    "atk": 350,
+    "def": 100,
+    "res": 10,
+    "attackTime": 3,
+    "speed": 0.3,
+    "weight": 0,
+    "abilities": [
+      "飞行单位",
+      "移动时逐渐加速，但会持续损失生命"
+    ],
+    "description": "按照说明书用力摇晃三百秒再撬开瓶盖，它就会以气贯长虹之势飞向天空。别担心，瓶身由高韧度亚克力制成，绝不会摔碎。\n至于里面的汽水……真有人买它是为了喝汽水吗？"
+  },
+  {
+    "id": "enemy_10147_nsbomb",
+    "name": "遮天面包机",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "FLY",
+    "hp": 7000,
+    "atk": 330,
+    "def": 300,
+    "res": 20,
+    "attackTime": 2.5,
+    "speed": 0.6,
+    "weight": 1,
+    "abilities": [
+      "飞行单位",
+      "未被阻挡时持续对周围我方单位造成溅射伤害"
+    ],
+    "description": "伴随着清脆的提示音，新鲜烤好的吐司会直接落入你的盘中。\n有它在的餐厅，一般会要求顾客脱帽。不是出于什么礼节，而是因为它总是把帽子识别成盘子。"
+  },
+  {
+    "id": "enemy_10156_mncrer",
+    "name": "新手祭司学徒",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 4000,
+    "atk": 300,
+    "def": 100,
+    "res": 20,
+    "attackTime": 5,
+    "speed": 0.5,
+    "weight": 1,
+    "abilities": [
+      "倒下后为附近的一个喷泉水池补充水量，并治疗周围敌人"
+    ],
+    "description": "新加入芙罗拉神殿的祭司学徒。传说芙罗拉是掌握了无数鲜花与植物的知识，能将之应用在源石技艺中的英雄。除学习、清扫、送货、报信、焚香等神殿学徒的常规工作外，他们还要承担维护街上缀花喷泉的工作。"
+  },
+  {
+    "id": "enemy_10159_mntrjn",
+    "name": "伊利昂的木驮兽",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "WALK",
+    "hp": 28000,
+    "atk": 100,
+    "def": 600,
+    "res": 10,
+    "attackTime": 5,
+    "speed": 1,
+    "weight": 6,
+    "abilities": [
+      "无法被阻挡",
+      "可以装载最多5名乘客",
+      "每载有一名乘客，移动速度下降一定比例"
+    ],
+    "description": "米诺斯公民们扮演的伊利昂的木驮兽。传说在城邦林立的时代，雅赛努斯人在木驮兽里装载士兵，从内部击败了久攻不破的伊利昂城。这个故事家喻户晓，只要看到一群米诺斯人挤在一辆载具上，大家都知道他们在演的是什么，甚至会想主动加入其中。"
+  },
+  {
+    "id": "enemy_10162_mnctpt",
+    "name": "自制投石机",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 16000,
+    "atk": 750,
+    "def": 800,
+    "res": 0,
+    "attackTime": 7,
+    "speed": 0.6,
+    "weight": 4,
+    "abilities": [
+      "攻击为三连击，造成物理溅射伤害",
+      "入戏状态下攻击发生大幅随机偏移"
+    ],
+    "description": "米诺斯公民自制的投石机。制作材料是普通的纸板，因此威力有限。因为放了太多石头，把机器推到地方得花费大量力气，这导致投石手在实际投掷时，常会因为劳累手抖而失去准头。"
+  },
+  {
+    "id": "enemy_10163_mnctur_2",
+    "name": "神勇的帕拉杜利斯",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 44000,
+    "atk": 1900,
+    "def": 1600,
+    "res": 30,
+    "attackTime": 4,
+    "speed": 0.8,
+    "weight": 5,
+    "abilities": [
+      "移动方向前方有我方单位时发起冲锋，击中我方单位时造成大量物理伤害",
+      "入戏状态下冲锋会越过我方单位，直至命中地形，随后自身会受到真实伤害并晕眩"
+    ],
+    "description": "两位米诺斯公民合演的英雄帕拉杜利斯。他们已是饰演帕拉杜利斯的熟手，配合更为熟练，在发起冲锋时也更能展现出帕拉杜利斯的英勇姿态。而且，在后方没有视野的公民发力导致两人撞墙时，前方的公民也已经习惯了这种头晕目眩的感觉。"
+  },
+  {
+    "id": "enemy_1017_defdrn",
+    "name": "御4",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "FLY",
+    "hp": 4000,
+    "atk": 0,
+    "def": 150,
+    "res": 20,
+    "attackTime": 2,
+    "speed": 0.8,
+    "weight": 0,
+    "abilities": [
+      "飞行单位",
+      "为周围敌军持续提供防御力加成"
+    ],
+    "description": "敌方人员操纵的无人机，型号标记为御4。虽然本身不具有攻击能力，却能对敌方人员进行支援，需要注意。"
+  },
+  {
+    "id": "enemy_10196_ubba",
+    "name": "搏命养家者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 650,
+    "def": 1000,
+    "res": 15,
+    "attackTime": 3,
+    "speed": 0.5,
+    "weight": 3,
+    "abilities": [
+      "警戒触发后，增加移动速度并在较大范围内寻找触发警戒的单位",
+      "周围敌人受到的物理和法术伤害降低"
+    ],
+    "description": "隶属于“二十二号仓库”安保公司的雇员。他每一次挥动拳头，心里都在默念自己重病孩子的名字。\n“你犯了错，士兵。你在集团军里混不下去了，但我们可以给你提供另一个机会……”"
+  },
+  {
+    "id": "enemy_10196_ubba_2",
+    "name": "搏命享受者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 25000,
+    "atk": 750,
+    "def": 1100,
+    "res": 15,
+    "attackTime": 3,
+    "speed": 0.5,
+    "weight": 3,
+    "abilities": [
+      "警戒触发后，增加移动速度并在较大范围内寻找触发警戒的单位",
+      "周围敌人受到的物理和法术伤害降低"
+    ],
+    "description": "隶属于“二十二号仓库”安保公司的雇员。他每一次挥动拳头，都在想象下一刻血液飞溅到嘴中的味道。\n“你犯了错，士兵。你在集团军里……等等，你说你是故意的？什么叫退伍补助金没用，换成蛋白粉给你？”"
+  },
+  {
+    "id": "enemy_1019_jshoot",
+    "name": "隐形弩手",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 1800,
+    "atk": 260,
+    "def": 100,
+    "res": 20,
+    "attackTime": 2.7,
+    "speed": 0.9,
+    "weight": 1,
+    "abilities": [
+      "隐匿"
+    ],
+    "description": "穿戴了类似吉利服防具的整合运动射击作战人员，在交战前几乎无法被其他协同作战的单位辨认，需要配合击溃。"
+  },
+  {
+    "id": "enemy_1019_jshoot_2",
+    "name": "隐形弩手组长",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2700,
+    "atk": 310,
+    "def": 130,
+    "res": 20,
+    "attackTime": 2.7,
+    "speed": 0.9,
+    "weight": 1,
+    "abilities": [
+      "隐匿"
+    ],
+    "description": "穿戴了类似吉利服防具的整合运动射击作战人员，比一般隐形弩手更具威胁。在交战前几乎无法被其他协同作战的单位辨认，需要配合击溃。"
+  },
+  {
+    "id": "enemy_1021_bslime",
+    "name": "高能源石虫",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2460,
+    "atk": 260,
+    "def": 0,
+    "res": 0,
+    "attackTime": 1.7,
+    "speed": 1,
+    "weight": 0,
+    "abilities": [
+      "死亡后对周围造成大量物理伤害"
+    ],
+    "description": "野生的被感染生物，腹部已经被大量源石同化，且处于不稳定状态，死亡时可能出现爆炸。这种低智能生物极有可能会被敌方术师操纵，以进入人工设施内发动集群攻击。"
+  },
+  {
+    "id": "enemy_10229_agactr_2",
+    "name": "炫目刀技厨师\n",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 18000,
+    "atk": 600,
+    "def": 500,
+    "res": 20,
+    "attackTime": 4,
+    "speed": 0.8,
+    "weight": 0,
+    "abilities": [
+      "使自身周围一定范围内地面敌人的攻击速度和法术抗性提升"
+    ],
+    "description": "和蔼可亲的女士，带着妈妈的妈妈传给她的装备而来，想为这次的庆典再增添一些温情。\n曾经的切胡萝卜大赛全国冠军。看着她炫目的刀法，大家不敢不多分一个冰淇淋给她。"
+  },
+  {
+    "id": "enemy_1023_jmage",
+    "name": "隐形术师",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 2200,
+    "atk": 350,
+    "def": 80,
+    "res": 50,
+    "attackTime": 4,
+    "speed": 0.8,
+    "weight": 1,
+    "abilities": [
+      "隐匿"
+    ],
+    "description": "穿戴了类似吉利服防具的整合运动法术作战人员，在交战前几乎无法被其他协同作战的单位辨认，需要配合击溃。"
+  },
+  {
+    "id": "enemy_1025_reveng",
+    "name": "寻仇者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 5000,
+    "atk": 300,
+    "def": 200,
+    "res": 50,
+    "attackTime": 2.3,
+    "speed": 0.65,
+    "weight": 2,
+    "abilities": [
+      "生命值降至一半以下时攻击力大幅度提升"
+    ],
+    "description": "使用特殊攻击手段的作战人员，身份不明。使用了一种特制的武器进行攻击，并且在交战中会习惯于更换作战手法，变得更加难以抵挡。"
+  },
+  {
+    "id": "enemy_1026_aghost",
+    "name": "幽灵组长",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "WALK",
+    "hp": 3800,
+    "atk": 100,
+    "def": 350,
+    "res": 35,
+    "attackTime": 1,
+    "speed": 1.2,
+    "weight": 1,
+    "abilities": [
+      "无法被阻挡"
+    ],
+    "description": "整合运动中擅长工程技术的人员，经过了一定训练，配备了较多护具，一般武装人员即使发现他们也很难在第一时间击倒和控制他们。他们依靠灵活的行动能力，不被阻挡，以各种方式渗透到目标对设施进行机电设备的破坏，"
+  },
+  {
+    "id": "enemy_1040_bombd",
+    "name": "暴鸰",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "FLY",
+    "hp": 4000,
+    "atk": 800,
+    "def": 150,
+    "res": 30,
+    "attackTime": 5,
+    "speed": 0.6,
+    "weight": 1,
+    "abilities": [
+      "飞行单位",
+      "可以投掷炸弹造成群体物理伤害",
+      "投掷之后移动速度大幅度提升"
+    ],
+    "description": "敌方人员操纵的无人机，飞行速度缓慢。携带有爆破弹头，将会在接近干员时投掷，并造成群体物理伤害。据说设计灵感来自某种幻想生物。虽然在投弹之后不再具有任何攻击性，但是因重量减轻而得以更快速地移动。"
+  },
+  {
+    "id": "enemy_1041_lazerd",
+    "name": "法术大师A1",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "FLY",
+    "hp": 2700,
+    "atk": 220,
+    "def": 100,
+    "res": 65,
+    "attackTime": 2.15,
+    "speed": 1.5,
+    "weight": 1,
+    "abilities": [
+      "飞行单位"
+    ],
+    "description": "敌方人员操纵的无人机，飞行速度非常快，由某法术教育竞赛用无人机产品改装而来。其模块化设计使其能装备法术武器进行远程法术攻击，需要特别小心。根据资料判断，其法术武器也有助其阻挡更多法术伤害。"
+  },
+  {
+    "id": "enemy_1041_lazerd_2",
+    "name": "法术大师A2",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "FLY",
+    "hp": 6000,
+    "atk": 600,
+    "def": 140,
+    "res": 65,
+    "attackTime": 3.5,
+    "speed": 0.8,
+    "weight": 1,
+    "abilities": [
+      "飞行单位"
+    ],
+    "description": "敌方人员操纵的无人机，去掉部分飞行辅助模块，牺牲了飞行速度以换取装备更大型法术武器的空间。能进行远程法术攻击，需要特别小心。根据资料判断，其法术武器也有助其阻挡更多法术伤害。"
+  },
+  {
+    "id": "enemy_1042_frostd",
+    "name": "寒霜",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "FLY",
+    "hp": 6500,
+    "atk": 100,
+    "def": 600,
+    "res": 30,
+    "attackTime": 1,
+    "speed": 0.9,
+    "weight": 1,
+    "abilities": [
+      "飞行单位",
+      "周围的我方单位的攻击速度大幅度降低"
+    ],
+    "description": "敌方人员操纵的无人机，配备了额外护甲以致较难被击毁，其最初的原型由一个图像引擎工作室设计。能通过特殊的装置造成周围温度急剧下降，在此范围内我方单位的攻速会大幅度削减，从而对战线造成非常不利的影响。"
+  },
+  {
+    "id": "enemy_1043_zomsbr",
+    "name": "宿主士兵",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2500,
+    "atk": 250,
+    "def": 100,
+    "res": 30,
+    "attackTime": 1.8,
+    "speed": 0.9,
+    "weight": 1,
+    "abilities": [
+      "能够自然回复生命"
+    ],
+    "description": "被不明意识控制身体的士兵，能快速自然恢复生命。难以想象这样的生物会存在于战场之上。"
+  },
+  {
+    "id": "enemy_1045_hammer",
+    "name": "粉碎攻坚手",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 1000,
+    "def": 1000,
+    "res": 0,
+    "attackTime": 3.5,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "攻击2次后，下一次攻击会晕眩目标"
+    ],
+    "description": "整合运动的高级精英单位，穿着沉重的防爆护具。虽然其攻击速度缓慢，但是他们装备的重型钝器产生的破坏力极大，且我方单位会在遭受其若干次攻击后被晕眩。请务必小心。"
+  },
+  {
+    "id": "enemy_1045_hammer_2",
+    "name": "粉碎攻坚组长",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 20000,
+    "atk": 1500,
+    "def": 2000,
+    "res": 0,
+    "attackTime": 3.5,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "攻击2次后，下一次攻击会晕眩目标"
+    ],
+    "description": "整合运动的高级精英单位，穿着沉重的防爆护具，比一般的粉碎攻坚手更具威胁。虽然其攻击速度缓慢，但是他们装备的重型钝器产生的破坏力极大，且我方单位会在遭受其若干次攻击后被晕眩。请务必小心。"
+  },
+  {
+    "id": "enemy_1046_agent",
+    "name": "步兵",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2500,
+    "atk": 280,
+    "def": 85,
+    "res": 40,
+    "attackTime": 2,
+    "speed": 1.1,
+    "weight": 1,
+    "abilities": [],
+    "description": "基础近身作战人员。装配的护甲能够抵抗一定的法术伤害。"
+  },
+  {
+    "id": "enemy_1050_lslime",
+    "name": "“庞贝”",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 40000,
+    "atk": 230,
+    "def": 220,
+    "res": 70,
+    "attackTime": 3.5,
+    "speed": 0.65,
+    "weight": 4,
+    "abilities": [
+      "最多同时攻击四个目标，击中目标时会造成灼烧，持续损失生命值",
+      "被阻挡时会进行自爆造成高额伤害",
+      "生命值降至一半时攻击速度大幅提升"
+    ],
+    "description": "巨型的野生被感染生物。在特殊的高温环境中诞生的变异生物个体。不仅它的外观可怖，它自身的高温也让任何人不敢轻易靠近。从古至今就有不少对于巨型生物的目击报告，但若是能亲眼看见这么巨大的感染生物，恐怕永远都无法忘记吧……"
+  },
+  {
+    "id": "enemy_1061_zomshd",
+    "name": "宿主重装士兵",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 600,
+    "def": 800,
+    "res": 0,
+    "attackTime": 2.6,
+    "speed": 0.75,
+    "weight": 3,
+    "abilities": [
+      "能够自然回复生命"
+    ],
+    "description": "被不明意识控制身体的重装士兵，能快速自然恢复生命。穿着精良的战术护具。难以想象这样的生物会存在于战场之上。"
+  },
+  {
+    "id": "enemy_1062_rager_2",
+    "name": "狂暴宿主组长",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 30000,
+    "atk": 1750,
+    "def": 230,
+    "res": 30,
+    "attackTime": 1.3,
+    "speed": 1.2,
+    "weight": 2,
+    "abilities": [
+      "会逐渐损失生命"
+    ],
+    "description": "彻底失去理智的敌方士兵，会逐渐持续失去生命。感染已经深入骨髓，比一般的狂暴宿主更具进攻欲望。难以想象这样的生物会存在于战场之上。"
+  },
+  {
+    "id": "enemy_1064_snsbr",
+    "name": "雪怪小队",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 3400,
+    "atk": 360,
+    "def": 100,
+    "res": 0,
+    "attackTime": 2,
+    "speed": 1.1,
+    "weight": 1,
+    "abilities": [
+      "攻击被冻结的目标时攻击力提升"
+    ],
+    "description": "雪怪小队基础近身作战人员，来自西北冻原的感染者游击队。擅长攻击我方被冻结的干员。"
+  },
+  {
+    "id": "enemy_1067_snslime",
+    "name": "冰爆源石虫",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 3250,
+    "atk": 300,
+    "def": 0,
+    "res": 0,
+    "attackTime": 1.7,
+    "speed": 1,
+    "weight": 0,
+    "abilities": [
+      "死亡时对周围我方单位造成物理伤害，并施加寒冷效果"
+    ],
+    "description": "来自寒冷地区的被感染生物，腹部已经被大量源石同化，且处于不稳定状态，死亡时可能出现爆炸并冻结我方干员。这种低智能生物被雪怪小队术师操纵，用以达成战术目的。"
+  },
+  {
+    "id": "enemy_1067_snslime_2",
+    "name": "冰爆源石虫·α",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 4850,
+    "atk": 370,
+    "def": 0,
+    "res": 0,
+    "attackTime": 1.7,
+    "speed": 1,
+    "weight": 0,
+    "abilities": [
+      "死亡时对周围我方单位造成物理伤害，并施加寒冷效果"
+    ],
+    "description": "来自寒冷地区的被感染生物，比一般的冰爆源石虫更具有威胁性，腹部已经被大量源石同化，且处于不稳定状态，死亡时可能出现爆炸并冻结我方干员。这种低智能生物被雪怪小队术师操纵，用以达成战术目的。"
+  },
+  {
+    "id": "enemy_1069_icebrk_2",
+    "name": "雪怪小队破冰者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 25000,
+    "atk": 1100,
+    "def": 600,
+    "res": 20,
+    "attackTime": 3,
+    "speed": 0.7,
+    "weight": 3,
+    "abilities": [
+      "攻击被冻结的目标时攻击力大幅度提升"
+    ],
+    "description": "雪怪小队中的特殊近身作战人员，来自西北冻原的感染者游击队。冻原之上最老练的刽子手们，会对被冻结的我方干员造成极大伤害，因其攻势仿佛能破开冰川而被称作破冰者。"
+  },
+  {
+    "id": "enemy_1071_dftman",
+    "name": "萨卡兹刀兵",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2800,
+    "atk": 300,
+    "def": 70,
+    "res": 50,
+    "attackTime": 2.5,
+    "speed": 1,
+    "weight": 1,
+    "abilities": [],
+    "description": "萨卡兹雇佣兵。长年累月的战争使他们伤痕累累，如今依旧为了完成雇主的命令而不断征战。"
+  },
+  {
+    "id": "enemy_1072_dlancer",
+    "name": "萨卡兹穿刺手",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 6000,
+    "atk": 450,
+    "def": 150,
+    "res": 40,
+    "attackTime": 4,
+    "speed": 0.25,
+    "weight": 3,
+    "abilities": [
+      "移动时逐渐加速，被阻挡后的首次攻击造成基于移动速度的额外伤害。"
+    ],
+    "description": "萨卡兹雇佣兵。经过特殊训练，能够手持长枪发起冲锋，速度越快，对防线造成的冲击也越大。"
+  },
+  {
+    "id": "enemy_1081_sotisd",
+    "name": "游击队盾卫",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 700,
+    "def": 1300,
+    "res": 60,
+    "attackTime": 3.8,
+    "speed": 0.7,
+    "weight": 4,
+    "abilities": [
+      "使自身容易受到敌人的攻击"
+    ],
+    "description": "爱国者的精锐防卫战士。追随着爱国者的意志，盾卫是“感染者之盾”的坚实壁垒。拥有高性能的防护装甲，在场时容易吸引敌人攻击自己，以此来掩护战友。"
+  },
+  {
+    "id": "enemy_1092_mdgint",
+    "name": "泥岩巨像",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 100000,
+    "atk": 3000,
+    "def": 700,
+    "res": 30,
+    "attackTime": 7,
+    "speed": 0.4,
+    "weight": 5,
+    "abilities": [],
+    "description": "泥岩的源石技艺造物，不具备意识，需要泥岩本人操纵。笨重迟缓，但难以击破，拥有极高的物理伤害和生命力。"
+  },
+  {
+    "id": "enemy_1103_wdkght_2",
+    "name": "沸血骑士团精锐",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 13000,
+    "atk": 650,
+    "def": 800,
+    "res": 0,
+    "attackTime": 2.3,
+    "speed": 0.7,
+    "weight": 3,
+    "abilities": [
+      "每有一个敌人死亡时攻击力与攻击速度提升，最多提升10次"
+    ],
+    "description": "沸血骑士团正规骑士。沸血骑士团素来以狂野的进攻性闻名，从学徒到贵族骑士，每当有战友倒下他们都会愈战愈勇，作战能力将大幅提升。"
+  },
+  {
+    "id": "enemy_1104_lfkght",
+    "name": "锋盔骑士团学徒",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 550,
+    "def": 700,
+    "res": 50,
+    "attackTime": 2.5,
+    "speed": 0.75,
+    "weight": 3,
+    "abilities": [
+      "使场上攻击力最高的我方单位攻击力大幅降低，持续一定时间",
+      "重生"
+    ],
+    "description": "锋盔骑士团学徒。这个与骑士竞技同等岁月的骑士团选用了古代卡西米尔英雄的名讳作名，事实上他们只从那个消亡的家族中继承了傲慢与自满。他们擅长挑衅强者，也绝不会轻易倒下。"
+  },
+  {
+    "id": "enemy_1104_lfkght_3",
+    "name": "“左手”泰特斯·白杨",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 20000,
+    "atk": 750,
+    "def": 700,
+    "res": 50,
+    "attackTime": 2.5,
+    "speed": 0.75,
+    "weight": 3,
+    "abilities": [
+      "使场上攻击力最高的我方单位攻击力大幅降低，持续一定时间",
+      "重生"
+    ],
+    "description": "他的傲慢如日中天，正如他恐怖的实力与冷酷的战法，以及排队到了隔壁赛区的粉丝人数！“左手”泰特斯·白杨！削弱斗志，击垮精神，睥睨跪倒投降的敌人，这是他唯一认可的胜利！"
+  },
+  {
+    "id": "enemy_1112_emppnt",
+    "name": "帝国炮火先兆者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "FLY",
+    "hp": 13000,
+    "atk": 1000,
+    "def": 800,
+    "res": 50,
+    "attackTime": 5,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "飞行单位"
+    ],
+    "description": "乌萨斯军炮兵术师操作的无人机，装甲厚重，材质坚实。正是他们引导了乌萨斯炮兵猛烈的炮火袭击。"
+  },
+  {
+    "id": "enemy_1112_emppnt_2",
+    "name": "帝国炮火中枢先兆者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "FLY",
+    "hp": 16000,
+    "atk": 1200,
+    "def": 800,
+    "res": 50,
+    "attackTime": 5,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "飞行单位"
+    ],
+    "description": "乌萨斯军炮兵术师操作的无人机中枢，装甲厚重，材质坚实。正是他们引导了乌萨斯炮兵猛烈的炮火袭击。乌萨斯的炮兵是深入城市的火力队伍，相对舰炮火力较弱，但也足以撕碎装甲与建筑。"
+  },
+  {
+    "id": "enemy_1116_liprr",
+    "name": "普通囚犯",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 5500,
+    "atk": 280,
+    "def": 60,
+    "res": 0,
+    "attackTime": 2,
+    "speed": 1.1,
+    "weight": 1,
+    "abilities": [
+      "初始为禁锢状态，禁锢状态下攻击速度降低",
+      "攻击数次后解放，解放后攻击力提升"
+    ],
+    "description": "曼斯菲尔德监狱中比较常见的囚犯。虽然常见，但稍不注意，就会被他趁虚而入。"
+  },
+  {
+    "id": "enemy_1116_liprr_2",
+    "name": "老练囚犯",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 7500,
+    "atk": 380,
+    "def": 60,
+    "res": 0,
+    "attackTime": 2,
+    "speed": 1.1,
+    "weight": 1,
+    "abilities": [
+      "初始为禁锢状态，禁锢状态下攻击速度降低",
+      "攻击数次后解放，解放后攻击力提升"
+    ],
+    "description": "熟知曼斯菲尔德监狱生存法则的囚犯。会灵活运用在各种混战中总结出的经验，相当难缠。"
+  },
+  {
+    "id": "enemy_1118_lidbox_2",
+    "name": "拳师囚犯",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 9500,
+    "atk": 400,
+    "def": 400,
+    "res": 0,
+    "attackTime": 1,
+    "speed": 1.6,
+    "weight": 2,
+    "abilities": [
+      "初始为禁锢状态，禁锢状态下攻击速度降低",
+      "攻击数次后解放，解放后攻击力提升并无视目标一定的防御力"
+    ],
+    "description": "对自己的双拳十分自信的囚犯。对自己的双拳和锁链的运用都已相当精妙，不容小觑。"
+  },
+  {
+    "id": "enemy_1119_vofsd",
+    "name": "强壮囚犯",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 11000,
+    "atk": 600,
+    "def": 700,
+    "res": 0,
+    "attackTime": 3.3,
+    "speed": 0.8,
+    "weight": 3,
+    "abilities": [
+      "初始为禁锢状态，禁锢状态下攻击速度降低",
+      "攻击数次后解放，解放后攻击力提升、法术抗性提升且能够自然回复生命"
+    ],
+    "description": "力气很大的囚犯。手上的武器应当是从储藏室之类的地方拆来的，在混战时往往冲在最前线，很有杀伤力。"
+  },
+  {
+    "id": "enemy_1121_lifbos",
+    "name": "重犯",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 20000,
+    "atk": 800,
+    "def": 400,
+    "res": 0,
+    "attackTime": 3,
+    "speed": 0.8,
+    "weight": 5,
+    "abilities": [
+      "初始为禁锢状态，禁锢状态下攻击速度降低但防御力提升",
+      "攻击数次后解放，解放后攻击力提升",
+      "第一次解放时同时解放全场敌人"
+    ],
+    "description": "囚犯和狱警都相当惧怕的凶恶囚犯。在长时间的监狱生活中学会了忍耐，对普通的攻击和挑衅都不屑一顾。然而，一旦让他愤怒起来，会产生十分严重的后果。"
+  },
+  {
+    "id": "enemy_1121_lifbos_2",
+    "name": "传奇重犯",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 25000,
+    "atk": 1000,
+    "def": 500,
+    "res": 0,
+    "attackTime": 3,
+    "speed": 0.8,
+    "weight": 5,
+    "abilities": [
+      "初始为禁锢状态，禁锢状态下攻击速度降低但防御力提升",
+      "攻击数次后解放，解放后攻击力提升",
+      "第一次解放时同时解放全场敌人"
+    ],
+    "description": "战斗力仅次于安东尼的存在。在长时间的监狱生活中学会了忍耐，对普通的攻击和挑衅都不屑一顾。然而，一旦让他愤怒起来，会产生十分严重的后果。"
+  },
+  {
+    "id": "enemy_1131_sbeast",
+    "name": "变异沙地兽",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2700,
+    "atk": 320,
+    "def": 100,
+    "res": 0,
+    "attackTime": 2.5,
+    "speed": 1.7,
+    "weight": 2,
+    "abilities": [
+      "死亡时分裂两个<畸变赘生物>"
+    ],
+    "description": "一只畸变感染的沙地兽。沙地兽是一种栖息在沙漠与岩漠中的小型杂食动物，喜欢在夜晚外出觅食，萨尔贡本地人会驯化沙地兽用于捕猎。"
+  },
+  {
+    "id": "enemy_1131_sbeast_2",
+    "name": "变异沙地兽α",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 3300,
+    "atk": 380,
+    "def": 100,
+    "res": 0,
+    "attackTime": 2.5,
+    "speed": 1.7,
+    "weight": 2,
+    "abilities": [
+      "死亡时分裂两个<畸变恶性瘤>"
+    ],
+    "description": "一只畸变感染，变异严重的沙地兽。沙地兽是一种栖息在沙漠与岩漠中的小型杂食动物，喜欢在夜晚外出觅食，萨尔贡本地人会驯化沙地兽用于捕猎。"
+  },
+  {
+    "id": "enemy_1132_sarchn",
+    "name": "变异岩蛛",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2500,
+    "atk": 360,
+    "def": 200,
+    "res": 0,
+    "attackTime": 1.5,
+    "speed": 1.1,
+    "weight": 1,
+    "abilities": [
+      "死亡时分裂三个<畸变赘生物>"
+    ],
+    "description": "一只畸变感染的岩蛛。由于外形相似，人们错误的认为岩蛛是高能源石虫的近亲，但是最新的研究指出，岩蛛与高能源石虫是两种完全不同的生物。"
+  },
+  {
+    "id": "enemy_1132_sarchn_2",
+    "name": "变异岩蛛α",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 3500,
+    "atk": 410,
+    "def": 200,
+    "res": 0,
+    "attackTime": 1.5,
+    "speed": 1.1,
+    "weight": 1,
+    "abilities": [
+      "死亡时分裂三个<畸变恶性瘤>"
+    ],
+    "description": "一只畸变感染，变异严重的岩蛛。由于外形相似，人们错误的认为岩蛛是高能源石虫的近亲，但是最新的研究指出，岩蛛与高能源石虫是两种完全不同的生物。"
+  },
+  {
+    "id": "enemy_1133_harchn",
+    "name": "变异巨岩蛛",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 600,
+    "def": 300,
+    "res": 0,
+    "attackTime": 3,
+    "speed": 0.8,
+    "weight": 4,
+    "abilities": [
+      "周期性分裂一个<畸变赘生物>",
+      "死亡时分裂四个<畸变赘生物>"
+    ],
+    "description": "一只畸变感染的巨岩蛛。巨岩蛛是岩蛛在萨尔贡地区独有的亚种，拥有巨大的球腹用于储存能量。"
+  },
+  {
+    "id": "enemy_1133_harchn_2",
+    "name": "变异巨岩蛛α",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 20000,
+    "atk": 800,
+    "def": 300,
+    "res": 0,
+    "attackTime": 3,
+    "speed": 0.8,
+    "weight": 4,
+    "abilities": [
+      "周期性分裂一个<畸变恶性瘤>",
+      "死亡时分裂四个<畸变恶性瘤>"
+    ],
+    "description": "一只畸变感染的、变异严重的巨岩蛛。巨岩蛛是岩蛛在萨尔贡地区独有的亚种，拥有巨大的球腹用于储存能量。"
+  },
+  {
+    "id": "enemy_1148_dssbr",
+    "name": "底海滑动者",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2800,
+    "atk": 280,
+    "def": 130,
+    "res": 10,
+    "attackTime": 2,
+    "speed": 1.1,
+    "weight": 1,
+    "abilities": [
+      "攻击额外造成神经损伤"
+    ],
+    "description": "爬上海岸的恐鱼。挥舞着坚韧的腕肢。"
+  },
+  {
+    "id": "enemy_1148_dssbr_2",
+    "name": "富营养的滑动者",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 3600,
+    "atk": 360,
+    "def": 150,
+    "res": 10,
+    "attackTime": 2,
+    "speed": 1.1,
+    "weight": 1,
+    "abilities": [
+      "攻击额外造成神经损伤"
+    ],
+    "description": "爬上海岸的饱食的恐鱼。腕能够令蛋白质变性。"
+  },
+  {
+    "id": "enemy_1158_divman",
+    "name": "潜水员",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 3300,
+    "atk": 240,
+    "def": 150,
+    "res": 20,
+    "attackTime": 2.7,
+    "speed": 0.9,
+    "weight": 1,
+    "abilities": [
+      "免疫水蚀，在水中攻击力提升并获得隐匿"
+    ],
+    "description": "日常工作是清理海底垃圾，门槛很低，收入却不错，也就有许多人混在其中。"
+  },
+  {
+    "id": "enemy_1160_hvyslr",
+    "name": "码头水手",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 800,
+    "def": 800,
+    "res": 20,
+    "attackTime": 3.5,
+    "speed": 0.7,
+    "weight": 4,
+    "abilities": [
+      "能在数次攻击后晕眩我方单位",
+      "“水蚀”状态下快速损失生命"
+    ],
+    "description": "在码头或者潘乔的船上工作的壮汉，喜欢打牌和喝酒，总是醉醺醺的。因为经常接触海水，所以反而容易受到腐蚀。"
+  },
+  {
+    "id": "enemy_1160_hvyslr_2",
+    "name": "码头水手长",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 14000,
+    "atk": 1000,
+    "def": 1000,
+    "res": 20,
+    "attackTime": 3.5,
+    "speed": 0.7,
+    "weight": 4,
+    "abilities": [
+      "能在数次攻击后晕眩我方单位",
+      "“水蚀”状态下快速损失生命"
+    ],
+    "description": "在码头或者潘乔的船上工作的巨汉，非常喜欢打牌和喝酒，总是醉醺醺的。比普通水手健壮许多，但依然容易受到海水腐蚀。"
+  },
+  {
+    "id": "enemy_1161_tidmag",
+    "name": "控潮术师",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 6000,
+    "atk": 200,
+    "def": 200,
+    "res": 60,
+    "attackTime": 2.5,
+    "speed": 0.7,
+    "weight": 2,
+    "abilities": [
+      "攻击时对目标及其周围四格内的所有我方单位造成伤害，额外造成侵蚀损伤"
+    ],
+    "description": "经过专业培训的术师，日常工作是为多索雷斯海滩模拟潮汐，擅长使用模拟潮水侵蚀效果的源石技艺。"
+  },
+  {
+    "id": "enemy_1161_tidmag_2",
+    "name": "领潮员",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 8000,
+    "atk": 260,
+    "def": 220,
+    "res": 60,
+    "attackTime": 2.5,
+    "speed": 0.7,
+    "weight": 2,
+    "abilities": [
+      "攻击时对目标及其周围四格内的所有我方单位造成伤害，额外造成侵蚀损伤"
+    ],
+    "description": "控潮术师中的精英，负责引领并监督控潮术师工作，非常擅长使用模拟潮水侵蚀效果的源石技艺。"
+  },
+  {
+    "id": "enemy_1162_magmot",
+    "name": "术师快艇",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 12000,
+    "atk": 300,
+    "def": 200,
+    "res": 0,
+    "attackTime": 3.5,
+    "speed": 1.1,
+    "weight": 4,
+    "abilities": [
+      "攻击时对目标及其周围四格内的所有我方单位造成伤害，额外造成侵蚀损伤",
+      "载具损毁后<术师>会继续作战"
+    ],
+    "description": "搭载着控潮术师的快艇，载具损毁后术师会继续作战。"
+  },
+  {
+    "id": "enemy_1165_duhond",
+    "name": "深池侦察犬",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2800,
+    "atk": 300,
+    "def": 0,
+    "res": 0,
+    "attackTime": 1.4,
+    "speed": 1.7,
+    "weight": 0,
+    "abilities": [
+      "折射"
+    ],
+    "description": "深池部队操纵的生物。最初是从某些雇佣兵队伍手中购买而来。佩戴着暗影术师制造的折射面罩，对一般的源石技艺有较强的抵抗能力。"
+  },
+  {
+    "id": "enemy_1165_duhond_2",
+    "name": "深池侦察犬pro",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 4000,
+    "atk": 380,
+    "def": 0,
+    "res": 0,
+    "attackTime": 1.4,
+    "speed": 1.7,
+    "weight": 0,
+    "abilities": [
+      "折射"
+    ],
+    "description": "深池部队操纵的生物，比一般的侦查犬拥有更强的作战能力。最初是从某些雇佣兵队伍手中购买而来，并经历了更长时间的训练。佩戴着暗影术师制造的折射面罩，对一般的源石技艺有较强的抵抗能力。"
+  },
+  {
+    "id": "enemy_1166_dusbr",
+    "name": "深池侦察兵",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 3000,
+    "atk": 280,
+    "def": 110,
+    "res": 0,
+    "attackTime": 2,
+    "speed": 1,
+    "weight": 1,
+    "abilities": [
+      "折射"
+    ],
+    "description": "深池部队中的侦察人员。有着高超的隐匿行踪的技巧，为深池部队的神出鬼没提供了保障。佩戴着暗影术师制造的折射面罩，对一般的源石技艺有较强的抵抗能力。"
+  },
+  {
+    "id": "enemy_1166_dusbr_2",
+    "name": "深池侦察队长",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 4400,
+    "atk": 380,
+    "def": 180,
+    "res": 0,
+    "attackTime": 2,
+    "speed": 1,
+    "weight": 1,
+    "abilities": [
+      "折射"
+    ],
+    "description": "深池部队中的侦察队队长。指挥属下的侦察兵，为深池部队的神出鬼没提供了保障。佩戴着暗影术师制造的折射面罩，对一般的源石技艺有较强的抵抗能力。"
+  },
+  {
+    "id": "enemy_1168_dumage",
+    "name": "深池暗影术师",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 4500,
+    "atk": 300,
+    "def": 150,
+    "res": 20,
+    "attackTime": 3,
+    "speed": 1.1,
+    "weight": 1,
+    "abilities": [
+      "折射"
+    ],
+    "description": "深池部队中的术师。源石技艺并无特色，但开创性地制造出了能量产的抵抗源石技艺的特殊面罩，因而在队伍中的地位不低。"
+  },
+  {
+    "id": "enemy_1168_dumage_2",
+    "name": "深池暗影术师队长",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 6500,
+    "atk": 460,
+    "def": 150,
+    "res": 20,
+    "attackTime": 3,
+    "speed": 1.1,
+    "weight": 1,
+    "abilities": [
+      "折射"
+    ],
+    "description": "深池部队中的术师队长。源石技艺并无特色，但率领属下开创性地制造出了能量产的抵抗源石技艺的特殊面罩，并得到了领袖的特殊表彰。"
+  },
+  {
+    "id": "enemy_1169_duphlx",
+    "name": "深池方阵战士",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 4000,
+    "atk": 300,
+    "def": 300,
+    "res": 0,
+    "attackTime": 2.5,
+    "speed": 1,
+    "weight": 2,
+    "abilities": [
+      "其他方阵战士位于附近时，防御力提升（可叠加）",
+      "折射"
+    ],
+    "description": "深池部队中的方阵战士。所使用的方阵战术由高卢方阵演化而来。方阵中，距离较近的战士会相互支援，令阵型更难攻破。"
+  },
+  {
+    "id": "enemy_1169_duphlx_2",
+    "name": "深池方阵指挥官",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 6000,
+    "atk": 450,
+    "def": 400,
+    "res": 0,
+    "attackTime": 2.5,
+    "speed": 1,
+    "weight": 2,
+    "abilities": [
+      "其他方阵指挥官位于附近时，防御力提升（可叠加）",
+      "折射"
+    ],
+    "description": "深池部队中的方阵指挥官。率领属下战士组成方阵。所使用的方阵战术由高卢方阵演化而来。方阵中，距离较近的战士会相互支援，令阵型更难攻破。"
+  },
+  {
+    "id": "enemy_1170_dushld",
+    "name": "深池重甲卫士",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 7000,
+    "atk": 700,
+    "def": 750,
+    "res": 0,
+    "attackTime": 4,
+    "speed": 0.7,
+    "weight": 4,
+    "abilities": [
+      "折射"
+    ],
+    "description": "深池部队中的重甲卫士。身上装甲技术来自维多利亚，军靴设计来自莱塔尼亚，盾牌材料则与卡西米尔呼啸护卫品牌的最新专利有着八成相像。"
+  },
+  {
+    "id": "enemy_1170_dushld_2",
+    "name": "深池重甲卫士队长",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 9000,
+    "atk": 900,
+    "def": 1100,
+    "res": 0,
+    "attackTime": 4,
+    "speed": 0.7,
+    "weight": 4,
+    "abilities": [
+      "折射"
+    ],
+    "description": "深池部队中的重甲卫士队长，全身装备更加考究。身上装甲技术来自维多利亚，军靴设计来自莱塔尼亚，盾牌材料则与卡西米尔呼啸护卫品牌的最新专利有着八成相像。"
+  },
+  {
+    "id": "enemy_1172_dugago",
+    "name": "守墓石像",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理",
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 550,
+    "def": 550,
+    "res": 0,
+    "attackTime": 4,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "首次被击倒时暂时变为防御力极高的石像，一段时间后重生为空中单位",
+      "折射"
+    ],
+    "description": "深池部队中的特殊法术造物。创造者为头领蔓德拉。据蔓德拉所说，她在郊外的坟墓里学习源石技艺，守墓石像是最初的同伴。石像外形有过多次更迭，最新造型仿自某支血脉古老的萨卡兹。"
+  },
+  {
+    "id": "enemy_1172_dugago_2",
+    "name": "愤怒的守墓石像",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理",
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 12000,
+    "atk": 750,
+    "def": 750,
+    "res": 0,
+    "attackTime": 4,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "首次被击倒时暂时变为防御力极高的石像，一段时间后重生为空中单位",
+      "折射"
+    ],
+    "description": "深池部队中的特殊法术造物。创造者为头领蔓德拉。据蔓德拉所说，她在郊外的坟墓里学习源石技艺，守墓石像是最初的同伴。石像外形有过多次更迭，最新造型仿自某支血脉古老的萨卡兹。这款石像饱含着蔓德拉对维多利亚的怒火。"
+  },
+  {
+    "id": "enemy_1174_duholy",
+    "name": "深池伙友卫队",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 900,
+    "def": 900,
+    "res": 0,
+    "attackTime": 4,
+    "speed": 0.8,
+    "weight": 5,
+    "abilities": [
+      "容易受到我方单位攻击",
+      "<深池伙友影刃>位于附近时，激活力场使周围我方攻击速度下降",
+      "折射"
+    ],
+    "description": "深池部队中精锐行动队里的一员，该行动队的建立模仿了古老的米诺斯军制。卫队所持盾牌凝聚了多国科技的精华，在行军过程中为搭档提供掩护，并为周围全部己方人员抵御伤害。"
+  },
+  {
+    "id": "enemy_1174_duholy_2",
+    "name": "深池伙友卫队精英",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 20000,
+    "atk": 1100,
+    "def": 1000,
+    "res": 0,
+    "attackTime": 4,
+    "speed": 0.8,
+    "weight": 5,
+    "abilities": [
+      "容易受到我方单位攻击",
+      "<深池伙友影刃精英>位于附近时，激活力场使周围我方攻击速度下降",
+      "折射"
+    ],
+    "description": "深池部队中精锐行动队里的一员，比普通行动队成员拥有更强的作战能力。卫队所持盾牌凝聚了多国科技的精华，在行军过程中为搭档提供掩护，并为周围全部己方人员抵御伤害。"
+  },
+  {
+    "id": "enemy_1175_dushdo_2",
+    "name": "深池伙友影刃精英",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 580,
+    "def": 550,
+    "res": 0,
+    "attackTime": 2.1,
+    "speed": 0.8,
+    "weight": 2,
+    "abilities": [
+      "隐匿",
+      "<深池伙友卫队精英>位于附近时，攻击速度大幅提升"
+    ],
+    "description": "深池部队中精锐行动队里的一员，比普通行动队成员拥有更强的作战能力。影刃与搭档一起行动时，拥有超强的隐匿能力，进攻也更为迅猛。"
+  },
+  {
+    "id": "enemy_1183_mlasrt",
+    "name": "无胄盟清扫小队",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 6500,
+    "atk": 700,
+    "def": 200,
+    "res": 40,
+    "attackTime": 5,
+    "speed": 0.8,
+    "weight": 2,
+    "abilities": [
+      "每次攻击造成一定侵蚀损伤",
+      "数次攻击后，下一次攻击造成的伤害提升"
+    ],
+    "description": "罗伊亲自培养的清扫小队。但大部分时候罗伊并不带队，队伍内部采取了某种赏金机制，所以积极性很高，攻击造成侵蚀损伤。"
+  },
+  {
+    "id": "enemy_1191_krgrg",
+    "name": "冰原卫法者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 5000,
+    "atk": 600,
+    "def": 250,
+    "res": 50,
+    "attackTime": 2.5,
+    "speed": 0.7,
+    "weight": 1,
+    "abilities": [
+      "被击倒时对周围所有单位造成法术伤害且施加寒冷",
+      "失衡移动时损失生命。"
+    ],
+    "description": "严酷环境下诞生的特殊战士。在使用法术战斗的同时，会将自身作为武器的一部分，倒下的时候才是他们最危险的时候。"
+  },
+  {
+    "id": "enemy_1191_krgrg_2",
+    "name": "冰原御法者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 7000,
+    "atk": 800,
+    "def": 350,
+    "res": 50,
+    "attackTime": 2.5,
+    "speed": 0.7,
+    "weight": 1,
+    "abilities": [
+      "被击倒时对周围所有单位造成法术伤害且施加寒冷",
+      "失衡移动时损失生命。"
+    ],
+    "description": "严酷环境下诞生的特殊战士。随着对法术的理解不断深入，愈发理解如何发挥自身的价值，倒下时将造成巨大的威胁。"
+  },
+  {
+    "id": "enemy_1195_sfyin",
+    "name": "磨砻",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2000,
+    "atk": 310,
+    "def": 0,
+    "res": 20,
+    "attackTime": 1.5,
+    "speed": 1.5,
+    "weight": 0,
+    "abilities": [
+      "被击倒后生成2个<木制瑞印>"
+    ],
+    "description": "受岁相感染而生的器伥。千刀磨砻，方得一印，此类器伥性情怯懦，遇事会急急地躲开。"
+  },
+  {
+    "id": "enemy_1195_sfyin_2",
+    "name": "明鉴",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 3100,
+    "atk": 390,
+    "def": 0,
+    "res": 20,
+    "attackTime": 1.5,
+    "speed": 1.5,
+    "weight": 0,
+    "abilities": [
+      "被击倒后生成2个<红木瑞印>"
+    ],
+    "description": "受岁相感染而生的器伥。千刀磨砻，方得一印，此类器伥性情怯懦，但又急于证明自己，常有出格举动。"
+  },
+  {
+    "id": "enemy_1197_sfshu",
+    "name": "俗心",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2500,
+    "atk": 320,
+    "def": 60,
+    "res": 0,
+    "attackTime": 1.4,
+    "speed": 1.4,
+    "weight": 1,
+    "abilities": [
+      "被击倒后生成3个<小说卷轴>"
+    ],
+    "description": "受岁相感染而生的器伥。世态离奇，但图一乐，此类器伥异常活跃，喜欢与其他器伥厮混。"
+  },
+  {
+    "id": "enemy_1197_sfshu_2",
+    "name": "雅气",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 3350,
+    "atk": 410,
+    "def": 70,
+    "res": 0,
+    "attackTime": 2,
+    "speed": 1.4,
+    "weight": 1,
+    "abilities": [
+      "被击倒后生成3个<诗画卷轴>"
+    ],
+    "description": "受岁相感染而生的器伥。山川风物，浩然自在，此类器伥性情雅淡，为其他器伥所喜。"
+  },
+  {
+    "id": "enemy_1199_sfjin",
+    "name": "身观",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 6500,
+    "atk": 700,
+    "def": 750,
+    "res": 0,
+    "attackTime": 4,
+    "speed": 0.8,
+    "weight": 3,
+    "abilities": [
+      "更容易被我方攻击",
+      "被击倒后生成1个<青铜镜>"
+    ],
+    "description": "受岁相感染而生的器伥。妍媸善恶，自入自眼，此类器伥能够映照对方心中的隐秘，相比其他器伥，更易激起敌人怒火。"
+  },
+  {
+    "id": "enemy_1203_sfhu",
+    "name": "烹泉",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 6500,
+    "atk": 280,
+    "def": 290,
+    "res": 50,
+    "attackTime": 3.5,
+    "speed": 0.8,
+    "weight": 2,
+    "abilities": [
+      "被击倒后爆炸造成范围法术伤害，使我方攻击速度大幅降低（可被抵抗）",
+      "被击倒后生成4个<青瓷茶器>"
+    ],
+    "description": "受岁相感染而生的器伥。煎熟水，香透齿，雾气蒸腾，老来无眠不戒茶。此类器伥可麻痹敌人的神经从而降低敌人攻速。"
+  },
+  {
+    "id": "enemy_1203_sfhu_2",
+    "name": "沏虹",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 8750,
+    "atk": 360,
+    "def": 380,
+    "res": 50,
+    "attackTime": 3.5,
+    "speed": 0.8,
+    "weight": 2,
+    "abilities": [
+      "被击倒后爆炸造成范围法术伤害，使我方攻击速度大幅降低（可被抵抗）",
+      "被击倒后生成4个<彩瓷茶器>"
+    ],
+    "description": "受岁相感染而生的器伥。酒添水愈淡，茶添水愈浓，此类器伥可麻痹敌人的神经从而降低敌人攻速，且不知疲倦，愈战愈勇。"
+  },
+  {
+    "id": "enemy_1207_sfji",
+    "name": "沉沙",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 11000,
+    "atk": 1100,
+    "def": 600,
+    "res": 30,
+    "attackTime": 2.2,
+    "speed": 1.3,
+    "weight": 3,
+    "abilities": [
+      "攻击消耗断刃使攻击力提升",
+      "被击倒时未消耗的断刃会生成<铜矛头>（至少1个）。"
+    ],
+    "description": "受岁相感染而生的器伥。兵戈旧梦，折戟沉沙，此类器伥怨念深沉，无从消释，破坏性极强。"
+  },
+  {
+    "id": "enemy_1207_sfji_2",
+    "name": "新硎",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 14000,
+    "atk": 1350,
+    "def": 750,
+    "res": 30,
+    "attackTime": 2.2,
+    "speed": 1.3,
+    "weight": 3,
+    "abilities": [
+      "攻击消耗断刃使攻击力提升",
+      "被击倒时未消耗的断刃会生成<铁矛头>（至少1个）。"
+    ],
+    "description": "受岁相感染而生的器伥。兵戈旧梦今又来，此类器伥记忆复苏，仿佛重回战场，彼此间一呼百应，战力倍增。"
+  },
+  {
+    "id": "enemy_1209_sfden",
+    "name": "清明",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 14000,
+    "atk": 550,
+    "def": 850,
+    "res": 20,
+    "attackTime": 3,
+    "speed": 0.7,
+    "weight": 3,
+    "abilities": [
+      "每隔一段时间使周围其他敌方单位暂时隐匿",
+      "死亡后生成1个<铜灯盘>"
+    ],
+    "description": "受岁相感染而生的器伥。一灯如豆，即可亮一室，其他器伥能在它们的辉光中隐匿身形，受其护佑。"
+  },
+  {
+    "id": "enemy_1209_sfden_2",
+    "name": "堂皇",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 18000,
+    "atk": 700,
+    "def": 1050,
+    "res": 20,
+    "attackTime": 3,
+    "speed": 0.7,
+    "weight": 3,
+    "abilities": [
+      "每隔一段时间使周围其他敌方单位暂时隐匿",
+      "死亡后生成1个<铁灯盘>"
+    ],
+    "description": "受岁相感染而生的器伥。一灯如炬，长夜将明，此类器伥除却以辉光为同类提供护佑，还具备较强的破坏力。"
+  },
+  {
+    "id": "enemy_1210_msfden_2",
+    "name": "铁灯盘",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "WALK",
+    "hp": 45,
+    "atk": 0,
+    "def": 0,
+    "res": 0,
+    "attackTime": 1,
+    "speed": 0.5,
+    "weight": 0,
+    "abilities": [
+      "无法被阻挡",
+      "需要45次伤害击倒"
+    ],
+    "description": "“堂皇”的本体，内里残留着厚厚的一层蜡泪。"
+  },
+  {
+    "id": "enemy_1213_mtrsnp",
+    "name": "寻路者狙击手",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 3800,
+    "atk": 300,
+    "def": 50,
+    "res": 0,
+    "attackTime": 3,
+    "speed": 0.9,
+    "weight": 1,
+    "abilities": [
+      "携带弹药时攻击力提升，弹药上限：1"
+    ],
+    "description": "擅长使用铳械进行远距离作战的战士。他们的攻击不仅精确，在装填特殊弹药时，尤为致命。"
+  },
+  {
+    "id": "enemy_1216_cansld",
+    "name": "寻路者阵地破坏者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 12000,
+    "atk": 800,
+    "def": 1200,
+    "res": 0,
+    "attackTime": 4.5,
+    "speed": 0.6,
+    "weight": 4,
+    "abilities": [
+      "携带弹药时变为远程攻击并造成溅射伤害，弹药上限：2",
+      "对“冰淇淋机”造成额外法术伤害"
+    ],
+    "description": "站在第一线的强壮战士，发射的炮弹能够造成大范围破坏。这些战士能够凭借身体素质承受炮筒后坐力，放下炮筒后也能进行近身搏斗，十分可靠。"
+  },
+  {
+    "id": "enemy_1219_mtrbty",
+    "name": "寻路者信使",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 17000,
+    "atk": 600,
+    "def": 500,
+    "res": 60,
+    "attackTime": 2.7,
+    "speed": 0.8,
+    "weight": 4,
+    "abilities": [
+      "携带弹药时使用远程攻击并使目标无法攻击或治疗一段时间，弹药上限：1",
+      "对“冰淇淋机”造成额外法术伤害"
+    ],
+    "description": "在寻路者队伍中主动肩负起信使职责的战士。身手矫健，行动敏捷，基于工作中累积的经验，擅长通过封锁敌人行动的方式进行作战。"
+  },
+  {
+    "id": "enemy_1222_dpvt",
+    "name": "萨卡兹子裔战士",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 3600,
+    "atk": 340,
+    "def": 120,
+    "res": 30,
+    "attackTime": 2,
+    "speed": 1,
+    "weight": 1,
+    "abilities": [
+      "首次倒下后重生为<大君之触>"
+    ],
+    "description": "受到血魔大君活体血液赐福的萨卡兹王庭军战士。在第一次倒下后，他的血液将会替代他继续前进。"
+  },
+  {
+    "id": "enemy_1222_dpvt_2",
+    "name": "萨卡兹子裔战士组长",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 4500,
+    "atk": 400,
+    "def": 210,
+    "res": 30,
+    "attackTime": 2,
+    "speed": 1,
+    "weight": 1,
+    "abilities": [
+      "首次倒下后重生为<仁慈之触>"
+    ],
+    "description": "受到血魔大君活体血液赐福的萨卡兹王庭军战士组长，比普通的王庭军战士更具威胁性。在第一次倒下后，他的血液将会替代他继续前进。"
+  },
+  {
+    "id": "enemy_1223_dmech",
+    "name": "萨卡兹子裔工匠",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 6000,
+    "atk": 300,
+    "def": 250,
+    "res": 20,
+    "attackTime": 2,
+    "speed": 1,
+    "weight": 1,
+    "abilities": [
+      "为伦蒂尼姆城防副炮持续充能，被打断时城防炮损失部分充能",
+      "首次倒下后重生为<大君之触>"
+    ],
+    "description": "受到血魔大君活体血液赐福的萨卡兹王庭军工匠。他们掌握了一部分维多利亚的工程学知识，负责操作伦蒂尼姆城防炮的装填系统。"
+  },
+  {
+    "id": "enemy_1223_dmech_2",
+    "name": "萨卡兹子裔工匠组长",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 8000,
+    "atk": 380,
+    "def": 350,
+    "res": 20,
+    "attackTime": 2,
+    "speed": 1,
+    "weight": 1,
+    "abilities": [
+      "为伦蒂尼姆城防副炮持续充能，被打断时城防炮损失部分充能",
+      "首次倒下后重生为<仁慈之触>"
+    ],
+    "description": "受到血魔大君活体血液赐福的萨卡兹王庭军工匠组长。他们掌握了更多维多利亚的工程学知识，负责操作伦蒂尼姆城防炮的装填系统。"
+  },
+  {
+    "id": "enemy_1224_dsuply",
+    "name": "萨卡兹子裔补给车",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 7000,
+    "atk": 340,
+    "def": 550,
+    "res": 10,
+    "attackTime": 1.7,
+    "speed": 0.7,
+    "weight": 4,
+    "abilities": [
+      "在场时，重生造物的攻击力提升且攻击附带凋亡损伤"
+    ],
+    "description": "受到血魔大君赐福的补给用载具。在场时，大君之触与大君之赐将会更具活力。"
+  },
+  {
+    "id": "enemy_1224_dsuply_2",
+    "name": "萨卡兹子裔改装补给车",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 9000,
+    "atk": 420,
+    "def": 600,
+    "res": 10,
+    "attackTime": 1.7,
+    "speed": 0.7,
+    "weight": 4,
+    "abilities": [
+      "在场时，重生造物的攻击力提升且攻击附带凋亡损伤"
+    ],
+    "description": "受到血魔大君精心赐福的补给用载具。在场时，大君之触与大君之赐将会更具活力。"
+  },
+  {
+    "id": "enemy_1225_dkmage",
+    "name": "萨卡兹子裔链术师",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 12000,
+    "atk": 420,
+    "def": 450,
+    "res": 50,
+    "attackTime": 4,
+    "speed": 0.7,
+    "weight": 3,
+    "abilities": [
+      "攻击造成凋亡损伤，且会在4个敌人间跳跃，每次跳跃伤害降低",
+      "首次倒下后重生为<大君之赐>"
+    ],
+    "description": "受到血魔大君赐福的萨卡兹王庭军术师。经过王庭的训练，他们的法术在战场上会带来大范围的威胁。"
+  },
+  {
+    "id": "enemy_1225_dkmage_2",
+    "name": "萨卡兹子裔链术师组长",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 16000,
+    "atk": 550,
+    "def": 550,
+    "res": 50,
+    "attackTime": 4,
+    "speed": 0.7,
+    "weight": 3,
+    "abilities": [
+      "攻击造成凋亡损伤，且会在4个敌人间跳跃，每次跳跃伤害降低",
+      "首次倒下后重生为<慷慨之赐>"
+    ],
+    "description": "受到血魔大君赐福的萨卡兹王庭军术师组长，比一般的术师更有经验。经过王庭的训练，他们的法术在战场上会带来大范围的威胁。"
+  },
+  {
+    "id": "enemy_1226_dklord",
+    "name": "萨卡兹子裔集恨者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 14000,
+    "atk": 1000,
+    "def": 800,
+    "res": 20,
+    "attackTime": 5,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "场上每有一个重生造物时攻击力提升",
+      "首次倒下后重生为<大君之赐>"
+    ],
+    "description": "受到血魔大君赐福的萨卡兹王庭军战士。战场上阵亡同胞们的恨意积聚在他们体内，令他们渴望着撕碎萨卡兹的敌人。"
+  },
+  {
+    "id": "enemy_1226_dklord_2",
+    "name": "萨卡兹子裔集怒者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 20000,
+    "atk": 1200,
+    "def": 800,
+    "res": 20,
+    "attackTime": 5,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "场上每有一个重生造物时攻击力提升",
+      "首次倒下后重生为<慷慨之赐>"
+    ],
+    "description": "受到血魔大君赐福的萨卡兹王庭军精锐战士。战场上阵亡同胞们的怒火积聚在他们体内，令他们渴望着撕碎所有萨卡兹的敌人。"
+  },
+  {
+    "id": "enemy_1229_darmy",
+    "name": "萨卡兹王庭军战士",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 4200,
+    "atk": 240,
+    "def": 220,
+    "res": 40,
+    "attackTime": 2.5,
+    "speed": 0.9,
+    "weight": 1,
+    "abilities": [
+      "攻击造成凋亡损伤"
+    ],
+    "description": "萨卡兹王庭军战士。伦蒂尼姆的军工厂正源源不断地为萨卡兹的战士们生产武器。他们的作战风格既有萨卡兹特色，又更具纪律性。"
+  },
+  {
+    "id": "enemy_1229_darmy_2",
+    "name": "萨卡兹王庭军精锐战士",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 5500,
+    "atk": 380,
+    "def": 280,
+    "res": 40,
+    "attackTime": 2.5,
+    "speed": 0.9,
+    "weight": 1,
+    "abilities": [
+      "攻击造成凋亡损伤"
+    ],
+    "description": "萨卡兹王庭军中的精锐战士。在曼弗雷德的训练下，除了作战能力更强之外，他们也具备更强的职业素养。"
+  },
+  {
+    "id": "enemy_1234_dsubrl",
+    "name": "深溟巢涌者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 140,
+    "def": 550,
+    "res": 60,
+    "attackTime": 1,
+    "speed": 0.8,
+    "weight": 3,
+    "abilities": [
+      "持续对周围造成法术伤害和神经损伤",
+      "抵抗且免疫停顿"
+    ],
+    "description": "少见的恐鱼，哪怕在没有溟痕的地区也能操纵空气中及地面上的微小生物侵蚀周遭，仿佛搅动着溟痕本身，因而得名。"
+  },
+  {
+    "id": "enemy_1234_dsubrl_2",
+    "name": "富营养的巢涌者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 14000,
+    "atk": 160,
+    "def": 550,
+    "res": 60,
+    "attackTime": 1,
+    "speed": 0.8,
+    "weight": 3,
+    "abilities": [
+      "持续对周围造成法术伤害和神经损伤",
+      "抵抗且免疫停顿"
+    ],
+    "description": "极少见的特殊个体，拥有极强的破坏力、极远的传播范围，且无法通过常规手段进行有效干预。需要审判官们额外留意。"
+  },
+  {
+    "id": "enemy_1249_lysdb_2",
+    "name": "莱茵生命防卫科高级成员",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 6000,
+    "atk": 485,
+    "def": 300,
+    "res": 0,
+    "attackTime": 2.8,
+    "speed": 1,
+    "weight": 2,
+    "abilities": [
+      "可以抵挡一次物理或法术伤害"
+    ],
+    "description": "莱茵生命的警卫人员。配备莱茵生命为其提供的防暴装置，经过特级防暴作战训练，护卫能力大大增强。"
+  },
+  {
+    "id": "enemy_1251_lysyta",
+    "name": "Dor-1号失败品",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2750,
+    "atk": 310,
+    "def": 0,
+    "res": 50,
+    "attackTime": 1.8,
+    "speed": 1.5,
+    "weight": 0,
+    "abilities": [
+      "接触未激活的<R系列动力装甲>时，为其回复一定技力"
+    ],
+    "description": "多萝西实验失败的产物。一团形状不规则的银色物体，散发着柔和的光芒，仿佛一个沉睡着的梦境。"
+  },
+  {
+    "id": "enemy_1251_lysyta_2",
+    "name": "Dor-α号失败品",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 3200,
+    "atk": 360,
+    "def": 50,
+    "res": 50,
+    "attackTime": 1.8,
+    "speed": 1.5,
+    "weight": 0,
+    "abilities": [
+      "接触未激活的<R系列动力装甲>时，为其回复一定技力"
+    ],
+    "description": "多萝西实验失败的产物。一团形状不规则的银色物体，散发着柔和的光芒，但它不常见的外表仍旧让人下意识地惧怕，想要远离。"
+  },
+  {
+    "id": "enemy_1252_lysytb_2",
+    "name": "Dor-β号复制体",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 9000,
+    "atk": 420,
+    "def": 50,
+    "res": 50,
+    "attackTime": 3.2,
+    "speed": 0.9,
+    "weight": 2,
+    "abilities": [
+      "接触未激活的<R系列动力装甲>时，为其回复一定技力"
+    ],
+    "description": "多萝西再次实验所得的产物。即使没能达到预期效果，多萝西仍然充满希望。"
+  },
+  {
+    "id": "enemy_1254_lypa_2",
+    "name": "测试用动力装甲",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 850,
+    "def": 800,
+    "res": 20,
+    "attackTime": 1.3,
+    "speed": 1.2,
+    "weight": 3,
+    "abilities": [],
+    "description": "无人操控的动力装甲。仿佛拥有自主意识一般，就连经验丰富的工程师也很难凭肉眼分辨是否有人操控。"
+  },
+  {
+    "id": "enemy_1267_nhpbr",
+    "name": "萨卡兹枯朽战士",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 4500,
+    "atk": 380,
+    "def": 100,
+    "res": 20,
+    "attackTime": 2.5,
+    "speed": 0.8,
+    "weight": 1,
+    "abilities": [
+      "被击倒时释放污染秽蚀，使周围我方持续损失生命"
+    ],
+    "description": "食腐者大军成员之一，已被污染侵蚀，即使死亡也无法阻断他们对周围土地的污染。在倒下后，腐躯仍旧存在。"
+  },
+  {
+    "id": "enemy_1267_nhpbr_2",
+    "name": "萨卡兹枯朽战士组长",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 5500,
+    "atk": 450,
+    "def": 100,
+    "res": 20,
+    "attackTime": 2.5,
+    "speed": 0.8,
+    "weight": 1,
+    "abilities": [
+      "被击倒时释放污染秽蚀，使周围我方持续损失生命"
+    ],
+    "description": "食腐者大军精锐成员之一，周身已被污染彻底侵蚀，死亡只会让他们造成更多污染，被污染的土地任何生灵都难以存活。在倒下后，腐躯难以彻底消失。"
+  },
+  {
+    "id": "enemy_1270_nhstlk",
+    "name": "逐腐兽",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理",
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 12000,
+    "atk": 550,
+    "def": 150,
+    "res": 20,
+    "attackTime": 1.8,
+    "speed": 1.4,
+    "weight": 2,
+    "abilities": [
+      "攻击使目标在一段时间内持续受到法术伤害，目标接受治疗时解除此效果"
+    ],
+    "description": "食腐者之王的源石技艺造物，拥有较快的速度，无法理解何为治愈。制造死亡为它们生命的全部，因此当治愈的力量出现时，它们的能力将在目标身上失去效果。"
+  },
+  {
+    "id": "enemy_1270_nhstlk_2",
+    "name": "疯狂的逐腐兽",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理",
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 16000,
+    "atk": 700,
+    "def": 200,
+    "res": 20,
+    "attackTime": 1.8,
+    "speed": 1.4,
+    "weight": 2,
+    "abilities": [
+      "攻击使目标在一段时间内持续受到法术伤害，目标接受治疗时解除此效果"
+    ],
+    "description": "食腐者之王的源石技艺造物，即使停下行动，也无法理解何为治愈。制造死亡为它们生命的全部，思考不被死亡容纳，它们不会停下。"
+  },
+  {
+    "id": "enemy_1272_nhtank",
+    "name": "萨卡兹枯朽战车",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 12000,
+    "atk": 750,
+    "def": 750,
+    "res": 10,
+    "attackTime": 4.5,
+    "speed": 0.7,
+    "weight": 4,
+    "abilities": [
+      "只攻击地面单位",
+      "近战攻击造成更高伤害",
+      "数次攻击后，下次攻击释放污染秽蚀"
+    ],
+    "description": "食腐者大军军事装备之一，为大军行进扫清地面上的阻碍。即便在攻战上它的能力不容小觑，污染仍旧是它的主要职责。"
+  },
+  {
+    "id": "enemy_1272_nhtank_2",
+    "name": "尖端萨卡兹枯朽战车",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 850,
+    "def": 750,
+    "res": 10,
+    "attackTime": 4.5,
+    "speed": 0.7,
+    "weight": 4,
+    "abilities": [
+      "只攻击地面单位",
+      "近战攻击造成更高伤害",
+      "数次攻击后，下次攻击释放污染秽蚀"
+    ],
+    "description": "食腐者大军军事高级装备之一，为大军行进扫清地面上的阻碍，距离越近，它的攻击力越高。即便在攻战上它的能力不容小觑，污染仍旧是它的主要职责。"
+  },
+  {
+    "id": "enemy_1273_stmgun_2",
+    "name": "高准度伦蒂尼姆城防自行炮",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理",
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 18000,
+    "atk": 750,
+    "def": 1500,
+    "res": 10,
+    "attackTime": 6,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "攻击范围较远",
+      "会锁定生命上限最高的目标进行数次轰炸，每次对范围内当前生命比例最高的单位造成法术伤害"
+    ],
+    "description": "伦蒂尼姆的城防武器之一，拥有极大攻击范围的同时，精准度也大幅度提升。规模巨大，由伦蒂尼姆的工人们在工厂中组装而成。"
+  },
+  {
+    "id": "enemy_1275_dwlock_2",
+    "name": "萨卡兹王庭军精锐术师",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 14000,
+    "atk": 500,
+    "def": 250,
+    "res": 50,
+    "attackTime": 4,
+    "speed": 0.8,
+    "weight": 2,
+    "abilities": [
+      "攻击额外造成凋亡损伤",
+      "会锁定我方单位持续造成法术伤害，并在释放完成时造成群体凋亡损伤"
+    ],
+    "description": "萨卡兹王庭精锐军术师，萨卡兹的巫术在战场上常常要比许多机械军事设备更加难以应对。除却纪律性，在近几年的训练中，他们也表现出了极强的专业性。"
+  },
+  {
+    "id": "enemy_1283_sgkill",
+    "name": "家族灭迹人",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 12000,
+    "atk": 800,
+    "def": 800,
+    "res": 45,
+    "attackTime": 3,
+    "speed": 0.9,
+    "weight": 3,
+    "abilities": [
+      "清算时刻状态下，自身获得额外增强",
+      "隐匿"
+    ],
+    "description": "忠于家族的强大杀手，于阴影中来去，留下的只有死亡。人人都知晓他的称号，却从未有人谈论他。"
+  },
+  {
+    "id": "enemy_1283_sgkill_2",
+    "name": "家族暗影灭迹人",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 18000,
+    "atk": 1050,
+    "def": 800,
+    "res": 45,
+    "attackTime": 3,
+    "speed": 0.9,
+    "weight": 3,
+    "abilities": [
+      "清算时刻状态下，自身获得额外增强",
+      "隐匿"
+    ],
+    "description": "忠于家族的顶尖杀手，暗影是他的仆从，杀戮比覆手更轻易。令家族立足与兴盛的秘闻之中都有他的身影，得见他真容的人都已长眠于地下。"
+  },
+  {
+    "id": "enemy_1288_duskls",
+    "name": "深池逐火战士",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 5000,
+    "atk": 150,
+    "def": 50,
+    "res": 50,
+    "attackTime": 2,
+    "speed": 0.7,
+    "weight": 1,
+    "abilities": [
+      "位于燃烧的芦苇丛附近时攻击额外造成灼燃损伤",
+      "被击倒时暂时变为隐匿、需要5次伤害击倒的<怨恨的余烬>，一段时间后重生"
+    ],
+    "description": "附着了领袖火焰的深池部队战士。他们已经死亡，只有身躯在法术的操纵下践行着最后的渴望，一次又一次地站起。"
+  },
+  {
+    "id": "enemy_1288_duskls_2",
+    "name": "深池逐火精锐战士",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 6000,
+    "atk": 180,
+    "def": 100,
+    "res": 50,
+    "attackTime": 2,
+    "speed": 0.7,
+    "weight": 1,
+    "abilities": [
+      "位于燃烧的芦苇丛附近时攻击额外造成灼燃损伤",
+      "被击倒时暂时变为隐匿、需要5次伤害击倒的<暴怒的余烬>，一段时间后重生"
+    ],
+    "description": "附着了领袖火焰的深池部队精锐战士。更加执着地追逐着领袖的火焰，被法术操纵着不断站起。"
+  },
+  {
+    "id": "enemy_1292_duskld",
+    "name": "深池逐火护卫",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 350,
+    "def": 550,
+    "res": 60,
+    "attackTime": 3.5,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "位于燃烧的芦苇丛附近时攻击额外造成灼燃损伤且受到的物理与法术伤害降低",
+      "被击倒时暂时变为隐匿、需要10次伤害击倒的<贪欲的火灰>，一段时间后重生"
+    ],
+    "description": "附着了领袖火焰的深池部队防御者。他们已经死亡，但灌注法术的武装还在支撑着他们为自己的野心战斗。"
+  },
+  {
+    "id": "enemy_1299_ymkilr",
+    "name": "山海众头目",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 8500,
+    "atk": 800,
+    "def": 250,
+    "res": 20,
+    "attackTime": 2.5,
+    "speed": 1.1,
+    "weight": 3,
+    "abilities": [
+      "隐匿",
+      "隐匿效果失效后的下一次攻击造成更高伤害"
+    ],
+    "description": "隐于队伍之中的山海众头目。神出鬼没，残忍果决，“信仰”之下，究竟是迷狂的妄念，还是可笑的私欲？"
+  },
+  {
+    "id": "enemy_1299_ymkilr_2",
+    "name": "山海众秘使",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 11000,
+    "atk": 1000,
+    "def": 300,
+    "res": 20,
+    "attackTime": 2.5,
+    "speed": 1.1,
+    "weight": 3,
+    "abilities": [
+      "隐匿",
+      "隐匿效果失效后的下一次攻击造成更高伤害"
+    ],
+    "description": "似乎身负神秘任务的山海众头目。神出鬼没，心狠手辣，对手下的牺牲也不以为意。他们的信仰在迷雾之中，他们究竟所图为何？"
+  },
+  {
+    "id": "enemy_1302_ymtro_2",
+    "name": "“越长尘”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 30000,
+    "atk": 1000,
+    "def": 1500,
+    "res": 10,
+    "attackTime": 4,
+    "speed": 0.3,
+    "weight": 4,
+    "abilities": [
+      "只能被阻挡数大于等于4的单位阻挡",
+      "周围有领袖以外的非机械敌人时会将其装载为乘客（最多4个），首次到达云梯时释放装载的乘客"
+    ],
+    "description": "由炎国工部监造司专为玉门城设计打造的第二批运兵车，被潜入的山海众劫持。可载四名士兵，即使是沙漠地形亦能平稳、快速地运行，可高效配合城防作战。"
+  },
+  {
+    "id": "enemy_1305_mhslim",
+    "name": "灼热源石虫",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 1200,
+    "atk": 50,
+    "def": 0,
+    "res": 0,
+    "attackTime": 2,
+    "speed": 0.8,
+    "weight": 0,
+    "abilities": [
+      "攻击造成灼燃损伤"
+    ],
+    "description": "野生的被感染生物，能将灼热的体液喷向敌人，比一般的源石虫更具威胁性。它们会在环境能量异常的区域大量出现，繁殖与迁徙方式至今成谜。"
+  },
+  {
+    "id": "enemy_1305_mhslim_2",
+    "name": "炽焰源石虫",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 1800,
+    "atk": 80,
+    "def": 0,
+    "res": 0,
+    "attackTime": 2,
+    "speed": 0.8,
+    "weight": 0,
+    "abilities": [
+      "攻击造成灼燃损伤"
+    ],
+    "description": "野生的被感染生物，在感染的最后阶段，它们变得更加火热，体液如岩浆般滚烫，直至将身躯熔化。等到冷却之后，会留下一滩美丽的花纹。"
+  },
+  {
+    "id": "enemy_1309_mhboar_2",
+    "name": "狂暴凶豕兽",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 32000,
+    "atk": 700,
+    "def": 50,
+    "res": 0,
+    "attackTime": 4,
+    "speed": 0.4,
+    "weight": 2,
+    "abilities": [
+      "只能被阻挡数大于等于2的单位阻挡",
+      "冲撞时逐渐加速，并对经过与阻挡自身的目标根据移动速度造成伤害"
+    ],
+    "description": "极度易怒的一类凶豕兽，大摇大摆地霸占了水源附近地区。一旦被激怒就会敌我不分地横冲直撞，它的疯狂足以将周遭的一切夷为平地。"
+  },
+  {
+    "id": "enemy_1320_wdrrl_2",
+    "name": "萨卡兹悖谬暴虐兵长",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 25000,
+    "atk": 1200,
+    "def": 800,
+    "res": 20,
+    "attackTime": 2.9,
+    "speed": 0.8,
+    "weight": 5,
+    "abilities": [
+      "只能被阻挡数大于等于3的单位阻挡",
+      "首次攻击时造成溅射伤害"
+    ],
+    "description": "变形者集群与军事委员会合作的产物，能充分利用源石技艺完成肉体的自我改造。对于肉体变形的精妙操控让他们的大脑免于受到损伤，他们也更习惯于利用恐怖肉体的压迫感在作战中取得优势。"
+  },
+  {
+    "id": "enemy_1321_wdarft",
+    "name": "枯朽萃聚使徒",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "FLY",
+    "hp": 30000,
+    "atk": 500,
+    "def": 250,
+    "res": 30,
+    "attackTime": 5,
+    "speed": 0.3,
+    "weight": 5,
+    "abilities": [
+      "飞行单位",
+      "每隔一段时间，召唤数个<枯朽之种>"
+    ],
+    "description": "蕴藏了食腐者之王源石技艺的有机造物，可以萃取战场上驳杂的死亡精华来创造枯朽之种。"
+  },
+  {
+    "id": "enemy_1325_cbgpro",
+    "name": "军用猎狗",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 3800,
+    "atk": 290,
+    "def": 0,
+    "res": 30,
+    "attackTime": 1.5,
+    "speed": 1.7,
+    "weight": 1,
+    "abilities": [],
+    "description": "在玻利瓦尔首先投入使用的军用猎狗。锋牙利爪，性情残暴。"
+  },
+  {
+    "id": "enemy_1325_cbgpro_2",
+    "name": "高级军用猎狗",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 4600,
+    "atk": 360,
+    "def": 0,
+    "res": 30,
+    "attackTime": 1.5,
+    "speed": 1.7,
+    "weight": 1,
+    "abilities": [],
+    "description": "经过严格选种后培育出的高级军用猎狗。眼中只有猎物，不死不休。"
+  },
+  {
+    "id": "enemy_1328_cbjedi",
+    "name": "弧光锋卫",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 700,
+    "def": 550,
+    "res": 50,
+    "attackTime": 3,
+    "speed": 0.75,
+    "weight": 1,
+    "abilities": [
+      "失衡移动时正比于距离损失生命"
+    ],
+    "description": "拥有极高杀伤力的实验部队士兵，配备了先端武器。但是，由于装备缺乏稳定性，也让他们有了极大的弱点。"
+  },
+  {
+    "id": "enemy_1329_cbshld",
+    "name": "弧光镜卫",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 700,
+    "def": 3300,
+    "res": 60,
+    "attackTime": 3,
+    "speed": 0.75,
+    "weight": 3,
+    "abilities": [
+      "初始护甲与法抗较高，但每次受到伤害后降低"
+    ],
+    "description": "拥有极高防御能力的实验部队士兵，使用最新研发的合金。然而，由于合金的稳定性问题尚未解决，比起耐久，更擅长应付短时间内的高压环境。"
+  },
+  {
+    "id": "enemy_1329_cbshld_2",
+    "name": "弧光镜卫长",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 13000,
+    "atk": 900,
+    "def": 3500,
+    "res": 60,
+    "attackTime": 3,
+    "speed": 0.75,
+    "weight": 3,
+    "abilities": [
+      "初始护甲与法抗较高，但每次受到伤害后降低"
+    ],
+    "description": "拥有极高防御能力的实验部队士兵，使用最新研发的合金。即使丢下装备也依然能够站在战场的第一线，顶住敌人的进攻。"
+  },
+  {
+    "id": "enemy_1355_mrfly",
+    "name": "护障",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "FLY",
+    "hp": 6000,
+    "atk": 0,
+    "def": 80,
+    "res": 40,
+    "attackTime": 2,
+    "speed": 1.2,
+    "weight": 0,
+    "abilities": [
+      "飞行单位",
+      "为周围敌军持续提供法术抗性加成"
+    ],
+    "description": "敌方人员操纵的无人机，可以干扰源石技艺。主要起支援作用，没有直接的攻击能力。"
+  },
+  {
+    "id": "enemy_1355_mrfly_2",
+    "name": "护障·P",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "FLY",
+    "hp": 10000,
+    "atk": 0,
+    "def": 80,
+    "res": 50,
+    "attackTime": 2,
+    "speed": 1.2,
+    "weight": 0,
+    "abilities": [
+      "飞行单位",
+      "为周围敌军持续提供法术抗性加成"
+    ],
+    "description": "敌方人员操纵的无人机，可以干扰源石技艺，效能比普通型号更高。主要起支援作用，没有直接的攻击能力。"
+  },
+  {
+    "id": "enemy_1360_dfello",
+    "name": "新生血裔",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 4000,
+    "atk": 100,
+    "def": 200,
+    "res": 20,
+    "attackTime": 2,
+    "speed": 0.8,
+    "weight": 1,
+    "abilities": [
+      "攻击造成法术伤害，根据目标当前阻挡的敌人数量增加攻击力",
+      "攻击时恢复攻击伤害一定比例的生命",
+      "被击倒时留下<血珀>"
+    ],
+    "description": "鲜血王庭的源石技艺造物，据说几滴鲜血就能催生一大群这样无智的蠕虫，在饥渴得到满足之前，它们永远不会松口。"
+  },
+  {
+    "id": "enemy_1361_dthrow",
+    "name": "萨卡兹子裔轰击者",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 6000,
+    "atk": 450,
+    "def": 150,
+    "res": 40,
+    "attackTime": 3,
+    "speed": 0.8,
+    "weight": 1,
+    "abilities": [
+      "远程攻击，攻击时射出会延时爆炸的弹药，造成范围物理伤害",
+      "首次倒下后重生为<大君之触>"
+    ],
+    "description": "受到血魔大君赐福的萨卡兹王庭军远程轰击手，他们所聚焦的地方将会化作火海，他们所瞄准的地方最终只留废墟。"
+  },
+  {
+    "id": "enemy_1361_dthrow_2",
+    "name": "萨卡兹子裔毁击者",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 8000,
+    "atk": 550,
+    "def": 150,
+    "res": 40,
+    "attackTime": 3,
+    "speed": 0.8,
+    "weight": 1,
+    "abilities": [
+      "远程攻击，攻击时射出会延时爆炸的弹药，造成范围物理伤害",
+      "首次倒下后重生为<仁慈之触>"
+    ],
+    "description": "受到血魔大君赐福的萨卡兹王庭军精锐远程轰击手，他们不聚焦任何具体的地方，他们不瞄准任何有形的敌人，他们只永远注视着毁灭本身。"
+  },
+  {
+    "id": "enemy_1362_dfat",
+    "name": "萨卡兹子裔责罚者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 25000,
+    "atk": 1200,
+    "def": 100,
+    "res": 40,
+    "attackTime": 4,
+    "speed": 0.7,
+    "weight": 5,
+    "abilities": [
+      "能在数次攻击后晕眩周围所有我方单位",
+      "首次倒下后重生为<大君之赐>"
+    ],
+    "description": "受到血魔大君赐福的萨卡兹王庭军开路者，据说曾触犯王庭之内的禁忌。但血魔大君并没有责罚他们，作为回报，这些战士将本该落于自己身上的痛苦施加于敌人。"
+  },
+  {
+    "id": "enemy_1362_dfat_2",
+    "name": "萨卡兹子裔惩戒者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 35000,
+    "atk": 1500,
+    "def": 100,
+    "res": 40,
+    "attackTime": 4,
+    "speed": 0.7,
+    "weight": 5,
+    "abilities": [
+      "能在数次攻击后晕眩周围所有我方单位",
+      "首次倒下后重生为<慷慨之赐>"
+    ],
+    "description": "受到血魔大君赐福的萨卡兹王庭军精锐开路者，据说曾忤逆鲜血之主的意志。但血魔大君并没有惩戒他们，作为回报，这些战士将自己心中的懊悔化为无尽的杀戮，用鲜血洗去罪责。"
+  },
+  {
+    "id": "enemy_1363_spnshd_2",
+    "name": "萨卡兹骸骨卫士长",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 1100,
+    "def": 1500,
+    "res": 0,
+    "attackTime": 3.8,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "容易受到我方攻击",
+      "受到伤害时降低伤害来源的攻击速度",
+      "周围有<反巫术变位炸弹>时，阻止其移动",
+      "被击倒时留下2个<血珀>"
+    ],
+    "description": "负责守护巨兽骸骨的卫士长，军事委员会最狂热的拥趸，他们不惜一切代价实现军事委员会的理想，哪怕流干自己的鲜血。"
+  },
+  {
+    "id": "enemy_1373_ltnhor",
+    "name": "残党乐团圆号手",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 8000,
+    "atk": 150,
+    "def": 200,
+    "res": 15,
+    "attackTime": 3,
+    "speed": 0.8,
+    "weight": 1,
+    "abilities": [
+      "攻击2次后，下一次攻击额外攻击一个目标",
+      "在激昂变奏下，攻击变为法术伤害"
+    ],
+    "description": "希望在君王麾下一展身手的圆号手。满腹才华未曾得到展现，他等待一个机会一鸣惊人。"
+  },
+  {
+    "id": "enemy_1373_ltnhor_2",
+    "name": "巫王乐团圆号手",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 9000,
+    "atk": 200,
+    "def": 250,
+    "res": 15,
+    "attackTime": 3,
+    "speed": 0.8,
+    "weight": 1,
+    "abilities": [
+      "攻击2次后，下一次攻击额外攻击一个目标",
+      "在激昂变奏下，攻击变为法术伤害"
+    ],
+    "description": "曾经在君王麾下一展身手的圆号手。满腹才华未曾真正绽放，他渴求更多机会惊艳世人。"
+  },
+  {
+    "id": "enemy_1375_ltnclr",
+    "name": "残党乐团管乐家",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 13000,
+    "atk": 500,
+    "def": 700,
+    "res": 60,
+    "attackTime": 6,
+    "speed": 0.8,
+    "weight": 2,
+    "abilities": [
+      "未被阻挡时，攻击力不断增长，下一次攻击后攻击力复原",
+      "在沉郁变奏下，攻击力大幅度提升，且攻击会晕眩目标"
+    ],
+    "description": "希望在君王乐团中担任领奏的管乐家。他力图攀上领奏之位，如今乐团却不知何在，他因此愤恨不已。"
+  },
+  {
+    "id": "enemy_1375_ltnclr_2",
+    "name": "巫王乐团管乐家",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 600,
+    "def": 700,
+    "res": 60,
+    "attackTime": 6,
+    "speed": 0.8,
+    "weight": 2,
+    "abilities": [
+      "未被阻挡时，攻击力不断增长，下一次攻击后攻击力复原",
+      "在沉郁变奏下，攻击力大幅度提升，且攻击会晕眩目标"
+    ],
+    "description": "曾经在君王乐团中担任领奏的管乐家。他长期身居领奏之位，如今乐团却早已不在，他因此怒不可遏。"
+  },
+  {
+    "id": "enemy_1376_ltndru",
+    "name": "残党乐团鼓手",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 250,
+    "def": 250,
+    "res": 50,
+    "attackTime": 1.8,
+    "speed": 0.7,
+    "weight": 2,
+    "abilities": [
+      "攻击2次后，下一次攻击对攻击范围内所有目标造成溅射伤害",
+      "在激昂变奏下，攻击范围扩大"
+    ],
+    "description": "希望为君王的乐曲把持节奏的鼓手。为了一丝不苟的节奏而苛责自己，以至于敲下的每一个鼓点都充满了辛酸。"
+  },
+  {
+    "id": "enemy_1376_ltndru_2",
+    "name": "巫王乐团鼓手",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 12000,
+    "atk": 350,
+    "def": 300,
+    "res": 50,
+    "attackTime": 1.8,
+    "speed": 0.7,
+    "weight": 2,
+    "abilities": [
+      "攻击2次后，下一次攻击对攻击范围内所有目标造成溅射伤害",
+      "在激昂变奏下，攻击范围扩大"
+    ],
+    "description": "曾经为君王的乐曲把持节奏的鼓手。为了至臻完美的节奏而折磨自己，以至于敲下的每一个鼓点都饱含着苦难。"
+  },
+  {
+    "id": "enemy_1381_winman",
+    "name": "访问团新兵",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 5800,
+    "atk": 300,
+    "def": 100,
+    "res": 0,
+    "attackTime": 1.7,
+    "speed": 0.9,
+    "weight": 1,
+    "abilities": [],
+    "description": "访问团征召而来的军人，其作战方式扎实且标准。他们现在更享受平淡如水的闲暇时光。"
+  },
+  {
+    "id": "enemy_1381_winman_2",
+    "name": "访问团老兵",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 7800,
+    "atk": 400,
+    "def": 200,
+    "res": 0,
+    "attackTime": 1.7,
+    "speed": 0.9,
+    "weight": 1,
+    "abilities": [],
+    "description": "与访问团共命运的军人，其作战方式老练且凌厉。他们现在更警惕任何即将升级的冲突。"
+  },
+  {
+    "id": "enemy_1385_winbom",
+    "name": "“喷射罐”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 400,
+    "def": 350,
+    "res": 50,
+    "attackTime": 3,
+    "speed": 0.9,
+    "weight": 3,
+    "abilities": [
+      "死亡时对周围所有单位造成法术伤害、施加寒冷并直接熄灭\"紧急供暖器\""
+    ],
+    "description": "在历经了艰难痛苦的壕沟战之后，人们开发了这种武器用于近距离攻坚，但谁愿意背着沉重且易碎的罐子作战呢。"
+  },
+  {
+    "id": "enemy_1385_winbom_2",
+    "name": "“喷爆罐”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 14000,
+    "atk": 550,
+    "def": 450,
+    "res": 50,
+    "attackTime": 3,
+    "speed": 0.9,
+    "weight": 3,
+    "abilities": [
+      "死亡时对周围所有单位造成法术伤害、施加寒冷并直接熄灭\"紧急供暖器\""
+    ],
+    "description": "在罐子被击碎和爆炸了很多次后，人们明白这种武器需要视死如归的人，这让原本痛苦的壕沟战变得更加痛苦了。"
+  },
+  {
+    "id": "enemy_1387_winshd",
+    "name": "访问团持盾者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 12000,
+    "atk": 500,
+    "def": 1200,
+    "res": 20,
+    "attackTime": 3,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "在<封冻>的区域内防御力与法抗逐渐升高，进入\"紧急供暖器\"生效范围内防御力与法抗逐渐降低"
+    ],
+    "description": "访问团中坚实的防御者，盾牌与凝结的冰晶合而为一，成为雪地上难以逾越的高墙。"
+  },
+  {
+    "id": "enemy_1388_wingnt",
+    "name": "“投石机”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 800,
+    "def": 700,
+    "res": 20,
+    "attackTime": 3,
+    "speed": 0.7,
+    "weight": 4,
+    "abilities": [
+      "可以抛出巨大雪球造成十字溅射伤害",
+      "抛出雪球后只能进行近战攻击"
+    ],
+    "description": "访问团中的专业投弹手，能够双手投掷百公斤重的榴弹。访问团里其他人都知道，和这帮人打雪仗，自己只会连人带雪球一起被砸飞出去。"
+  },
+  {
+    "id": "enemy_1388_wingnt_2",
+    "name": "“榴弹炮”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 12000,
+    "atk": 950,
+    "def": 800,
+    "res": 20,
+    "attackTime": 3,
+    "speed": 0.7,
+    "weight": 4,
+    "abilities": [
+      "可以抛出巨大雪球造成十字溅射伤害",
+      "抛出雪球后只能进行近战攻击"
+    ],
+    "description": "访问团中的投弹手精英，听说他们掷出的榴弹威力和城防炮相近。访问团没有人会不自量力挑战他们，于是这帮猛汉扛着“精雕细琢”的大雪球游走在雪地间，等待着不知内情的“挑战者”自投罗网。"
+  },
+  {
+    "id": "enemy_1389_winbab_2",
+    "name": "访问团强攻冠军",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 7000,
+    "atk": 650,
+    "def": 400,
+    "res": 10,
+    "attackTime": 3,
+    "speed": 0.6,
+    "weight": 2,
+    "abilities": [
+      "隐匿",
+      "优先攻击“紧急供暖器”右侧的目标"
+    ],
+    "description": "“击倒守卫供暖器的人”成了访问团来到这里后最常训练的科目，那么出现冠军似乎也并不奇怪。"
+  },
+  {
+    "id": "enemy_1402_tgshd_2",
+    "name": "重装侦察兵",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 13000,
+    "atk": 700,
+    "def": 1500,
+    "res": 0,
+    "attackTime": 3,
+    "speed": 0.7,
+    "weight": 4,
+    "abilities": [
+      "被攻击时使攻击者暴露5秒",
+      "暴露状态下的我方无法通过封阻物避开敌方视线，且受到的伤害提升"
+    ],
+    "description": "身着重甲的侦察兵。联合政府军方加厚了装甲部分，但对如何增强反向追踪功能一头雾水。"
+  },
+  {
+    "id": "enemy_1403_gunsho",
+    "name": "速射轻弩手",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 4500,
+    "atk": 350,
+    "def": 180,
+    "res": 10,
+    "attackTime": 2,
+    "speed": 0.9,
+    "weight": 1,
+    "abilities": [
+      "与我方处于同一直线上时进行直击：向目标方向发射3支弩箭"
+    ],
+    "description": "一次可以连射三支箭矢的轻弩手。瞬时火力上取得优势的代价是难以持续。"
+  },
+  {
+    "id": "enemy_1403_gunsho_2",
+    "name": "速射劲弩手",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 5500,
+    "atk": 400,
+    "def": 250,
+    "res": 10,
+    "attackTime": 2,
+    "speed": 0.9,
+    "weight": 1,
+    "abilities": [
+      "与我方处于同一直线上时进行直击：向目标方向发射3支弩箭"
+    ],
+    "description": "一次可以连射三支箭矢的劲弩手。哥伦比亚考察团不得不承认这种“自制小玩意儿”的威力不输一些高科技武器。"
+  },
+  {
+    "id": "enemy_1404_msnip",
+    "name": "重弩突袭者",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 6000,
+    "atk": 400,
+    "def": 180,
+    "res": 60,
+    "attackTime": 3.5,
+    "speed": 0.7,
+    "weight": 1,
+    "abilities": [
+      "隐匿",
+      "与我方处于同一直线上时进行直击：向目标方向发射1支造成法术伤害的弩箭并使目标晕眩"
+    ],
+    "description": "配发了量产型动能增强弩的狙击手。武器采购价格很高，但物有所值，充能后可对目标造成长时间的眩晕。"
+  },
+  {
+    "id": "enemy_1405_boomer_2",
+    "name": "无畏掷弹兵",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 5000,
+    "atk": 550,
+    "def": 900,
+    "res": 60,
+    "attackTime": 2.8,
+    "speed": 0.7,
+    "weight": 3,
+    "abilities": [
+      "未被阻挡状态下首次受到伤害时，向上下左右各发出一枚爆破弹，之后移动速度提升且重量下降"
+    ],
+    "description": "战斗方式异于常人的特种战斗人员。其余兵种给他们起的诨名是“炮灰”，却不知自己在上级眼里也一样。"
+  },
+  {
+    "id": "enemy_1406_chghmr",
+    "name": "战线推进者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 1350,
+    "def": 1000,
+    "res": 0,
+    "attackTime": 5,
+    "speed": 0.8,
+    "weight": 4,
+    "abilities": [
+      "每次被阻挡后，首次攻击的攻击力大幅提升"
+    ],
+    "description": "负责推进己方战线的重武装人员。一般由暴脾气的老兵担任，他们会把在上司那里受的气撒在自己面前的任何东西上。"
+  },
+  {
+    "id": "enemy_1407_hummbd",
+    "name": "远眺",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "FLY",
+    "hp": 4500,
+    "atk": 250,
+    "def": 120,
+    "res": 20,
+    "attackTime": 3,
+    "speed": 0.7,
+    "weight": 1,
+    "abilities": [
+      "飞行单位",
+      "被击倒时使周围的我方单位暴露8秒",
+      "暴露状态下的我方无法通过封阻物避开敌方视线，且受到的伤害提升"
+    ],
+    "description": "联合政府军队统一配发的无人机。设计初衷是用来侦察，由于电路问题侦察功能极不稳定，不得已加装了攻击模块。"
+  },
+  {
+    "id": "enemy_1409_bdguad_2",
+    "name": "马特奥的近卫",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 25000,
+    "atk": 1300,
+    "def": 1200,
+    "res": 30,
+    "attackTime": 4,
+    "speed": 0.8,
+    "weight": 3,
+    "abilities": [
+      "与我方处于同一直线上时进行直击：向目标方向发射2枚爆破弹",
+      "未被阻挡时受到的物理和法术伤害降低"
+    ],
+    "description": "马特奥的贴身近卫。一部分联合政府的军头培植了这样的人，这让他们觉得自己是同僚中的佼佼者。"
+  },
+  {
+    "id": "enemy_1413_mmstck",
+    "name": "赏金猎人“骑士”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 9000,
+    "atk": 400,
+    "def": 200,
+    "res": 60,
+    "attackTime": 4,
+    "speed": 0.25,
+    "weight": 3,
+    "abilities": [
+      "移动时逐渐加速，被阻挡后的首次攻击根据移速造成额外法术伤害"
+    ],
+    "description": "精通巫术的赏金猎人，自制装备时参考了卡西米尔骑士的造型。在执行任务时，他们通过追猎来折磨任务目标，获得乐趣。"
+  },
+  {
+    "id": "enemy_1415_mmkabi_2",
+    "name": "温顺的武装大驮兽",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 75000,
+    "atk": 2200,
+    "def": 50,
+    "res": 50,
+    "attackTime": 5,
+    "speed": 0.6,
+    "weight": 5,
+    "abilities": [
+      "遇到稳固锁链时会大摔一跤并眩晕，同时对周围其他敌方单位造成物理伤害"
+    ],
+    "description": "情绪稳定的大型驮兽，体型巨大，行动缓慢。在温顺地接受完严格训练后被投放到战场，从事并不擅长的工作。"
+  },
+  {
+    "id": "enemy_1422_lrsldr",
+    "name": "萨卡兹枯朽前锋",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理",
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 4700,
+    "atk": 300,
+    "def": 100,
+    "res": 40,
+    "attackTime": 3,
+    "speed": 0.8,
+    "weight": 1,
+    "abilities": [
+      "位于源石污染区内时，攻击造成法术伤害"
+    ],
+    "description": "食腐者之王军团中的精锐，早已经习惯在恶劣的源石环境中作战，他会将弥漫的源石粉尘化作自己的力量，直到死亡，而死亡会哺育更多的同袍。"
+  },
+  {
+    "id": "enemy_1422_lrsldr_2",
+    "name": "萨卡兹枯朽辟路前锋",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理",
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 5500,
+    "atk": 350,
+    "def": 100,
+    "res": 40,
+    "attackTime": 3,
+    "speed": 0.8,
+    "weight": 1,
+    "abilities": [
+      "位于源石污染区内时，攻击造成法术伤害"
+    ],
+    "description": "食腐者之王军团中的精锐领队，早已经习惯在极端恶劣的源石环境中作战，他会以弥漫的源石粉尘砥砺屠戮敌人的锋刃，直到死亡。他的死亡必为军团提供助力。"
+  },
+  {
+    "id": "enemy_1424_lrboom",
+    "name": "恶尘源石虫",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 6000,
+    "atk": 300,
+    "def": 100,
+    "res": 10,
+    "attackTime": 4,
+    "speed": 1,
+    "weight": 2,
+    "abilities": [
+      "死亡时对周围我方单位造成物理伤害，并生成源石污染区",
+      "会被活性源石风暴吞噬并使其增幅"
+    ],
+    "description": "变异的被感染生物。生活在伦蒂尼姆周边的源石虫已经被急剧变化的环境改变，危险的源石颗粒充斥在这种生物的体内，它死亡时会爆炸并散布活性源石污染。"
+  },
+  {
+    "id": "enemy_1425_lrcmra",
+    "name": "孽罪奇美拉",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理",
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 20000,
+    "atk": 800,
+    "def": 1000,
+    "res": 50,
+    "attackTime": 5,
+    "speed": 0.6,
+    "weight": 4,
+    "abilities": [
+      "受源石污染区或活性源石风暴影响后会在自身周围持续生成源石污染区，并且攻击转为造成法术伤害"
+    ],
+    "description": "赦罪师制造的扭曲造物，融合了多种萨卡兹部族血脉的生物兵器，它的身上极易沾染源石粉尘，在巨翼的扇动下，这些粉尘会弥散到一切它所踏足的地方。"
+  },
+  {
+    "id": "enemy_1425_lrcmra_2",
+    "name": "渎罪奇美拉",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理",
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 25000,
+    "atk": 1200,
+    "def": 1200,
+    "res": 50,
+    "attackTime": 5,
+    "speed": 0.6,
+    "weight": 4,
+    "abilities": [
+      "受源石污染区或活性源石风暴影响后会在自身周围持续生成源石污染区，并且攻击转为造成法术伤害"
+    ],
+    "description": "赦罪师精心制造的扭曲造物，融合了多种萨卡兹部族纯净血脉的生物兵器，它的身上极易沾染源石粉尘，在巨翼的扇动下，这些粉尘会弥散到一切它所踏足的地方，宣泄它无尽的怒火。"
+  },
+  {
+    "id": "enemy_1427_lrnazg",
+    "name": "“灵幛”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 900,
+    "def": 500,
+    "res": 50,
+    "attackTime": 5,
+    "speed": 0.7,
+    "weight": 4,
+    "abilities": [
+      "攻击对自身周围所有单位造成物理伤害",
+      "位于源石污染区和活性源石风暴内时，攻击对自身周围及位于源石污染区内和活性源石风暴内的所有我方单位造成物理伤害"
+    ],
+    "description": "“灵幛”，缠裹已死之躯的衣袍。他曾经因饥饿而干瘪，但如今，他被食腐者之王的力量哺育着。吞噬与滋养，贪婪与奉献，本就是食腐者的一体两面。"
+  },
+  {
+    "id": "enemy_1428_lrsoul",
+    "name": "魂灵涡流",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 3500,
+    "atk": 300,
+    "def": 100,
+    "res": 50,
+    "attackTime": 3,
+    "speed": 1,
+    "weight": 1,
+    "abilities": [],
+    "description": "因死魂灵的意志而诞生的魂灵碎片，无数极端的情感在其中交杂，千万年的混乱记忆最终凝聚成了有形的涡流。"
+  },
+  {
+    "id": "enemy_1429_lrwzrd",
+    "name": "聚焦魂灵残迹",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 8000,
+    "atk": 400,
+    "def": 400,
+    "res": 50,
+    "attackTime": 4,
+    "speed": 0.6,
+    "weight": 4,
+    "abilities": [
+      "攻击造成法术伤害，可以拾取并最多同时保有三个魂灵涡流",
+      "保有魂灵涡流时，会消耗所有魂灵涡流对目标及其一条直线上的所有我方单位造成持续法术伤害"
+    ],
+    "description": "因死魂灵的意志而诞生的魂灵残迹，吸纳了那些徘徊的涡流后，汹涌的巫术与情感会同时喷薄而出，贯穿面前与身后的所有敌人。"
+  },
+  {
+    "id": "enemy_1429_lrwzrd_2",
+    "name": "棱镜魂灵残迹",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 400,
+    "def": 400,
+    "res": 50,
+    "attackTime": 4,
+    "speed": 0.6,
+    "weight": 4,
+    "abilities": [
+      "攻击造成法术伤害，可以拾取并最多同时保有三个魂灵涡流",
+      "保有魂灵涡流时，会消耗所有魂灵涡流对目标及其一条直线上的所有我方单位造成持续法术伤害"
+    ],
+    "description": "因死魂灵的意志而诞生的高级魂灵残迹，吸纳了那些徘徊的涡流后，磅礴的巫术与情感会同时释放出来，贯穿面前与身后的所有敌人。"
+  },
+  {
+    "id": "enemy_1430_lrrook",
+    "name": "愧悔魂灵圣杯",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "FLY",
+    "hp": 100000,
+    "atk": 0,
+    "def": 0,
+    "res": 30,
+    "attackTime": 4,
+    "speed": 0.5,
+    "weight": 7,
+    "abilities": [
+      "飞行单位",
+      "分摊自身周围敌方非空中单位受到的部分伤害"
+    ],
+    "description": "因死魂灵的意志而诞生的魂灵圣杯，盛着无限的悔恨，往事已不可追，它却仍会因往昔而苦。"
+  },
+  {
+    "id": "enemy_1431_lrmzrd",
+    "name": "注能魂灵法骸",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理",
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 900,
+    "def": 800,
+    "res": 50,
+    "attackTime": 3.5,
+    "speed": 0.6,
+    "weight": 4,
+    "abilities": [
+      "可以拾取并最多同时保有三个魂灵涡流",
+      "保有魂灵涡流时，会消耗魂灵涡流召唤一个绕自身旋转的魂灵残片，对碰撞到的我方单位造成高额法术伤害。"
+    ],
+    "description": "因死魂灵的意志而诞生的魂灵法骸，记忆中无数英雄的战斗技巧皆加诸其身。英雄尽死，只余早已模糊的背影。"
+  },
+  {
+    "id": "enemy_1431_lrmzrd_2",
+    "name": "粹影魂灵法骸",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理",
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 18000,
+    "atk": 1200,
+    "def": 800,
+    "res": 50,
+    "attackTime": 3.5,
+    "speed": 0.6,
+    "weight": 4,
+    "abilities": [
+      "可以拾取并最多同时保有三个魂灵涡流",
+      "保有魂灵涡流时，会消耗魂灵涡流召唤一个绕自身旋转的魂灵残片，对碰撞到的我方单位造成高额法术伤害。"
+    ],
+    "description": "因死魂灵的意志而诞生的高级魂灵法骸，记忆中无数英雄的战斗技巧皆加诸其身。英雄尽死，那些背影却因反复回忆而愈加清晰。"
+  },
+  {
+    "id": "enemy_1433_dsbasi",
+    "name": "单核掠食者",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 4300,
+    "atk": 280,
+    "def": 0,
+    "res": 10,
+    "attackTime": 1.1,
+    "speed": 1.6,
+    "weight": 0,
+    "abilities": [],
+    "description": "构造简单的海嗣，推测是海嗣群落中的采集者，其生命活动几乎不需消耗能量。"
+  },
+  {
+    "id": "enemy_1433_dsbasi_2",
+    "name": "异光体掠食者",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 5700,
+    "atk": 350,
+    "def": 0,
+    "res": 10,
+    "attackTime": 1.1,
+    "speed": 1.6,
+    "weight": 0,
+    "abilities": [],
+    "description": "构造简单但受到滋养的新生海嗣，能以更高效率采集养分。"
+  },
+  {
+    "id": "enemy_1435_dsflys",
+    "name": "纤核漂游者",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "FLY",
+    "hp": 5100,
+    "atk": 300,
+    "def": 80,
+    "res": 30,
+    "attackTime": 3.5,
+    "speed": 0.7,
+    "weight": 2,
+    "abilities": [
+      "飞行单位",
+      "优先攻击高台单位",
+      "攻击附带神经损伤"
+    ],
+    "description": "胞口发达的海嗣，推测是海嗣群落中的输送者，会喷出带有剧毒的纤毛以保护自身。"
+  },
+  {
+    "id": "enemy_1436_dsdivi",
+    "name": "诡核集养者",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 8000,
+    "atk": 190,
+    "def": 150,
+    "res": 35,
+    "attackTime": 1.6,
+    "speed": 1,
+    "weight": 2,
+    "abilities": [
+      "生命值首次低于一半时，分裂自身"
+    ],
+    "description": "对环境极为敏感的海嗣，推测是海嗣群落中的积藏者，随时可能应激从而分裂。"
+  },
+  {
+    "id": "enemy_1436_dsdivi_2",
+    "name": "异光体集养者",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 230,
+    "def": 175,
+    "res": 45,
+    "attackTime": 1.6,
+    "speed": 1,
+    "weight": 2,
+    "abilities": [
+      "生命值首次低于一半时，分裂自身"
+    ],
+    "description": "积累了过量养分的集养者，体内的贮存足以应对强烈的外部刺激。"
+  },
+  {
+    "id": "enemy_1437_dsfull",
+    "name": "蕴核饲育者",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 14500,
+    "atk": 800,
+    "def": 1250,
+    "res": 15,
+    "attackTime": 4.5,
+    "speed": 0.5,
+    "weight": 5,
+    "abilities": [
+      "被击倒时随机释放一只<诡核集养者>、<单核掠食者>或<微核沉积者>，该敌人移动速度较大幅度提升"
+    ],
+    "description": "已分化生长出多种器官的复杂海嗣，推测是海嗣群落中的饲育者，孕育的核心藏在体内。"
+  },
+  {
+    "id": "enemy_1437_dsfull_2",
+    "name": "异光体饲育者",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 16000,
+    "atk": 900,
+    "def": 1400,
+    "res": 20,
+    "attackTime": 4.5,
+    "speed": 0.5,
+    "weight": 5,
+    "abilities": [
+      "被击倒时随机释放一只<异光体集养者>、<异光体掠食者>或<微核沉积者>，该敌人移动速度较大幅度提升"
+    ],
+    "description": "孕育无数子代的复杂海嗣，分化的器官发育成了怪诞的形状，核心隐藏在体内更深处，孕育的海嗣也更加危险。"
+  },
+  {
+    "id": "enemy_1438_dspred",
+    "name": "复核洋流使者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 13200,
+    "atk": 1050,
+    "def": 660,
+    "res": 45,
+    "attackTime": 3,
+    "speed": 1,
+    "weight": 4,
+    "abilities": [
+      "能够吞噬赘生甲壳并使自身攻击力和生命值大幅提升"
+    ],
+    "description": "已经高度分化的海嗣，遍布海洋各处，特化的触肢能够扇动水流，据说数以百亿计的它们决定了洋流的走向。"
+  },
+  {
+    "id": "enemy_1439_dslntf",
+    "name": "元核孽生者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 30000,
+    "atk": 500,
+    "def": 0,
+    "res": 70,
+    "attackTime": 3,
+    "speed": 0.25,
+    "weight": 2,
+    "abilities": [
+      "受到伤害时进入临战状态：移动速度大幅度提升，持续对周围造成神经损伤",
+      "被<赘生甲壳>阻挡时将其摧毁，每次摧毁时流失一定比例生命值"
+    ],
+    "description": "本是为了特殊器官而分化的细胞，意外发育成了独立个体，代谢废物分泌形成神经毒素，在海嗣群落中发挥的作用尚不明确。"
+  },
+  {
+    "id": "enemy_1439_dslntf_2",
+    "name": "异光体孽生者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 33000,
+    "atk": 600,
+    "def": 0,
+    "res": 80,
+    "attackTime": 3,
+    "speed": 0.25,
+    "weight": 2,
+    "abilities": [
+      "受到伤害时进入临战状态：移动速度大幅度提升，持续对周围造成神经损伤",
+      "被<赘生甲壳>阻挡时将其摧毁，每次摧毁时流失一定比例生命值"
+    ],
+    "description": "在恶劣环境中成长的独立个体，已经发育成为合成神经毒素的腺体，极度罕见，极度危险。"
+  },
+  {
+    "id": "enemy_1500_skulsr",
+    "name": "碎骨",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 10500,
+    "atk": 1000,
+    "def": 150,
+    "res": 30,
+    "attackTime": 3,
+    "speed": 0.6,
+    "weight": 5,
+    "abilities": [
+      "未被阻挡时会发射榴弹，击中目标及其周围单位使其防御力在短时间内大幅度下降",
+      "生命值降至一半以下时攻击力大幅度提升"
+    ],
+    "description": "整合运动突击部队干部，手持有源石爆破物及其发射器，但报告说其行动能力优秀，在近身作战中仍有巨大威胁。在龙门外环区域被多次目击。有情报显示他正在参与该区域的某项特殊行动。"
+  },
+  {
+    "id": "enemy_1501_demonk",
+    "name": "萨卡兹百夫长",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 700,
+    "def": 250,
+    "res": 35,
+    "attackTime": 5,
+    "speed": 0.78,
+    "weight": 5,
+    "abilities": [
+      "同时攻击两个目标"
+    ],
+    "description": "整合运动干部，萨卡兹雇佣兵。带领一部分萨卡兹雇佣兵进行正面作战。有限的情报显示他平时较为沉默寡言，无法从其口中获得情报。"
+  },
+  {
+    "id": "enemy_1502_crowns",
+    "name": "弑君者",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 6000,
+    "atk": 400,
+    "def": 120,
+    "res": 50,
+    "attackTime": 2.8,
+    "speed": 1.4,
+    "weight": 1,
+    "abilities": [
+      "被阻挡时可以快速移动至其身后"
+    ],
+    "description": "整合运动干部，从事敌后活动与突袭暗杀行动，擅长近身攻击与突破防御阵线进行奇袭。渗透能力与隐蔽能力优秀，针对她所进行的多次行动均无功而返。"
+  },
+  {
+    "id": "enemy_1504_cqbw",
+    "name": "W",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 10000,
+    "atk": 470,
+    "def": 100,
+    "res": 50,
+    "attackTime": 4,
+    "speed": 1.2,
+    "weight": 5,
+    "abilities": [
+      "会使用爆破物，能对我方单位造成大量物理伤害",
+      "生命值降至一半以下时炸药包的使用数量增加"
+    ],
+    "description": "整合运动干部，萨卡兹雇佣兵，携带形似拉特兰铳的武器，但几乎只是用爆破物和投掷物进行攻击。常使用大量活性源石爆破物在侧面战场进行破坏。行动非常诡异，让人摸不着头脑……"
+  },
+  {
+    "id": "enemy_1509_mousek",
+    "name": "“鼠王”",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 22000,
+    "atk": 470,
+    "def": 350,
+    "res": 30,
+    "attackTime": 3.4,
+    "speed": 0.6,
+    "weight": 5,
+    "abilities": [
+      "【唱沙】对场上生命上限最高单位及其十字范围内所有目标造成大量物理伤害",
+      "【沙狱】使场上生命上限最低的单位及其周围目标攻击力降低且持续受到法术伤害",
+      "出场时拥有能够吸收大量法术伤害的屏障，屏障存在时防御力大幅增加",
+      "生命值低于50%时，自身造成的伤害提升"
+    ],
+    "description": "林，灰色的林，贫民窟的鼠王，他肩负着诸多称号，一如他的脚下拖曳着整座城市的阴影。不要触碰任何一条红线，当你为自己的僭越而犹豫的瞬间，你所担忧的事实将会在突兀的风沙中无声显现。"
+  },
+  {
+    "id": "enemy_1511_mdrock",
+    "name": "泥岩",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 45000,
+    "atk": 800,
+    "def": 1000,
+    "res": 30,
+    "attackTime": 4.5,
+    "speed": 0.6,
+    "weight": 6,
+    "abilities": [
+      "攻击时攻击力永久提升，最多六层",
+      "拥有屏障吸收法术伤害，屏障存在时大幅提升生命上限与攻击速度",
+      "周期性刷新屏障",
+      "释放技能直接夺取最近的非敌方“留声机”"
+    ],
+    "description": "年龄不详，性别不详，履历不详，在莱塔尼亚诸城之间的荒野间流浪的感染者组织领袖，曾是整合运动的一员，如今被迫走上战场的泥岩究竟抱着何种念想？"
+  },
+  {
+    "id": "enemy_1512_mcmstr",
+    "name": "“巨大的丑东西”",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 40000,
+    "atk": 500,
+    "def": 1000,
+    "res": 20,
+    "attackTime": 4,
+    "speed": 0.6,
+    "weight": 6,
+    "abilities": [
+      "第一形态",
+      "远程攻击造成溅射伤害，近战攻击造成更高伤害",
+      "周期性破坏巨蕈或木桩地面，使其无法被部署",
+      "生命值降至0后自爆，造成大范围晕眩并弹出驾驶员大祭司",
+      "大祭司形态",
+      "不进行攻击，无法被阻挡，每秒受到真实伤害"
+    ],
+    "description": "祖玛玛的得意之作，庞大的机械怪兽，由大祭司驾驶。攻击方式远近兼顾，并且能够轻易地破坏巨蕈与木桩。正常工程师恐怕难以想象为何这样拼装的机器能够动起来，然而它就是这样动了起来。"
+  },
+  {
+    "id": "enemy_1513_dekght",
+    "name": "腐败骑士",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 40000,
+    "atk": 1200,
+    "def": 1200,
+    "res": 30,
+    "attackTime": 4,
+    "speed": 0.65,
+    "weight": 6,
+    "abilities": [
+      "攻击时使目标与周围四格的单位受到物理伤害",
+      "蓄力攻击，对目标与周围四格的单位造成高额物理伤害",
+      "当<凋零骑士>死亡时，攻击力、攻击速度、移动速度大幅提升"
+    ],
+    "description": "散发着恐怖气息的断角萨卡兹骑士，有明显过度使用药物的痕迹。使用战锤作战。拥有粉碎敌人的可怕力量，眼中只有目标。当凋零溃退时，他将肩负起完成使命的职责，大幅提升作战能力。他踏出的每一步都是为了散播腐败。"
+  },
+  {
+    "id": "enemy_1513_dekght_2",
+    "name": "凋零骑士",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 40000,
+    "atk": 500,
+    "def": 600,
+    "res": 70,
+    "attackTime": 4,
+    "speed": 0.65,
+    "weight": 6,
+    "abilities": [
+      "同时攻击两名目标",
+      "对三名目标发射爆炸箭，短暂延迟后爆炸，对目标与周围四格的单位造成高额法术伤害",
+      "当<腐败骑士>死亡时，攻击力、攻击速度、移动速度大幅提升"
+    ],
+    "description": "散发着恐怖气息的断角萨卡兹骑士，有明显过度使用药物的痕迹。使用咒弓作战。能同时射击多个目标，并栽下凋零法术的种子。当腐败溃退时，他将肩负起完成使命的职责，大幅提升作战能力。与之敌对的骑士终将归于凋零。"
+  },
+  {
+    "id": "enemy_1516_jakill",
+    "name": "杰斯顿·威廉姆斯",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 25000,
+    "atk": 700,
+    "def": 400,
+    "res": 20,
+    "attackTime": 4,
+    "speed": 0.6,
+    "weight": 6,
+    "abilities": [
+      "狱警形态",
+      "法术抗性大幅提升",
+      "攻击造成远程法术伤害，不攻击禁锢装置",
+      "能使多名单位晕眩",
+      "生命值首次降至0时进入杀手形态",
+      "杀手形态",
+      "进入杀手形态时解放全场敌人",
+      "防御力大幅提升",
+      "攻击造成近战物理伤害，能无视目标一定的防御力"
+    ],
+    "description": "装扮成狱警混入监狱的杀手，杰斯顿·威廉姆斯。言谈举止都相当讲究，与人交战时也尽显风度。"
+  },
+  {
+    "id": "enemy_1517_xi",
+    "name": "“自在”",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 30000,
+    "atk": 500,
+    "def": 750,
+    "res": 50,
+    "attackTime": 4,
+    "speed": 0.5,
+    "weight": 10,
+    "abilities": [
+      "第一形态",
+      "【纬地经天】对最近目标释放十字型法术，效果范围内晦明属性变化",
+      "【破桎而出】屏障未被击破则造成巨额范围伤害",
+      "生命值首次降至0后进入第二形态",
+      "第二形态",
+      "改变自身晦明属性",
+      "攻击力提升，普通攻击进行两次",
+      "额外对最远目标释放【纬地经天】"
+    ],
+    "description": "夕绘出的怪物，威严，冷傲，与其主如出一辙。“有兽色青，形似重峦，其数十一，戴月披烟。”"
+  },
+  {
+    "id": "enemy_1521_dslily",
+    "name": "盐风主教昆图斯",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 100000,
+    "atk": 380,
+    "def": 500,
+    "res": 50,
+    "attackTime": 3.5,
+    "speed": 0.1,
+    "weight": 10,
+    "abilities": [
+      "同时攻击防御最高的两个单位",
+      "【大潮】对所有我方单位造成法术和神经损伤",
+      "【崩坍】对若干我方单位造成物理伤害",
+      "【断裂生殖】召唤子代缠绕我方单位使其晕眩",
+      "【物种爆发】战斗经过较长时间后扣除所有目标生命"
+    ],
+    "description": "混入灾后伊比利亚的深海教会成员之一，真诚地用自己的理念篡改了律法，追求着个体的完美姿态，却根本无法参透海洋的意愿。话说回来，谁又能呢？"
+  },
+  {
+    "id": "enemy_1525_blkswb",
+    "name": "锏",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 28000,
+    "atk": 900,
+    "def": 600,
+    "res": 50,
+    "attackTime": 4,
+    "speed": 0.6,
+    "weight": 6,
+    "abilities": [
+      "免疫冻结，拥有抵抗",
+      "<降雪>时攻击力提升",
+      "第一形态",
+      "攻击阻挡自身的目标无视其一定防御力",
+      "【速杀】被阻挡时穿过目标并对沿途目标造成物理伤害",
+      "【肆虐风雪】造成范围物理伤害",
+      "第二形态",
+      "隐匿",
+      "攻击无视更多防御力并变为二连击",
+      "【瞬息杀机】每损失25%生命，清空范围内我方单位技力并使目标无法攻击或治疗一段时间"
+    ],
+    "description": "卡西米尔骑士竞赛三届冠军，不会使用法术的莱塔尼亚残次品，天生的武者——黑骑士。"
+  },
+  {
+    "id": "enemy_1535_wlfmster",
+    "name": "扎罗，“狼之主”",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 35000,
+    "atk": 800,
+    "def": 1000,
+    "res": 60,
+    "attackTime": 4,
+    "speed": 0.6,
+    "weight": 5,
+    "abilities": [
+      "使血债账款逐渐增加",
+      "第一形态",
+      "受到伤害降低，不可被晕眩",
+      "【溶血骇惧】使三名我方单位被恐惧吞噬，不可主动撤退，攻速大幅降低，并逐渐加速失去生命值；受影响单位在“狼之主”损失一定比例生命时，会恢复正常",
+      "第一形态生命值降为0后，获得【远古威慑】，周围我方单位降低攻击速度，并缓慢回复生命值",
+      "第二形态",
+      "不再拥有减伤，且不再释放【溶血骇惧】",
+      "攻击变为远程二连击，且攻击力提升",
+      "每隔一段时间释放，【狂暴怒嗥】，使血债账款快速上升"
+    ],
+    "description": "狼之主，自荒野中诞生，却将目光投向人世。自视甚高，机关算尽，然功亏一篑，满盘皆输。如今，该有人承受他的怒火了。"
+  },
+  {
+    "id": "enemy_1539_reid",
+    "name": "“复仇者”",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 23000,
+    "atk": 800,
+    "def": 650,
+    "res": 60,
+    "attackTime": 3,
+    "speed": 0.65,
+    "weight": 3,
+    "abilities": [
+      "生命值降至一半以下时攻击力大幅度提升",
+      "【冲锋】锁定前方路径范围内的一名目标，一定时间内移动速度大幅提升",
+      "首次被击倒后重生，恢复一半生命值"
+    ],
+    "description": "曾经遭遇过的整合运动干部，使用令人印象深刻的炙热长刀进行攻击。那个曾在59区废墟被你击败的劲敌，将重新出现在你面前，划出复仇的烈焰。"
+  },
+  {
+    "id": "enemy_2001_duckmi",
+    "name": "鸭爵",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "WALK",
+    "hp": 18000,
+    "atk": 100,
+    "def": 200,
+    "res": 30,
+    "attackTime": 1,
+    "speed": 0.4,
+    "weight": 3,
+    "abilities": [
+      "无法被阻挡",
+      "受到攻击后移动速度大幅度提升"
+    ],
+    "description": "哥伦比亚著名投资人，企业家，“鸭之力”大师。神出鬼没，爱好是和别人逗乐子……"
+  },
+  {
+    "id": "enemy_2002_bearmi",
+    "name": "高普尼克",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 30000,
+    "atk": 2000,
+    "def": 200,
+    "res": 50,
+    "attackTime": 3.5,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [],
+    "description": "鸭爵雇佣的乌萨斯保安，力大无穷但是脑袋不太好使，主要负责给鸭爵提行李。"
+  },
+  {
+    "id": "enemy_2003_rockman",
+    "name": "迷路的巨像",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 75000,
+    "atk": 1500,
+    "def": 600,
+    "res": 0,
+    "attackTime": 4.4,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "可以投掷具有超长晕眩时间的石头（不会以已经被晕眩的单位作为目标）"
+    ],
+    "description": "莱塔尼亚某个高塔术师的实验造物，这台巨像本来是作为“仆从”而制造，但是年迈的高塔术师忘记告诉他应该服务谁……"
+  },
+  {
+    "id": "enemy_2004_balloon",
+    "name": "喷气人",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 58000,
+    "atk": 400,
+    "def": 280,
+    "res": 30,
+    "attackTime": 2,
+    "speed": 0.8,
+    "weight": 3,
+    "abilities": [
+      "被阻挡后会升空一段时间（有冷却时间），期间不会被阻挡"
+    ],
+    "description": "哥伦比亚人茶余饭后的笑话之一，一个背着自制喷气背包，自称“超级神偷”的怪人，偷过最值钱的东西是一头驮兽。不过他能自制喷气背包，说不定是个高手。"
+  },
+  {
+    "id": "enemy_2005_axetro",
+    "name": "“遗弃者”",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 50000,
+    "atk": 500,
+    "def": 300,
+    "res": 30,
+    "attackTime": 3,
+    "speed": 0.6,
+    "weight": 3,
+    "abilities": [
+      "持续进行攻击时提高攻击力和攻击速度（有上限），停止攻击数秒后复原"
+    ],
+    "description": "“救援人员发现了一位被源石严重侵蚀的保安...已经变成了一个恐怖的怪物...现场一片狼藉...伤亡无法统计...去向不明”——雷姆必拓矿业记录"
+  },
+  {
+    "id": "enemy_2008_flking",
+    "name": "“墓碑”",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 60000,
+    "atk": 2000,
+    "def": 330,
+    "res": 55,
+    "attackTime": 3.5,
+    "speed": 0.5,
+    "weight": 6,
+    "abilities": [
+      "使全战场我方所有单位攻击力、防御力减半，部署费用回复速度减半，再部署时间加倍",
+      "周期性地添加正比于自身最大生命值的伤害防护屏障"
+    ],
+    "description": "一位残忍、对你穷追不舍的杀手，这片大地孕育的暴力最终会降生到每一个施暴者身上。"
+  },
+  {
+    "id": "enemy_2009_csaudc",
+    "name": "骇笑看客",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 8000,
+    "atk": 750,
+    "def": 600,
+    "res": 30,
+    "attackTime": 3,
+    "speed": 1.2,
+    "weight": 2,
+    "abilities": [
+      "攻击额外造成神经损伤"
+    ],
+    "description": "猩红剧团的忠实观众，不分昼夜地享受着戏剧，其自身已经与这剧团一样不可理喻。"
+  },
+  {
+    "id": "enemy_2021_syfish",
+    "name": "骨海漂流体",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 4000,
+    "atk": 250,
+    "def": 150,
+    "res": 10,
+    "attackTime": 2,
+    "speed": 1.2,
+    "weight": 1,
+    "abilities": [
+      "攻击额外造成侵蚀损伤"
+    ],
+    "description": "从大群骨骸中诞生的恐鱼，常常成群而动，一边寻找尸骨吞食养分，一边任由其他恐鱼捕食。"
+  },
+  {
+    "id": "enemy_2025_syufo",
+    "name": "掠海漂移体",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 20000,
+    "atk": 500,
+    "def": 250,
+    "res": 40,
+    "attackTime": 4,
+    "speed": 0.6,
+    "weight": 4,
+    "abilities": [
+      "近地悬浮",
+      "攻击额外造成侵蚀损伤"
+    ],
+    "description": "一种已初步适应天空环境的恐鱼，能够在不受阻碍的情况下一直在海面上滑行。这一分支持续进化后，或许能够衍生出永久居住在天空的后代。"
+  },
+  {
+    "id": "enemy_2034_sythef",
+    "name": "流泪小子",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 8000,
+    "atk": 300,
+    "def": 150,
+    "res": 20,
+    "attackTime": 2,
+    "speed": 0.8,
+    "weight": 2,
+    "abilities": [
+      "隐匿",
+      "攻击会晕眩目标"
+    ],
+    "description": "唯唯诺诺的佩洛，离开家庭后正在寻找自己的新生活……不过别人是记不住那么多的，别人只知道他一直在流泪。"
+  },
+  {
+    "id": "enemy_2048_smgrd",
+    "name": "“邪魔的利刃”",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 50000,
+    "atk": 800,
+    "def": 300,
+    "res": 30,
+    "attackTime": 4,
+    "speed": 0.6,
+    "weight": 4,
+    "abilities": [
+      "对【国度】中的我方单位造成高额物理伤害",
+      "持续在自身周围8格生成【国度】，大幅降低其中我方单位的攻击速度"
+    ],
+    "description": "“皇帝的利刃”生要见人，死要见国度，决不允许以此等失控的状态存在于世。它将被生前所有同僚猎杀，直至彻底消亡。"
+  },
+  {
+    "id": "enemy_2050_smsha",
+    "name": "陷落雪祀",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 40000,
+    "atk": 600,
+    "def": 300,
+    "res": 60,
+    "attackTime": 5,
+    "speed": 2.5,
+    "weight": 3,
+    "abilities": [
+      "攻击施加寒冷，且会在3个目标间跳跃，每次跳跃伤害降低",
+      "【反自然馈赠】攻击其他敌人并在3个敌人间跳跃，提升它们的移动和攻击速度"
+    ],
+    "description": "肉体被转化，脱离人类范畴的萨米部落酋长。若是放任它继续游荡，便会成为“寒灾”。"
+  },
+  {
+    "id": "enemy_2052_smgia",
+    "name": "纠缠藤蔓",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 90000,
+    "atk": 1200,
+    "def": 700,
+    "res": 30,
+    "attackTime": 3,
+    "speed": 0.5,
+    "weight": 5,
+    "abilities": [
+      "受到来自自然环境的伤害时，自身在短时间内获得高额脆弱",
+      "能在数次攻击后晕眩我方单位"
+    ],
+    "description": "受到自然呼唤而活化的植物傀儡，会对任何非萨米实体产生强烈反应。但由于藤蔓结构不稳定，很容易受到火焰影响。"
+  },
+  {
+    "id": "enemy_2085_skzjxd",
+    "name": "圆仔",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "WALK",
+    "hp": 50000,
+    "atk": 500,
+    "def": 0,
+    "res": 50,
+    "attackTime": 1,
+    "speed": 0.35,
+    "weight": 5,
+    "abilities": [
+      "始终面向我方干员数量较多的方向",
+      "受到来自正面的物理/法术伤害降低80%"
+    ],
+    "description": "鸭爵的合伙人和徒弟，伶牙俐齿的投机者。常在可疑的电视节目里做客，总说自己懂得流转的道理，所以并不计较财产的得失。"
+  },
+  {
+    "id": "enemy_2124_dyjsfg",
+    "name": "矩兽",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 350000,
+    "atk": 1500,
+    "def": 1000,
+    "res": 10,
+    "attackTime": 6,
+    "speed": 0.3,
+    "weight": 10,
+    "abilities": [
+      "【明力】晕眩、寒冷、冻结等异常状态的持续时间大幅降低，受到的物理与法术伤害大幅降低，被阻挡或停止移动时伤害降低效果减少",
+      "【尚同】持续对周围造成物理伤害，每次被阻挡时对周围额外造成一次高额物理伤害",
+      "【非命】生命值首次低于50%时，自身占用阻挡数、攻击力与移动速度提升",
+      "【兼爱】自身被击倒或退场时，使场上除<后兽>以外的所有敌人退场，对场上所有友方单位造成一次无视隐匿的高额物理伤害"
+    ],
+    "description": "溯合制序，止攻泯灾，刚而难曲，以矩名之。"
+  },
+  {
+    "id": "enemy_2135_shkrbt",
+    "name": "聆风猎手",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 600,
+    "def": 300,
+    "res": 20,
+    "attackTime": 1.2,
+    "speed": 0.7,
+    "weight": 2,
+    "abilities": [
+      "受到攻击时传送到攻击者身边"
+    ],
+    "description": "生活在黑流树海中的活跃“居民”。他们狂热地练习着一种追踪敌人的狩猎技巧，这似乎是因为他们的村落曾被侵略者用漫天的炮火犁成一片片废墟，直到他们中有一名刺客大师领悟了这门技艺。"
+  },
+  {
+    "id": "enemy_9006_actoxi",
+    "name": "假想敌：蚀裂",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 400,
+    "def": 400,
+    "res": 10,
+    "attackTime": 1.5,
+    "speed": 0.6,
+    "weight": 2,
+    "abilities": [
+      "被击倒后，向击倒自身的目标发射一团毒雾，持续对周围造成法术伤害"
+    ],
+    "description": "参照源石的侵蚀性质而设计的假想敌。自然界中的源石侵蚀其他物质，一如矿石病患者体内，源石侵蚀机体组织。与源石共存的可能性究竟是否存在？我们希望在模拟的战斗中找到答案。"
+  },
+  {
+    "id": "enemy_9007_acelem",
+    "name": "假想敌：淤困",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 36000,
+    "atk": 600,
+    "def": 200,
+    "res": 40,
+    "attackTime": 1,
+    "speed": 0.5,
+    "weight": 1,
+    "abilities": [
+      "自身不容易受到攻击",
+      "被阻挡时会对目标进行寄生，寄生目标持续受到法术伤害，且受到的元素损伤增加",
+      "寄生目标元素损伤爆发时对周围四格其他我方单位造成大量相同类型的元素损伤"
+    ],
+    "description": "参照源石的流体形态而设计的假想敌。无人知晓源石为何以此种形式呈现，但这极有可能是下一次源石灾害爆发的前兆。必须在模拟的战斗中找到方法，来消灭它、控制它，或是利用它。"
+  },
+  {
+    "id": "enemy_9008_acbunn",
+    "name": "假想敌：骨刺",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 12000,
+    "atk": 360,
+    "def": 300,
+    "res": 60,
+    "attackTime": 4,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "隐匿",
+      "隐匿状态下同时攻击数个目标"
+    ],
+    "description": "参照源石晶簇的结构而设计的假想敌。金属机械的构造使误差与瑕疵难以避免，但至少晶簇那危险而尖锐的印象得以保留。必须在模拟的战斗中克服深层的恐惧本能。"
+  },
+  {
+    "id": "enemy_9009_acfort",
+    "name": "假想敌：黑云",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "FLY",
+    "hp": 24000,
+    "atk": 500,
+    "def": 150,
+    "res": 20,
+    "attackTime": 3,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "周期性束缚并吞噬数个非精英领袖飞行敌人，并回复等量弹药",
+      "一次性消耗所有弹药对目标造成大量物理伤害"
+    ],
+    "description": "参照源石尘降前出现的天灾云而设计的假想敌。天灾是文明长久的敌人，天灾云之下的源石聚合体是死亡的象征。必须在模拟的战斗中找到应对天灾的更多方法。"
+  },
+  {
+    "id": "enemy_9010_acpupp",
+    "name": "假想敌：再生",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 12000,
+    "atk": 1100,
+    "def": 300,
+    "res": 40,
+    "attackTime": 5,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "被击倒后进入再生状态并使周围一定距离内其他敌人获得可以抵挡物理及法术伤害的护盾，护盾受到一定次数攻击后被击破",
+      "再生状态需要数次伤害击倒，一段时间后重生"
+    ],
+    "description": "参照从源石中诞生的怪物而设计的假想敌。我们曾在罗德岛本舰与这样的敌人交战，它们不断地再生、爬起，借逝去者的外形施以杀戮。必须在模拟的战斗中找到更多的应对措施。"
+  },
+  {
+    "id": "enemy_9011_acrefr",
+    "name": "假想敌：镜膜",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 18000,
+    "atk": 1000,
+    "def": 600,
+    "res": 0,
+    "attackTime": 5.5,
+    "speed": 0.5,
+    "weight": 4,
+    "abilities": [
+      "折射",
+      "折射生效时自身生命值大幅提升"
+    ],
+    "description": "参照被源石占据的机械而设计的假想敌。我们曾在罗德岛本舰与这样的机械造物交战，源石夺走了我们的造物，赋予它们更危险的能力。必须在模拟的战斗中找到破解这一困境的更多办法。"
+  },
+  {
+    "id": "enemy_9012_acloon",
+    "name": "“炎佑”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "FLY",
+    "hp": 12000,
+    "atk": 600,
+    "def": 200,
+    "res": 0,
+    "attackTime": 2.5,
+    "speed": 1,
+    "weight": 10,
+    "abilities": [
+      "战斗开始时，“炎佑”获得等于当前场地所有炎盟约干员一定比例的攻击力与生命值",
+      "同时攻击数个目标，攻击附带攻击力一定比例的灼燃损伤且周围的敌方单位受到一定比例的元素脆弱",
+      "【祛恶之焰】对攻击范围内的一名敌人持续喷射火焰，每秒造成攻击力一定比例的法术伤害，同时对目标周围至多数个敌人也造成伤害"
+    ],
+    "description": "炎国天师能够施展机关术，令凡铁俗木借火势而翔空，化作满天星火，护佑山水百姓。遇节庆则为宣瑞之明灯，遇争战则为除恶之雄兵。"
+  },
+  {
+    "id": "enemy_9013_acstmk",
+    "name": "假想敌：胄",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理",
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 600000,
+    "atk": 650,
+    "def": 1000,
+    "res": 25,
+    "attackTime": 4,
+    "speed": 0.1,
+    "weight": 10,
+    "abilities": [
+      "随机选择目标发射射线造成法术伤害",
+      "【灭顶之灾】选择攻击力最高的干员对其发射一枚<刺胄之弹>，<刺胄之弹>到达目标位置时爆炸使目标及周围8格单位晕眩较长时间且每秒受到物理伤害；<刺胄之弹>飞行时对其造成数次攻击可将其击破",
+      "生命值低于一定比例时，受到的物理与法术伤害降低，【灭顶之灾】额外发射<刺胄之弹>",
+      "【死亡集群】周期性召唤无人机单位",
+      "隐秘核心",
+      "【旧日的剑与锤】在模拟中达成特定条件并进入隐秘核心回合时，<假想敌：胄>将获得<“斩胄之剑”>和<“破胄之锤”>以完全形态登场",
+      "<“斩胄之剑”>和<“破胄之锤”>初始无敌；被击落时受到伤害以一定比例传递给<假想敌：胄>",
+      "<“斩胄之剑”>和<“破胄之锤”>周期性飞向场上攻击力最低的一名干员并自爆，使目标及其周围8格的干员晕眩，每秒受到物理伤害，随后返回<假想敌：胄>身边；飞行途中失去无敌且受到一定次数伤害后会被击落；被击落后，视为地面单位且受到的伤害增加"
+    ],
+    "description": "被源石完全侵蚀的蒸汽甲胄，是根据源石灾难在全泰拉爆发的想象而设计的假想敌之一。源石在大地上蔓延，曾经的勇气、信念与荣耀皆归于晶尘，只留被晶簇撕裂的甲胄仍向那余晖落幕之地前行。"
+  },
+  {
+    "id": "enemy_9013_acstmk_2",
+    "name": "假想敌：胄",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理",
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 1200000,
+    "atk": 750,
+    "def": 1200,
+    "res": 30,
+    "attackTime": 4,
+    "speed": 0.1,
+    "weight": 10,
+    "abilities": [
+      "随机选择目标进行法术攻击",
+      "生命值低于一定比例时，受到的物理与法术伤害降低，且【灭顶之灾】额外发射<刺胄之弹>",
+      "【灭顶之灾】选择范围内攻击力最高的干员，对其发射一枚<刺胄之弹>，<刺胄之弹>到达目标位置时爆炸，使目标及周围8格单位晕眩且每秒受到物理伤害；<刺胄之弹>飞行时需要数次攻击击破",
+      "【死亡集群】周期性召唤无人机单位",
+      "隐秘核心",
+      "【旧日的剑与锤】在模拟中达成特定条件并进入隐秘核心回合时，<假想敌：胄>将展现它的完全形态"
+    ],
+    "description": "被源石完全侵蚀的蒸汽甲胄，是根据源石灾难在全泰拉爆发的想象而设计的假想敌之一。源石在大地上蔓延，曾经的勇气、信念与荣耀皆归于晶尘，只留被晶簇撕裂的甲胄仍向那余晖落幕之地前行。\n将出现于隐秘核心回合并展开最终攻势。"
+  },
+  {
+    "id": "enemy_9014_acstma",
+    "name": "“斩胄之剑”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "FLY",
+    "hp": 240000,
+    "atk": 300,
+    "def": 400,
+    "res": 80,
+    "attackTime": 6,
+    "speed": 0.5,
+    "weight": 5,
+    "abilities": [
+      "持续攻击，造成范围物理伤害",
+      "初始无敌；被击落时受到的伤害以一定比例传递给假想敌：胄",
+      "周期性飞向场上攻击力最低的一名干员，使目标及其周围8格的干员晕眩，每秒造成物理伤害",
+      "飞行中的“斩胄之剑”在受到一定次数伤害后被击落",
+      "“斩胄之剑”被击落后，视为地面单位且受到的伤害增加"
+    ],
+    "description": ""
+  },
+  {
+    "id": "enemy_9015_acstmb",
+    "name": "“破胄之锤”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "FLY",
+    "hp": 250000,
+    "atk": 350,
+    "def": 3500,
+    "res": 10,
+    "attackTime": 8,
+    "speed": 0.5,
+    "weight": 5,
+    "abilities": [
+      "持续攻击，造成范围物理伤害",
+      "初始无敌；被击落时受到的伤害以一定比例传递给假想敌：胄",
+      "周期性飞向场上攻击力最低的一名干员，使目标及其周围8格的干员晕眩，每秒造成物理伤害",
+      "飞行中的“破胄之锤”在受到一定次数伤害后被击落",
+      "“破胄之锤”被击落后，视为地面单位且受到的伤害增加"
+    ],
+    "description": ""
+  },
+  {
+    "id": "enemy_9016_acstmr",
+    "name": "刺胄之弹",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "FLY",
+    "hp": 8,
+    "atk": 0,
+    "def": 0,
+    "res": 0,
+    "attackTime": 1,
+    "speed": 0.5,
+    "weight": 2,
+    "abilities": [
+      "到达目标时爆炸，使目标及其周围8格的干员晕眩，每秒造成物理伤害",
+      "需要数次攻击击倒"
+    ],
+    "description": ""
+  },
+  {
+    "id": "enemy_9017_achunt",
+    "name": "假想敌：铳",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 120000,
+    "atk": 750,
+    "def": 1100,
+    "res": 60,
+    "attackTime": 4.5,
+    "speed": 0.4,
+    "weight": 10,
+    "abilities": [
+      "优先攻击防御力最高的单位",
+      "攻击时附带侵蚀损伤",
+      "对同一个目标进行攻击时，攻击速度逐渐提升",
+      "【最终之罚】停止攻击，移动速度大幅提升，向全场防御力最高的单位冲锋。技能持续期间，无法被阻挡，并对经过的单位造成物理伤害",
+      "隐秘核心",
+      "【未尽的告解】在模拟中达成特定条件并进入隐秘核心回合时，场上出现<“碎铳之簧”>，同时<假想敌：铳>受到的物理与法术伤害大幅降低",
+      "【盲信之誓】与场上所有<“碎铳之簧”>连结，<“碎铳之簧”>受到伤害时以一定比例传递给<假想敌：铳>，处于【盲信之誓】连结上的我方单位每秒受到物理伤害",
+      "【末日布道】持续召唤场上所有<“碎铳之簧”>向自身移动，<“碎铳之簧”>移动速度大幅提升并免疫伤害，对经过的我方单位造成物理伤害"
+    ],
+    "description": "被源石占据重塑的圣卫铳骑，是根据源石灾难在全泰拉爆发的想象而设计的假想敌之一。源石在大地上蔓延，夺去一切我们尊崇的事物并取而代之，当所有的秩序被粉碎，它即是秩序。\n"
+  },
+  {
+    "id": "enemy_9017_achunt_2",
+    "name": "假想敌：铳",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 120000,
+    "atk": 750,
+    "def": 1100,
+    "res": 60,
+    "attackTime": 4.5,
+    "speed": 0.4,
+    "weight": 10,
+    "abilities": [
+      "优先攻击防御力最高的单位",
+      "攻击时附带侵蚀损伤",
+      "对同一个目标进行攻击时，攻击速度逐渐提升",
+      "【最终之罚】停止攻击，移动速度大幅提升，向全场防御力最高的单位冲锋。技能持续期间，无法被阻挡，并对经过的单位造成物理伤害",
+      "隐秘核心",
+      "【未尽的告解】在模拟中达成特定条件并进入隐秘核心回合时，场上出现<“碎铳之簧”>，同时<假想敌：铳>受到的物理与法术伤害极大幅降低",
+      "【盲信之誓】与场上所有<“碎铳之簧”>连结，<“碎铳之簧”>受到伤害时以一定比例传递给<假想敌：铳>和场上其他<“碎铳之簧”>，处于【盲信之誓】连结上的我方单位每秒受到物理伤害",
+      "【末日布道】持续召唤场上所有<“碎铳之簧”>向自身移动，<“碎铳之簧”>移动速度大幅提升并免疫伤害，对经过的我方单位造成物理伤害"
+    ],
+    "description": "被源石占据重塑的圣卫铳骑，是根据源石灾难在全泰拉爆发的想象而设计的假想敌之一。源石在大地上蔓延，夺去一切我们尊崇的事物并取而代之，当所有的秩序被粉碎，它即是秩序。\n将出现于隐秘核心回合并展开最终攻势。"
+  },
+  {
+    "id": "enemy_9018_actrpa",
+    "name": "“碎铳之簧”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2500000,
+    "atk": 600,
+    "def": 1100,
+    "res": 60,
+    "attackTime": 4.5,
+    "speed": 0.3,
+    "weight": 3,
+    "abilities": [
+      "【未竟的祷祝】初始持有以下一种特殊护盾；护盾生效时，自身无法被阻挡；护盾消失一定时间后，重新获得对应护盾",
+      "元素护盾：受到的物理与法术伤害大幅降低，自身元素损伤爆发时，护盾消失。持有此护盾时，周期性发射一枚可以造成元素损伤并弹射数次的子弹，子弹在弹跳后伤害逐渐降低",
+      "法术护盾：获得一定量的法术屏障，屏障存在时自身受到的物理伤害大幅降低。持有此护盾时，受到物理伤害时对来源造成物理伤害和侵蚀损伤",
+      "频次护盾：受到数次伤害后消失。持有此护盾时，周期性进行十连击"
+    ],
+    "description": "被源石占据重塑的告解车，它将成为圣卫铳骑的子弹，忠实地执行其意志，无论那意志的本质是什么。"
+  },
+  {
+    "id": "enemy_9019_actrpb",
+    "name": "“碎铳之簧”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2500000,
+    "atk": 600,
+    "def": 1100,
+    "res": 60,
+    "attackTime": 4.5,
+    "speed": 0.3,
+    "weight": 3,
+    "abilities": [],
+    "description": ""
+  },
+  {
+    "id": "enemy_9020_actrpc",
+    "name": "“碎铳之簧”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 2500000,
+    "atk": 600,
+    "def": 1100,
+    "res": 60,
+    "attackTime": 4.5,
+    "speed": 0.3,
+    "weight": 3,
+    "abilities": [],
+    "description": ""
+  },
+  {
+    "id": "enemy_9021_acduml",
+    "name": "假想敌：管",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 85000,
+    "atk": 300,
+    "def": 700,
+    "res": 50,
+    "attackTime": 3,
+    "speed": 1,
+    "weight": 7,
+    "abilities": [
+      "在场时持续召唤【暗色的喟叹】形态<“余音”>；生命值低于一定比例时，召唤间隔缩短",
+      "优先攻击【暗色的喟叹】形态<“余音”>",
+      "【裂管之奏】选择场上所有【暗色的喟叹】形态<“余音”>进行一次三连击，造成范围法术伤害和凋亡损伤",
+      "隐秘核心",
+      "在模拟中达成特定条件并进入隐秘核心回合时，<假想敌：弦>将与<假想敌：管>同时登场"
+    ],
+    "description": "由源石创造再现的“女皇之声”，是根据源石灾难在全泰拉爆发的想象而设计的假想敌之一。源石在大地上蔓延，淹没一切赞美与斥责。晶体棱面泛起的余音，不过是源石的另一个名字。"
+  },
+  {
+    "id": "enemy_9021_acduml_2",
+    "name": "假想敌：管",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 85000,
+    "atk": 300,
+    "def": 700,
+    "res": 50,
+    "attackTime": 3,
+    "speed": 1,
+    "weight": 7,
+    "abilities": [
+      "在场时持续召唤【暗色的喟叹】形态<“余音”>；生命值低于一定比例时，召唤间隔缩短",
+      "优先攻击【暗色的喟叹】形态<“余音”>",
+      "【裂管之奏】选择场上所有【暗色的喟叹】形态<“余音”>进行一次三连击，造成范围法术伤害和凋亡损伤",
+      "隐秘核心",
+      "在模拟中达成特定条件并进入隐秘核心回合时，<假想敌：弦>将与<假想敌：管>同时登场"
+    ],
+    "description": "由源石创造再现的“女皇之声”，是根据源石灾难在全泰拉爆发的想象而设计的假想敌之一。源石在大地上蔓延，淹没一切赞美与斥责。晶体棱面泛起的余音，不过是源石的另一个名字。\n将出现于隐秘核心回合并展开最终攻势。"
+  },
+  {
+    "id": "enemy_9022_acdumm",
+    "name": "假想敌：弦",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 85000,
+    "atk": 120,
+    "def": 700,
+    "res": 50,
+    "attackTime": 5,
+    "speed": 1,
+    "weight": 7,
+    "abilities": [
+      "永久无敌；在<假想敌：管>被击倒后同时离场",
+      "在场时，持续召唤【金黄的悲号】形态<“余音”>",
+      "优先攻击【金黄的悲号】形态<“余音”>",
+      "【断弦之奏】选择场上所有【金黄的悲号】形态<“余音”>，以其为中心造成一次大范围法术伤害和凋亡损伤，并转换目标<“余音”>形态"
+    ],
+    "description": "由源石创造再现的“巫王之声”，是根据源石灾难在全泰拉爆发的想象而设计的假想敌之一。源石从没有边际的海洋中打捞起一道暗影，重新赋予它身躯与弦音。那片静止的海洋囊括了一切，唯独没有那道暗影在帕维永中窥见的未来。"
+  },
+  {
+    "id": "enemy_9023_acdums",
+    "name": "“余音”",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 10,
+    "atk": 200,
+    "def": 0,
+    "res": 0,
+    "attackTime": 4,
+    "speed": 0.8,
+    "weight": 2,
+    "abilities": [
+      "需要数次攻击击倒",
+      "只能被阻挡数大于等于2的单位阻挡",
+      "【复调】：在【金黄的悲号】与【暗色的喟叹】形态之间转换",
+      "【金黄的悲号】形态时攻击速度提升，受到数次伤害后转换为【暗色的喟叹】形态",
+      "【暗色的喟叹】形态时移动速度下降，攻击力提升，受到数次伤害后转换为【金黄的悲号】形态",
+      "受到伤害时以自身为中心造成一次范围法术伤害和凋亡损伤",
+      "全场所有<“余音”>周期性一同进行一次合奏造成范围法术伤害和凋亡损伤"
+    ],
+    "description": "残余的节拍，暗淡的回响。由谁指挥，为何颂唱？"
+  },
+  {
+    "id": "enemy_9024_acsgnt",
+    "name": "“不眠雪山”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 21000,
+    "atk": 920,
+    "def": 600,
+    "res": 30,
+    "attackTime": 3,
+    "speed": 0.4,
+    "weight": 5,
+    "abilities": [
+      "可在【覆雪苏醒】和【覆雪坐定】两种状态间切换，处于【覆雪坐定】时可以释放技能【神迹之声】",
+      "【覆雪苏醒】：可以移动并对敌人造成远程法术溅射伤害",
+      "【覆雪坐定】：最多阻挡3个敌人；造成法术溅射伤害，攻击被冻结的敌人时造成更高法术伤害并解除其冻结状态",
+      "【神迹之声】停止攻击，立即诱导范围内的所有敌人至自身周围的可达地面"
+    ],
+    "description": "如果还有固执的人不愿意相信，虔诚的祈祷能引发神迹的话，谢拉格人就会去带他们看一眼这些大家伙，结果往往不言而喻。"
+  },
+  {
+    "id": "enemy_9025_aclts",
+    "name": "“一个小节”",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 2350,
+    "atk": 450,
+    "def": 0,
+    "res": 0,
+    "attackTime": 3,
+    "speed": 0.7,
+    "weight": 1,
+    "abilities": [
+      "可以阻挡1个敌人",
+      "自身缓慢流失生命"
+    ],
+    "description": "莱塔尼亚的音乐中所蕴含的法术能量，即便在乐章演奏结束之后也会依然在场上回荡。哪怕只是一个小节的音符，也有着能够影响战局的能力。"
+  },
+  {
+    "id": "enemy_9026_acltm",
+    "name": "“一个乐部”",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 8500,
+    "atk": 950,
+    "def": 450,
+    "res": 30,
+    "attackTime": 3,
+    "speed": 0.5,
+    "weight": 3,
+    "abilities": [
+      "可以阻挡2个敌人；进行远程法术攻击",
+      "攻击3次后，下次攻击进行二连击",
+      "自身缓慢流失生命"
+    ],
+    "description": "莱塔尼亚的音乐中所蕴含的法术能量，即便在乐章演奏结束之后也会依然在场上回荡。充满着上行动机和连续重音的激昂乐部，其所蕴含的爆发力足以刻印在所有人的记忆之中。"
+  },
+  {
+    "id": "enemy_9027_acfnca",
+    "name": "冲击之械",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "FLY",
+    "hp": 120000,
+    "atk": 800,
+    "def": 1400,
+    "res": 20,
+    "attackTime": 1,
+    "speed": 0.2,
+    "weight": 8,
+    "abilities": [
+      "不进行攻击；未释放【威光冲击】时无法被攻击",
+      "【威光冲击】结束后重新起飞，受到伤害时缓慢向相反方向移动；若撞击到<假想敌：械>，则销毁场上所有<冲击之械>",
+      "【威光冲击】向两侧快速飞行，在经过5个目标或到达最远目标时砸下，造成大量物理伤害，随后在两个<冲击之械>间生成使我方单位攻速大幅降低的区域"
+    ],
+    "description": "通过扭曲的源石能量铸造而成的巨型金属盾板，在一定能量波幅下能接收操控信号，从而在战场上造成巨大冲击与杀伤。"
+  },
+  {
+    "id": "enemy_9028_acfncb",
+    "name": "量变之械",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 4500,
+    "atk": 570,
+    "def": 600,
+    "res": 30,
+    "attackTime": 2.5,
+    "speed": 0.4,
+    "weight": 2,
+    "abilities": [
+      "首次攻击造成的伤害提升"
+    ],
+    "description": "通过纯粹的源石能量自行作战的量产化机械，身为机械造物却在源石的影响下有了战斗意识。"
+  },
+  {
+    "id": "enemy_9029_acfnc",
+    "name": "假想敌：械",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 120000,
+    "atk": 650,
+    "def": 600,
+    "res": 30,
+    "attackTime": 10,
+    "speed": 1,
+    "weight": 9,
+    "abilities": [
+      "攻击命中时，在目标位置或周围可通行地块召唤<量变之械>",
+      "生命值低于50%时，召唤<冲击之械>；受到来自<冲击之械>方向的伤害降低",
+      "【洪流攻势】选择场上阻挡数最高的我方单位，在其周围召唤<量变之械>",
+      "隐秘核心",
+      "在模拟中达成特定条件并进入隐秘核心回合时，<假想敌：械>将获得强化，攻击会在多个目标间跳跃，每次跳跃伤害降低；登场时召唤<冲击之械>",
+      "【威光冲击】使<冲击之械>向两侧飞出并在经过数个我方单位或到达最远处时砸下，造成大量物理伤害；两个<冲击之械>之间的我方单位攻击速度大幅降低；<冲击之械>受到伤害时缓慢反向移动，若撞击<假想敌：械>，则销毁场上所有<冲击之械>",
+      "【衰颓与复兴】销毁并重新召唤<冲击之械>"
+    ],
+    "description": "由源石构建出的巨型自行机甲，是根据源石灾难在全泰拉爆发的想象而设计的假想敌之一。源石在大地上蔓延，一切过去的荣光与牺牲，在此刻化作无上的暴力与痛苦，在人们的眼前轰鸣不止。"
+  },
+  {
+    "id": "enemy_9029_acfnc_2",
+    "name": "假想敌：械",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 120000,
+    "atk": 750,
+    "def": 600,
+    "res": 30,
+    "attackTime": 10,
+    "speed": 1,
+    "weight": 9,
+    "abilities": [
+      "攻击命中时，在目标位置或周围可通行地块召唤<量变之械>",
+      "生命值低于50%时，召唤<冲击之械>；受到来自<冲击之械>方向的伤害降低",
+      "【洪流攻势】选择场上阻挡数最高的我方单位，在其周围召唤<量变之械>",
+      "隐秘核心",
+      "在模拟中达成特定条件并进入隐秘核心回合时，<假想敌：械>将获得强化，攻击会在多个目标间跳跃，每次跳跃伤害降低；登场时召唤<冲击之械>",
+      "【威光冲击】使<冲击之械>向两侧飞出并在经过数个我方单位或到达最远处时砸下，造成大量物理伤害；两个<冲击之械>之间的我方单位攻击速度大幅降低；<冲击之械>受到伤害时缓慢反向移动，若撞击<假想敌：械>，则销毁场上所有<冲击之械>",
+      "【衰颓与复兴】销毁并重新召唤<冲击之械>"
+    ],
+    "description": "由源石构建出的巨型自行机甲，是根据源石灾难在全泰拉爆发的想象而设计的假想敌之一。源石在大地上蔓延，一切过去的荣光与牺牲，在此刻化作无上的暴力与痛苦，在人们的眼前轰鸣不止。"
+  },
+  {
+    "id": "enemy_9030_acpara",
+    "name": "萨卡兹子裔寄生者",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 26000,
+    "atk": 850,
+    "def": 400,
+    "res": 20,
+    "attackTime": 4,
+    "speed": 0.4,
+    "weight": 4,
+    "abilities": [
+      "周围一定范围内的敌人被击倒时，召唤一个<大君之赐>"
+    ],
+    "description": "受到血魔大君活体血液赐福的萨卡兹王庭军特种术师。他们代表着大君的意志，扩散着恶意的赐福，将活体血液的能量播撒到目所能及之处。"
+  },
+  {
+    "id": "enemy_9031_acrefd",
+    "name": "假想敌：镜波",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 4500,
+    "atk": 500,
+    "def": 450,
+    "res": 0,
+    "attackTime": 1.5,
+    "speed": 0.7,
+    "weight": 1,
+    "abilities": [
+      "折射",
+      "被击倒时使周围法抗最低的敌人法术抗性提升"
+    ],
+    "description": "参照被源石占据的可动雷达而设计的假想敌。在与机械造物的战斗中，敌方曾通过雷达扫描出的信息占据战略优势，我们必须通过模拟来找出应对信息战的方法。"
+  },
+  {
+    "id": "enemy_9032_aclionk",
+    "name": "阿利斯泰尔，帝国余晖",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 81000,
+    "atk": 820,
+    "def": 1030,
+    "res": 20,
+    "attackTime": 8.2,
+    "speed": 0,
+    "weight": 10,
+    "abilities": [
+      "生命值降至一半及以下时，防御力及法术抗性提升，【莫非王土】每次活化两件装备",
+      "【斥退】战斗经过较长时间后，对全场我方单位造成法术溅射伤害, 并扣除所有目标生命",
+      "【王权号令】锁定一个我方单位及其周围四格，对范围内目标造成一次高额物理伤害并在此范围内的地块上生成随机装备",
+      "【莫非王土】场上存在装备时，使一件装备活化，不同的装备将产生不同效果。"
+    ],
+    "description": "帝国最后的余晖，生锈冠冕下的幽灵。反驳他，反驳维多利亚无上的荣光与权力，他会审视，他可以宽恕。"
+  },
+  {
+    "id": "enemy_9033_acdeer",
+    "name": "“萨米的意志”",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理",
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 240000,
+    "atk": 800,
+    "def": 800,
+    "res": 40,
+    "attackTime": 6,
+    "speed": 1,
+    "weight": 10,
+    "abilities": [
+      "【冰凌】攻击时对整列的我方单位造成物理伤害",
+      "【自然涌动】使一名我方单位晕眩并持续受到法术伤害",
+      "生命值低于一半时，受到的物理和法术伤害降低，【冰凌】和【自然涌动】额外选择一个目标"
+    ],
+    "description": "因萨米的一个念想从土石和冰雪中诞生，在这个念想得到满足前，它将在此矗立，阻挡一切生灵的去路。"
+  },
+  {
+    "id": "enemy_9034_acblk",
+    "name": "假想敌：影役",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 12000,
+    "atk": 800,
+    "def": 300,
+    "res": 40,
+    "attackTime": 3.5,
+    "speed": 0.3,
+    "weight": 2,
+    "abilities": [
+      "隐匿",
+      "周围一定范围内所有干员的阻挡数-1；该效果不可叠加"
+    ],
+    "description": "参照源石的污染力量而设计的假想敌。源石带来的危机潜藏在各个角落，任何时候都不能掉以轻心，必须在污染临近之前予以识别和处理。"
+  },
+  {
+    "id": "enemy_9035_acspider",
+    "name": "假想敌：茧",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 120000,
+    "atk": 500,
+    "def": 800,
+    "res": 30,
+    "attackTime": 2.5,
+    "speed": 1,
+    "weight": 9,
+    "abilities": [
+      "对每个场地上当前生命值最高的3个我方单位造成远程物理伤害",
+      "每损失一定生命值时，进入伪装状态并获得物理和法术闪避",
+      "【淤困捕食】在若干我方单位所在地块召唤<淤困之茧>，捆绑目标（使其无法攻击、阻挡和开启技能）",
+      "隐秘核心",
+      "在模拟中达成特定条件并进入隐秘核心回合时，<假想敌：茧>将获得强化，普通攻击附加中毒并额外选择每个场地一名我方单位，【淤困捕食】目标数增加",
+      "【悲惨之雨】释放酸雨覆盖一片场地，使场地上所有我方单位攻击速度下降并持续受到真实伤害"
+    ],
+    "description": "受源石侵蚀而巨化的荒漠昆虫，是根据源石灾难在全泰拉爆发的想象而设计的假想敌之一。源石在大地上蔓延，生存机理所设定的成长路径被它强行扭曲，从而制造出恐惧与贪欲的代表物。"
+  },
+  {
+    "id": "enemy_9035_acspider_2",
+    "name": "假想敌：茧",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 120000,
+    "atk": 500,
+    "def": 800,
+    "res": 30,
+    "attackTime": 2.5,
+    "speed": 1,
+    "weight": 9,
+    "abilities": [
+      "对每个场地上当前生命值最高的3个我方单位造成远程物理伤害",
+      "每损失一定生命值时，进入伪装状态并获得物理和法术闪避",
+      "【淤困捕食】在若干我方单位所在地块召唤<淤困之茧>，捆绑目标（使其无法攻击、阻挡和开启技能）",
+      "隐秘核心",
+      "在模拟中达成特定条件并进入隐秘核心回合时，<假想敌：茧>将获得强化，普通攻击附加中毒并额外选择每个场地一名我方单位，【淤困捕食】目标数增加",
+      "【悲惨之雨】释放酸雨覆盖一片场地，使场地上所有我方单位攻击速度下降并持续受到真实伤害"
+    ],
+    "description": "受源石侵蚀而巨化的荒漠昆虫，是根据源石灾难在全泰拉爆发的想象而设计的假想敌之一。源石在大地上蔓延，生存机理所设定的成长路径被它强行扭曲，从而制造出恐惧与贪欲的代表物。"
+  },
+  {
+    "id": "enemy_9036_acweb",
+    "name": "淤困之茧",
+    "level": "NORMAL",
+    "attackType": "",
+    "damage": [
+      "无"
+    ],
+    "motion": "WALK",
+    "hp": 20000,
+    "atk": 0,
+    "def": 0,
+    "res": 0,
+    "attackTime": 1,
+    "speed": 0,
+    "weight": 0,
+    "abilities": [
+      "捆绑所在地块的我方单位，使其无法攻击、阻挡和开启技能",
+      "更容易受到我方单位攻击",
+      "自身每秒损失一定比例的最大生命值",
+      "无法移动，无法被传送"
+    ],
+    "description": "“绝非代表新生与蜕变。”"
+  },
+  {
+    "id": "enemy_9037_aceel",
+    "name": "假想敌：鳍",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 120000,
+    "atk": 750,
+    "def": 600,
+    "res": 30,
+    "attackTime": 5,
+    "speed": 0.8,
+    "weight": 9,
+    "abilities": [
+      "攻击附带神经损伤",
+      "未被阻挡时获得特殊护盾，使自身受到的物理与法术伤害降低；被阻挡时消耗特殊护盾，并使下次攻击造成的伤害提升",
+      "【离子环波】对范围内所有我方单位造成法术伤害并附带神经损伤",
+      "隐秘核心",
+      "在模拟中达成特定条件并进入隐秘核心回合时，<假想敌：鳍>将获得强化，攻击会在多个我方单位间跳跃，每次跳跃伤害降低",
+      "连续攻击同一目标时提升该次攻击造成的伤害，并增加跳跃次数",
+      "在场时变为雷暴天气，周期性雷击站位密集的我方单位"
+    ],
+    "description": "受源石侵蚀而产生突变进化的恐鱼，是根据源石灾难在全泰拉爆发的想象而设计的假想敌之一。源石的污染渗透进生物的本质，将合理从进化的过程中剥离，诞生出虚妄的生命。"
+  },
+  {
+    "id": "enemy_9037_aceel_2",
+    "name": "假想敌：鳍",
+    "level": "BOSS",
+    "attackType": "",
+    "damage": [
+      "法术"
+    ],
+    "motion": "WALK",
+    "hp": 120000,
+    "atk": 750,
+    "def": 600,
+    "res": 30,
+    "attackTime": 5,
+    "speed": 0.8,
+    "weight": 9,
+    "abilities": [
+      "攻击附带神经损伤",
+      "未被阻挡时获得特殊护盾，使自身受到的物理与法术伤害降低；被阻挡时消耗特殊护盾，并使下次攻击造成的伤害提升",
+      "【离子环波】对范围内所有我方单位造成法术伤害并附带神经损伤",
+      "隐秘核心",
+      "在模拟中达成特定条件并进入隐秘核心回合时，<假想敌：鳍>将获得强化，攻击会在多个我方单位间跳跃，每次跳跃伤害降低",
+      "连续攻击同一目标时提升该次攻击造成的伤害，并增加跳跃次数",
+      "在场时变为雷暴天气，周期性雷击站位密集的我方单位"
+    ],
+    "description": "受源石侵蚀而产生突变进化的恐鱼，是根据源石灾难在全泰拉爆发的想象而设计的假想敌之一。源石的污染渗透进生物的本质，将合理从进化的过程中剥离，诞生出虚妄的生命。"
+  },
+  {
+    "id": "enemy_9039_acrefm",
+    "name": "假想敌：镜眼",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 15000,
+    "atk": 1000,
+    "def": 550,
+    "res": 0,
+    "attackTime": 4,
+    "speed": 0.3,
+    "weight": 5,
+    "abilities": [
+      "折射",
+      "受到法术伤害时降低伤害来源的攻击速度，持续一段时间"
+    ],
+    "description": "参照被源石占据的镜面机械而设计的假想敌。人们往往忽略了视觉干扰在战场上的巨大作用，即便是非致命性武器，也值得我们全力研究对抗策略。"
+  },
+  {
+    "id": "enemy_9040_accrit",
+    "name": "假想敌：丛生",
+    "level": "ELITE",
+    "attackType": "",
+    "damage": [
+      "物理"
+    ],
+    "motion": "WALK",
+    "hp": 11000,
+    "atk": 1200,
+    "def": 400,
+    "res": 20,
+    "attackTime": 4.5,
+    "speed": 0.7,
+    "weight": 2,
+    "abilities": [
+      "对每个目标首次造成的伤害提升，并使其一段时间内无法被治疗"
+    ],
+    "description": "参照被源石寄生的活体植物而设计的假想敌。一旦天灾云对环境造成这种程度的改变，想要复原就可谓难如登天，因此我们必须在情况失控之前做好最坏打算。"
+  }
+]

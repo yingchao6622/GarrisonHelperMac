@@ -1,0 +1,101 @@
+StrongholdAssistant (高效雅雅·卫戍协议助手 / GXYY · Stronghold Assistant; formerly 卫戍协议助手)
+
+This project is a modified derivative of ASP Assistant · Arknights:
+https://github.com/bingyunhe/asp-assistant-arknights
+Derived from revision: 7951f21 (v1.5.0)
+
+That project is itself a modified derivative of ASP Assistant
+(https://github.com/Moonfair/ASP_Assistant). Its NOTICE is retained verbatim
+below. Both are distributed under the Apache License, Version 2.0; LICENSE
+contains the standard license text and LICENSE.upstream the original upstream
+license text, retained verbatim.
+
+Modifications copyright (c) 2026 StrongholdAssistant contributors.
+This distribution replaces the WPF interface with a WebView2-hosted web
+interface and adds a host process and message bridge. Modification notices
+are kept in the source headers of each changed file.
+This derivative is not an official release from either upstream project.
+
+MuMu emulator support (ADB screenshots, locating the MuMu game display and
+fitting it to 16:9) is adapted from pull request #5 to ASP Assistant · Arknights
+by hesperine, which was not merged upstream:
+https://github.com/bingyunhe/asp-assistant-arknights/pull/5
+That pull request is distributed under the Apache License, Version 2.0;
+the adapted files carry modification notices in their source headers.
+
+Garrison Protocol board recognition and projection (colour sampling, distance
+capping and trimmed mean in BoardRecognizer, the board camera corners and the
+per-map colour references in data/garrison_board_refs.json) are adapted from the
+dev branch of ASP Assistant · Arknights (commit e4bee0d and later):
+https://github.com/bingyunhe/asp-assistant-arknights
+That code and data are distributed under the Apache License, Version 2.0; the
+adapted files carry modification notices in their source headers. Enemy routes
+are generated from game level data and do not use that project's hand-made routes.
+
+Placement recommendation (the combat simulator ClearSimulator, the placement
+planner PlacementPlanner and their models and loaders under
+src/ASPAssistant.Core/Placement/, the generators data/build_operator_profiles.py,
+data/talent_effects.py, data/build_garrison_spawns.py and
+data/build_garrison_terrain.py, and the generated data/operator_profiles.json,
+data/garrison_maps.json, data/garrison_spawns.json and
+data/chess_skill_overrides.json) is adapted from the feature/port-upstream-v1.8.0
+branch of Jiayu Ding (CarlosDJY)'s fork of ASP Assistant · Arknights,
+commit d3dc2f9ebc942a08fb003e74b3d4b188ea88e772:
+https://github.com/CarlosDJY/asp-assistant-arknights
+That code is distributed under the Apache License, Version 2.0, and keeps the
+upstream attributions retained below. This distribution feeds it from its own
+field recognition and match state, uses its own enemy routes and enemy buffs,
+adds the generated profiles of the custom (DIY) operators, and changes the
+search budget and outputs; the adapted files carry modification notices in
+their source headers. The enemy groups in data/garrison_spawns.json come from
+the 路标档案馆 Garrison Protocol spawn preview (https://www.lubiao.wiki); see
+ASSETS.md. These data are not relicensed under the Apache License.
+
+Game art, data, character names and fonts retain the rights and attribution
+of their respective owners; see ASSETS.md. The software license does not
+relicense these assets. This project is not affiliated with or endorsed by
+Hypergryph / 鹰角网络.
+
+-------------------------------------------------------------------------------
+NOTICE of ASP Assistant · Arknights (retained verbatim)
+-------------------------------------------------------------------------------
+
+ASP Assistant · Arknights
+
+This project is a modified derivative of ASP Assistant:
+https://github.com/Moonfair/ASP_Assistant
+Upstream author: Moonfair and upstream contributors.
+Upstream revision: 93b2ba8514f6591a67e4cbf5a6169dee7d065bf6
+
+The upstream project is distributed under the Apache License, Version 2.0.
+The original upstream license text is retained verbatim in LICENSE.upstream.
+The upstream copyright notice is: Copyright 2026 caihaojun.
+LICENSE contains the standard Apache License, Version 2.0 from apache.org.
+The modifications are licensed under that standard license. This does not
+remove or override the retained upstream license or its attribution notices.
+
+Modifications copyright (c) 2026 ASP Assistant Regulation contributors.
+This distribution contains modifications for the Regulation season, interface,
+themes, tracking, equipment comparison, tests, documentation and release setup.
+Modification notices are kept in the source headers of each changed file.
+This derivative is not an official release from the upstream author.
+
+Lineup planning, covenant effect data and related UI/Ban integration were
+contributed by Jiayu Ding (CarlosDJY) in pull request #1:
+https://github.com/bingyunhe/asp-assistant-arknights/pull/1
+Original contribution commit: 2498a019db155903419f2109c8651d73ebb4da6d
+The original commit is retained; subsequent integration fixes have separate commits.
+
+The Windows installer is built with Inno Setup 6.4.3
+(Copyright (C) 1997-2025 Jordan Russell; portions Copyright (C) 2000-2025 Martijn Laan),
+used under the Inno Setup License; see installer/LICENSE.InnoSetup.txt.
+installer/ChineseSimplified.isl is the unofficial Simplified Chinese translation
+maintained by Zhenghan Yang (Kira), taken unchanged from the is-6_4_3 tag of
+https://github.com/jrsoftware/issrc (Files/Languages/Unofficial/ChineseSimplified.isl);
+its original credits and notices are kept.
+
+MaaFramework and other third-party dependencies retain their own licenses.
+Game data, character names and artwork retain the rights and attribution of
+their respective owners; the software license does not relicense these assets.
+Data and image source references are retained in data/fetch_spdatabase.py.
+This project is not affiliated with or endorsed by Hypergryph / 鹰角网络.

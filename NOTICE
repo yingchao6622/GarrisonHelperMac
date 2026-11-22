@@ -1,0 +1,29 @@
+ 卫戍协议小助手 for Mac (Garrison Helper for Mac)
+
+This project is a Swift / macOS rewrite of features from three Windows projects,
+all distributed under the Apache License, Version 2.0:
+
+- ASP Assistant (https://github.com/Moonfair/ASP_Assistant)
+  Upstream copyright notice: Copyright 2026 caihaojun.
+  License text retained verbatim in licenses/LICENSE.ASP_Assistant.
+- Hongxue Stronghold Companion / 鸿雪·卫戍助手
+  (https://github.com/bingyunhe/hongxue-stronghold-companion), a derivative of
+  ASP Assistant. NOTICE retained verbatim in licenses/NOTICE.hongxue.
+- StrongholdAssistant (https://github.com/LBEILC/StrongholdAssistant), a
+  derivative of ASP Assistant · Arknights
+  (https://github.com/bingyunhe/asp-assistant-arknights), which includes work
+  adapted from Jiayu Ding (CarlosDJY)'s fork
+  (https://github.com/CarlosDJY/asp-assistant-arknights).
+  NOTICE retained verbatim in licenses/NOTICE.StrongholdAssistant.
+
+No upstream source file is included as is. Recognition, planning and data
+handling were rewritten in Swift; files that port upstream logic say so in their
+header, and REFERENCES.md maps each ported feature to the upstream file it came
+from. Data files taken from the upstream projects are listed in ASSETS.md.
+
+Modifications copyright (c) 2026 6622 (卫戍协议小助手 for Mac),
+licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Game art, data, character names and fonts belong to Shanghai Hypergryph Network
+Technology Co., Ltd. (上海鹰角网络). The Apache License does not cover them; see
+ASSETS.md. This project is not affiliated with or endorsed by Hypergryph.
