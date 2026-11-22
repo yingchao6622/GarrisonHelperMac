@@ -8,7 +8,7 @@
 由 Apple Vision 与 Core ML (神经网络引擎) 驱动!
 
 <img alt="platform macOS 14+" src="https://img.shields.io/badge/platform-macOS%2014%2B-0A84FF">
-<img alt="chip Apple Silicon | Intel" src="https://img.shields.io/badge/chip-Apple%20Silicon%20%7C%20Intel-555555">
+<img alt="chip Apple Silicon" src="https://img.shields.io/badge/chip-Apple%20Silicon-555555">
 <img alt="Swift 5.9" src="https://img.shields.io/badge/Swift-5.9-F05138">
 <img alt="game 卫戍协议" src="https://img.shields.io/badge/game-%E5%8D%AB%E6%88%8D%E5%8D%8F%E8%AE%AE-E37933">
 <img alt="license Apache 2.0" src="https://img.shields.io/badge/license-Apache%202.0-4CAF50">
