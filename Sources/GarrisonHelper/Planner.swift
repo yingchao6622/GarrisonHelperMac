@@ -597,12 +597,12 @@ struct AutoPlanner {
         let cores = d.covenants.filter { $0.isCore && !req.unavailable.contains($0.name) }
         var out: [PlanCandidate] = []
         let lock = NSLock()
-        // About 16 routes in all: each match bans some 本家 (2026-11-23: with five banned only 9 routes were left), and
-        // then more 小盟约 routes are worth showing, so their share grows as the 本家 shrink.
-        let smallCap = max(6, 16 - cores.count)
-        let perCore = cores.count <= 6 ? 4 : 3
-        // Each 本家: the usual 本家Ⅱ build, and up to three 小盟约 builds (本家Ⅰ + a pair of small covenants), trying the
-        // most promising pairs first.
+        // Every route worth listing: each 本家, and per 本家 up to eight 小盟约 pairs (one route per pair overall). The list
+        // shows the first 16 and the rest behind 「显示全部」 (2026-11-23: up to 43 routes, under a second).
+        let env = ProcessInfo.processInfo.environment
+        let smallCap = env["PLAN_SMALL_CAP"].flatMap(Int.init) ?? 99
+        let perCore = env["PLAN_PER_CORE"].flatMap(Int.init) ?? 8
+        // Each 本家: the usual 本家Ⅱ build, and 小盟约 builds (本家Ⅰ + a pair of small covenants), most promising pairs first.
         DispatchQueue.concurrentPerform(iterations: cores.count * 2) { i in
             let cov = cores[i / 2]
             if i % 2 == 0 {

@@ -10,6 +10,9 @@ struct RunView: View {
     @State private var addingOwned = false
     @State private var pickingSelf = false
     @State private var pickingWatch = false
+    /// The route list shows the first 16; the rest behind 「显示全部」.
+    @State private var showAllRoutes = false
+    static let routesShown = 16
 
     var body: some View {
         ScrollView {
@@ -520,6 +523,13 @@ struct RunView: View {
 
     // MARK: 路线
 
+    /// The first 16 routes, plus the followed, 推荐 and AI routes wherever they sit in the list.
+    private var visibleRoutes: [PlanCandidate] {
+        if showAllRoutes { return coach.candidates }
+        let keep: Set<String> = Set([coach.selected, coach.bestID, coach.aiPickID].compactMap { $0 })
+        return coach.candidates.enumerated().filter { $0.offset < Self.routesShown || keep.contains($0.element.id) }.map(\.element)
+    }
+
     private var routesCard: some View {
         VStack(alignment: .leading, spacing: 8) {
             SectionHeader(title: "能玩的路线", trailing: AnyView(HStack(spacing: 6) {
@@ -536,7 +546,7 @@ struct RunView: View {
             }
             // Wrapping grid (a sidebar is too narrow to show a horizontal strip, and mouse wheels don't scroll it).
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 76, maximum: 120), spacing: 6)], spacing: 6) {
-                ForEach(coach.candidates) { c in
+                ForEach(visibleRoutes) { c in
                     let held = coach.heldCount(c)
                     Button { Task { await coach.select(c.id, style: nil) } } label: {
                         VStack(spacing: 1) {
@@ -567,6 +577,12 @@ struct RunView: View {
                     .help([held > 0 ? "你已经有 \(held) 名这条路线要用的干员" : nil, c.id == coach.aiPickID ? coach.aiPickNote : nil]
                             .compactMap { $0 }.joined(separator: "\n"))
                 }
+            }
+            let hidden = coach.candidates.count - visibleRoutes.count
+            if hidden > 0 || showAllRoutes && coach.candidates.count > Self.routesShown {
+                Button(showAllRoutes ? "收起（只看前 \(Self.routesShown) 条）" : "显示全部（还有 \(hidden) 条）") { showAllRoutes.toggle() }
+                    .buttonStyle(.link).font(.caption)
+                    .help("排在后面的多是小盟约路线，分数较低")
             }
             if let route = coach.route {
                 let c = route.candidate
