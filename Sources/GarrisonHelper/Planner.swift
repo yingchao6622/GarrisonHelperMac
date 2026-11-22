@@ -597,6 +597,10 @@ struct AutoPlanner {
         let cores = d.covenants.filter { $0.isCore && !req.unavailable.contains($0.name) }
         var out: [PlanCandidate] = []
         let lock = NSLock()
+        // About 16 routes in all: each match bans some 本家 (2026-11-23: with five banned only 9 routes were left), and
+        // then more 小盟约 routes are worth showing, so their share grows as the 本家 shrink.
+        let smallCap = max(6, 16 - cores.count)
+        let perCore = cores.count <= 6 ? 4 : 3
         // Each 本家: the usual 本家Ⅱ build, and up to three 小盟约 builds (本家Ⅰ + a pair of small covenants), trying the
         // most promising pairs first.
         DispatchQueue.concurrentPerform(iterations: cores.count * 2) { i in
@@ -606,7 +610,7 @@ struct AutoPlanner {
                 return
             }
             var found = 0
-            for pair in smallPairs(cov, pool: pool, req: req) where found < 3 {
+            for pair in smallPairs(cov, pool: pool, req: req) where found < perCore {
                 if let c = build(cov, pool: pool, req: req, smallRoute: true, pair: pair) { found += 1; lock.lock(); out.append(c); lock.unlock() }
             }
         }
@@ -616,9 +620,9 @@ struct AutoPlanner {
             out[i].score *= max(0.4, 1 - 0.15 * k)
             out[i].notes.append(k >= 1 ? "另有 \(Int(k.rounded())) 名玩家在做\(out[i].main)，牌会被抢" : "有玩家手上有\(out[i].main)的牌，可能会抢")
         }
-        // Keep every 本家 build and the six best 小盟约 builds, one per pair of small covenants.
+        // Keep every 本家 build and the best 小盟约 builds (smallCap), one per pair of small covenants.
         var seenPairs = Set<String>(), small = Set<String>()
-        for c in out.filter(\.smallRoute).sorted(by: { $0.score > $1.score }) where small.count < 6 {
+        for c in out.filter(\.smallRoute).sorted(by: { $0.score > $1.score }) where small.count < smallCap {
             let key = c.pair.map(\.name).sorted().joined(separator: "+")
             if seenPairs.insert(key).inserted { small.insert(c.id) }
         }

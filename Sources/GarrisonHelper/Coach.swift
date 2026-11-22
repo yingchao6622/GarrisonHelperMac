@@ -317,7 +317,7 @@ final class Coach: ObservableObject {
         // Any automatic change of route counts (also when the followed route dropped out of the list).
         if let sel = selected, keep.id != sel, !userPicked { autoSwitchRound = round }
         if ProcessInfo.processInfo.environment["PLAN_DEBUG"] != nil {
-            print("plan: owned=\(run.owned.sorted().joined(separator: ",")) current=\(current.map { "\($0.id) \(Int($0.score)) held\(heldCount($0))" } ?? "none(\(selected ?? "-"))") best=\(best.id) \(Int(best.score)) held\(heldCount(best)) → \(keep.id)\(pendingSwitch.map { " (pending \($0.id))" } ?? "")  推荐=\(bestID ?? "-")  list=\(candidates.prefix(6).map(\.id).joined(separator: ","))")
+            print("plan: owned=\(run.owned.sorted().joined(separator: ",")) current=\(current.map { "\($0.id) \(Int($0.score)) held\(heldCount($0))" } ?? "none(\(selected ?? "-"))") best=\(best.id) \(Int(best.score)) held\(heldCount(best)) → \(keep.id)\(pendingSwitch.map { " (pending \($0.id))" } ?? "")  推荐=\(bestID ?? "-")  list(\(candidates.count))=\(candidates.map(\.id).joined(separator: ","))  unavailable=\(req.unavailable.sorted().joined(separator: ","))")
         }
         // The same route keeps its style (先大后小 / 先小后大): a re-plan mid-run must not flip how the player is building.
         await select(keep.id, style: selected == keep.id ? style : nil, byUser: false)
