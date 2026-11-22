@@ -12,7 +12,7 @@
 <img alt="Swift 5.9" src="https://img.shields.io/badge/Swift-5.9-F05138">
 <img alt="game 卫戍协议" src="https://img.shields.io/badge/game-%E5%8D%AB%E6%88%8D%E5%8D%8F%E8%AE%AE-E37933">
 <img alt="license Apache 2.0" src="https://img.shields.io/badge/license-Apache%202.0-4CAF50">
-<a href="https://github.com/yingchao6622/GarrisonHelperMac/releases"><img alt="release v0.3.0" src="https://img.shields.io/badge/release-v0.3.0-2EA043"></a>
+<a href="https://github.com/yingchao6622/GarrisonHelperMac/releases"><img alt="release" src="https://img.shields.io/github/v/release/yingchao6622/GarrisonHelperMac?color=2EA043"></a>
 
 </div>
 
