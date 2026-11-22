@@ -1,4 +1,21 @@
-# 卫戍协议小助手 for Mac
+<div align="center">
+
+<img src="Resources/AppIcon.png" width="160" alt="卫戍协议小助手">
+
+<h1>卫戍协议小助手 for Mac</h1>
+
+明日方舟·卫戍协议 Mac 实时辅助工具<br>
+由 Apple Vision 与 Core ML (神经网络引擎) 驱动!
+
+<img alt="platform macOS 14+" src="https://img.shields.io/badge/platform-macOS%2014%2B-0A84FF">
+<img alt="chip Apple Silicon | Intel" src="https://img.shields.io/badge/chip-Apple%20Silicon%20%7C%20Intel-555555">
+<img alt="Swift 5.9" src="https://img.shields.io/badge/Swift-5.9-F05138">
+<img alt="game 卫戍协议" src="https://img.shields.io/badge/game-%E5%8D%AB%E6%88%8D%E5%8D%8F%E8%AE%AE-E37933">
+<img alt="license Apache 2.0" src="https://img.shields.io/badge/license-Apache%202.0-4CAF50">
+
+</div>
+
+---
 
 我在 "明日方舟" 卫戍协议里打了 40 局, 只过了 3 局. 想找个小助手帮忙, 搜了一圈才发现现有的几个 (StrongholdAssistant, ASP_Assistant, 鸿雪·卫戍助手) 都只有 Windows 版, 于是参考这三个项目, 把它们的功能移植到了 Mac 上, 并按 Mac 客户端的画面重新调了识别.
 
