@@ -24,7 +24,7 @@
 
 ## 下载
 
-到 GitHub 的 [Releases](../../releases) 页下载 `GarrisonHelperMac-vX.Y.Z-macOS.zip`, 解压后把 "卫戍协议小助手" 拖进 "应用程序". 应用没有 Apple 开发者签名, 第一次打开会提示无法验证开发者: 到 系统设置 → 隐私与安全性, 点 "仍要打开". 每个版本都由 GitHub Actions 从对应的源码编译, 附 SHA-256 校验 (仓库公开后还会附构建来源证明).
+到 GitHub 的 [Releases](../../releases) 页下载 `GarrisonHelperMac-vX.Y.Z.dmg`, 双击打开, 把 "卫戍协议小助手" 拖到旁边的 "Applications" 文件夹. 应用没有 Apple 开发者签名, 第一次打开会提示无法验证开发者: 到 系统设置 → 隐私与安全性, 点 "仍要打开". 每个版本都由 GitHub Actions 从对应的源码编译, 附 SHA-256 校验 (仓库公开后还会附构建来源证明).
 
 ## 从源码构建
 
