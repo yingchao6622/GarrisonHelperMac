@@ -365,14 +365,13 @@ enum ChoiceAdvisor {
             let cut = cards[ok[1]].score
             let above = ok.filter { cards[$0].score > cut + 0.05 }
             let tied = ok.filter { abs(cards[$0].score - cut) <= 0.05 }
-            let need = 2 - above.count
-            (above + tied).forEach { cards[$0].best = true }
-            if tied.count <= need {
-                lines.append("\(row)选\(names(above + tied))")
-            } else {
-                for i in tied { cards[i].reason += "（同排 \(tied.count) 张作用一样）" }
-                lines.append("\(row)" + (above.isEmpty ? "" : "选\(names(above))，再从") + "\(names(tied))里任选 \(need) 张（作用一样）")
-            }
+            let need = max(0, 2 - above.count)
+            // Each row takes two (「6阶自选编队已达上限」): highlight exactly two, the equal others are named as swaps.
+            let picked = above.prefix(2) + tied.prefix(need)
+            let swaps = tied.dropFirst(need)
+            picked.forEach { cards[$0].best = true }
+            for i in swaps { cards[i].reason = "和同排推荐的作用一样，可以换着选 · " + cards[i].reason }
+            lines.append("\(row)选\(names(Array(picked)))" + (swaps.isEmpty ? "" : "（作用一样，也可换成\(names(Array(swaps)))）"))
         }
         return ChoiceScreen(kind: .selfPick, cards: cards.sorted { $0.best != $1.best ? $0.best : $0.score > $1.score },
                             note: lines.joined(separator: "；"))

@@ -492,7 +492,10 @@ enum SelfTest {
                   + (coach.contestedCovenants.isEmpty ? "" : "  contested: " + coach.contestedCovenants.map { "\($0.key)×\($0.value)" }.sorted().joined(separator: ",")))
             print("shop: " + scanner.cards.map { "\($0.name)\($0.price.map { p in "(\(p))" } ?? "(?)")" }.joined(separator: " "))
             for a in coach.actions { print("  [\(a.kind.rawValue)] \(a.title) — \(a.reason)" + (a.rect.map { "  @\(Int($0.minX)),\(Int($0.minY)) \(Int($0.width))x\(Int($0.height))" } ?? "")) }
-            if let c = coach.choice, ProcessInfo.processInfo.environment["AI_PROMPT"] != nil { print("AI prompt:\n" + coach.choicePrompt(c)) }
+            if ProcessInfo.processInfo.environment["AI_PROMPT"] != nil {
+                print("AI state:\n" + coach.stateSummary())
+                if let c = coach.choice { print("AI prompt:\n" + coach.choicePrompt(c)) }
+            }
             if let c = coach.choice {
                 print("choice \(c.kind.rawValue):")
                 for card in c.cards { print("  \(card.best ? "★" : " ") \(card.name) \(String(format: "%.2f", card.score)) — \(card.reason)  @\(Int(card.rect.minX)),\(Int(card.rect.minY)) \(Int(card.rect.width))x\(Int(card.rect.height))") }

@@ -493,9 +493,7 @@ final class Coach: ObservableObject {
                 let rest = c.cards.filter { !$0.best }.count
                 liveNote = picks.isEmpty ? "自选编队：这一页没有和能玩的路线相关的干员，可以不选"
                     : "自选编队：" + (c.note ?? "选\(picks)") + (rest > 0 ? "；其余 \(rest) 张和路线关系不大，不用选" : "")
-                actions = c.cards.filter(\.best).map {
-                    GameAction(kind: .choose, title: ($0.reason.contains("作用一样") ? "任选 " : "选 ") + $0.name, reason: $0.reason, rect: $0.rect)
-                }
+                actions = c.cards.filter(\.best).map { GameAction(kind: .choose, title: "选 " + $0.name, reason: $0.reason, rect: $0.rect) }
             } else {
                 liveNote = !picks.isEmpty ? "\(c.kind.rawValue)：推荐\(picks)"
                     : c.cards.contains(where: { !$0.taken }) ? "\(c.kind.rawValue)：你已经选好了" : "\(c.kind.rawValue)：能选的都被选走了"
@@ -876,6 +874,10 @@ final class Coach: ObservableObject {
     private func recordSelfPicks(_ frame: Scanner.LiveFrame) {
         let texts = scanner.lastTexts
         guard texts.contains(where: { $0.text.contains("已选择自选编队") }) else { return }
+        // On the Mac client the confirmation only shows a toast over the same grid (「3/3 确定自选编队」 still up): the
+        // names on the right are cards on the grid, not the picks (2026-11-23: 结城理 recorded, the picks were Pith /
+        // 嵯峨 / 丰川祥子 / 维什戴尔). Record nothing rather than the wrong operators.
+        if texts.contains(where: { $0.text.contains("确定自选编队") }) { return }
         let w = Double(frame.image.width), h = Double(frame.image.height)
         let right = texts.filter { $0.box.midX > w * 0.74 && $0.box.midY > h * 0.15 && $0.box.midY < h * 0.9 }
             .sorted { $0.box.midY < $1.box.midY }
@@ -1214,6 +1216,13 @@ final class Coach: ObservableObject {
         }
         if !needs.notes.isEmpty { l.append("敌情：" + needs.notes.joined(separator: "；")) }
         l.append("第 \(hud.round.map(String.init) ?? "?") 回合，资金 \(hud.money.map(String.init) ?? "?")，终端 \(hud.level.map(String.init) ?? "?") 本")
+        // The shop and this round's prices: without them the AI suggested upgrading with all the money and buying two cards
+        // anyway (2026-11-23: 11 funds, upgrade 11).
+        let shop = scanner.cards.map { c in "\(c.name)(\(c.price.map(String.init) ?? "?"))" }
+        if !shop.isEmpty { l.append("商店（括号里是价格）：" + shop.joined(separator: "、") + (scanner.controls.frozen ? "（已冻结）" : "")) }
+        let up = scanner.controls.upgradeCost, refresh = scanner.controls.refreshCost
+        l.append("这回合升本价 \(up.map(String.init) ?? "?")，刷新 \(refresh.map(String.init) ?? "?")"
+                 + ((hud.money != nil && up != nil) ? "；升本后剩 \(max(0, hud.money! - up!))" : ""))
         l.append("本局不可用盟约：\(run.unavailableCovenants.isEmpty ? "无" : run.unavailableCovenants.sorted().joined(separator: "、"))")
         let owned = run.owned.map { n in "\(n)(\(catalog.op(n).map { "\($0.tier)阶 \($0.allCovenants.joined(separator: "/"))" } ?? ""))" }
         l.append("当前阵容：\(owned.isEmpty ? "未知" : owned.joined(separator: "、"))")
@@ -1354,7 +1363,7 @@ final class Coach: ObservableObject {
 
             \(routeSummary())
 
-            请给出：1）这回合具体操作（买/卖/留/升本/刷新）；2）推荐路线：单独一行写「路线：R编号 名称」（从可选路线里选，可以不同意规划器），再写理由、风险；3）接下来 2~3 回合的关键牌和资金节奏。简体中文 Markdown，不超过 320 字。
+            请给出：1）这回合具体操作（买/卖/留/升本/刷新），总花费不能超过当前资金；2）推荐路线：单独一行写「路线：R编号 名称」（从可选路线里选，可以不同意规划器），再写理由、风险；3）接下来 2~3 回合的关键牌和资金节奏。简体中文 Markdown，不超过 320 字。
             """
         } else {
             user = """
@@ -1362,7 +1371,7 @@ final class Coach: ObservableObject {
 
             \(routeSummary())
 
-            这回合怎么做？严格按以下格式，每行一句，总共不超过 100 字：
+            这回合怎么做？买的牌、升本、刷新加起来不能超过当前资金（价格见上）。严格按以下格式，每行一句，总共不超过 100 字：
             - 路线：（从可选路线里选一个，写编号和名称，如 R2 维多利亚Ⅱ；可以不同意规划器）
             - 买：
             - 卖/下场：

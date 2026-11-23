@@ -298,7 +298,10 @@ enum ActionAdvisor {
             }
         }
         if upgradeNow, let r = x.controls.level {
-            actions.insert(GameAction(kind: .upgrade, title: "升 \(level + 1) 本", reason: "抢升本阶段：先升本，只买关键牌", rect: r, order: 0), at: 0)
+            // Useful cards the upgrade leaves no money for (equipment like 聚合急救箱 went unmentioned, 2026-11-23).
+            let skipped = ranked.filter { item in item.1.0 >= 30 && !actions.contains { $0.rect == item.0.rect } }.map(\.0.name)
+            let note = skipped.isEmpty ? "" : "；升完" + (money > 0 ? "剩 \(money)，" : "没钱了，") + Array(Set(skipped)).sorted().prefix(4).joined(separator: "、") + " 先不买"
+            actions.insert(GameAction(kind: .upgrade, title: "升 \(level + 1) 本", reason: "抢升本阶段：先升本，只买关键牌" + note, rect: r, order: 0), at: 0)
         }
         let keysMissing = !keys.subtracting(Set(x.owned)).subtracting(Set(actions.filter { $0.kind == .buy }.map { String($0.title.dropFirst(2)) })).isEmpty
         if !upgradeNow, canUpgrade, let u = upgradeCost, money >= u, pace == .steady || (pace == .stay && !keysMissing) {
