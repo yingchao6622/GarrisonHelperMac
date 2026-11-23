@@ -16,7 +16,7 @@
 | `Resources/data/prototypes.json` | 商店替身卡（Pith 等）对应的真身 | StrongholdAssistant `data/prototypes.json`（从 ArknightsGameData `activity_table.json`、`character_table.json` 生成）；`scripts/build-prototypes.py` 转换 |
 | `Resources/data/enemies.json`、`enemy_types.json`、`bounties.json`、`adapt_tactics.json` | 敌人资料、敌人类型、悬赏、战术 | StrongholdAssistant `data/`；敌人资料取自 ArknightsGameData |
 | `Resources/data/enemy_routes.json` | 每回合的关卡和敌人路线 | StrongholdAssistant `data/garrison_routes.json`（从 ArknightsGameData 关卡文件生成）；`scripts/build-enemy-routes.py` 转换 |
-| `Resources/data/garrison_maps.json` | 10 张地图的格子、地形、镜头角点 | StrongholdAssistant `data/garrison_maps.json`（改编自 CarlosDJY/asp-assistant-arknights，原始数据取自 ArknightsGameData） |
+| `Resources/data/garrison_maps.json` | 10 张地图的格子、地形、镜头角点 | StrongholdAssistant `data/garrison_maps.json`（改编自 CarlosDJY/asp-assistant-arknights，原始数据取自 ArknightsGameData）；城区排风口气流（`terrain.airflow_down`）由 `scripts/build-terrain-devices.py` 从 ArknightsGameData 关卡文件生成 |
 | `Resources/data/garrison_board_refs.json` | 认地图用的镜头和颜色样本（样本取自游戏画面） | bingyunhe/asp-assistant-arknights dev 分支（Apache-2.0），经 StrongholdAssistant |
 | `Resources/data/covenant_bar_digits.json` | 顶栏层数等数字的游戏字体模板 | StrongholdAssistant（取自其用户的对局录屏） |
 | `Resources/data/level_glyphs.json` | 终端等级图形模板 | 本项目从 Mac 客户端截图采集（只含图形掩码） |

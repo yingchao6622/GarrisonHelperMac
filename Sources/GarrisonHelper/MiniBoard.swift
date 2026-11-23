@@ -50,10 +50,16 @@ struct MiniBoard: View {
                     let tint: Color = switch tile {
                     case .infection: .red
                     case .speedup: .cyan
+                    case .airflowDown: .yellow
                     case .mire: .brown
                     case .hide: .purple
                     }
                     ctx.stroke(Path(roundedRect: rect.insetBy(dx: 1.5, dy: 1.5), cornerRadius: 2), with: .color(tint.opacity(0.9)), lineWidth: 2)
+                    if tile == .airflowDown {
+                        // Which way the air blows.
+                        ctx.draw(Text("↓").font(.system(size: side * 0.42, weight: .bold)).foregroundColor(tint.opacity(0.8)),
+                                 at: CGPoint(x: rect.midX, y: rect.midY))
+                    }
                 }
             }
         }

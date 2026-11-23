@@ -13,8 +13,9 @@ struct GarrisonMap: Codable, Hashable, Identifiable {
     var name: String
     var cells: [String]          // rows 0..4, columns -2..9
     var routes: [Route]
-    /// Special tiles by kind ("infection" / "mire" / "hide" / "speedup") → [[col, row]] (StrongholdAssistant
-    /// data/build_garrison_terrain.py, from the game's level files).
+    /// Special tiles by kind ("infection" / "mire" / "hide" / "speedup" / "airflow_down") → [[col, row]]
+    /// (StrongholdAssistant data/build_garrison_terrain.py and scripts/build-terrain-devices.py, from the game's level
+    /// files).
     var terrain: [String: [[Int]]]? = nil
 
     func tile(_ col: Int, _ row: Int) -> MapTile? {
@@ -151,6 +152,9 @@ enum MapTile: String, CaseIterable {
     case hide
     /// 优化模块（蓝箭头）: operators' attack speed up, passing enemies faster.
     case speedup
+    /// 源石流发生装置（城区排风口）, skill sktok_blower 「气流」: blows 3 cells down. Operators deployed facing the airflow:
+    /// attack +30 %, facing against it: −30 %; enemies moving with it: move speed +50 %, against it: −50 %.
+    case airflowDown = "airflow_down"
 
     var name: String {
         switch self {
@@ -158,10 +162,11 @@ enum MapTile: String, CaseIterable {
         case .mire: "沼泽"
         case .hide: "隐匿格"
         case .speedup: "蓝箭头（优化模块）"
+        case .airflowDown: "气流（排风口向下吹）"
         }
     }
     var short: String {
-        switch self { case .infection: "红地板"; case .mire: "沼泽"; case .hide: "隐匿"; case .speedup: "蓝箭头" }
+        switch self { case .infection: "红地板"; case .mire: "沼泽"; case .hide: "隐匿"; case .speedup: "蓝箭头"; case .airflowDown: "气流" }
     }
     var effect: String {
         switch self {
@@ -169,6 +174,7 @@ enum MapTile: String, CaseIterable {
         case .mire: "站上去的干员攻速下降；敌人走过会变慢、攻击降低"
         case .hide: "格子上的干员和敌人都看不见（打不到格子里的敌人）"
         case .speedup: "站上去的干员攻速提升；敌人走过会变快"
+        case .airflowDown: "排风口往下吹 3 格：站在气流里朝下的干员攻击 +30%、朝上的 −30%；顺着气流往下走的敌人移速 +50%、往上走的 −50%"
         }
     }
     /// Enemies that walk over it before reaching the line come in stronger.
@@ -297,10 +303,16 @@ enum PlacementHeuristic {
                 let v = rangeCells(o).reduce(0.0) { acc, d in
                     let q = rotate(d, f)
                     return acc + dwell(c + q.0, r + q.1, blocks: blocks) + (air ? fly["\(c + q.0),\(r + q.1)"] ?? 0 : 0)
-                }
+                } * attackFactor(c, r, f)
                 if v > best.0 { best = (v, f) }
             }
             return best
+        }
+
+        /// Attack multiplier from the tile an operator stands on for a facing (气流: with it +30 %, against it −30 %).
+        func attackFactor(_ c: Int, _ r: Int, _ f: Facing) -> Double {
+            guard map.tile(c, r) == .airflowDown else { return 1 }
+            return f == .down ? 1.3 : f == .up ? 0.7 : 1
         }
 
         /// Flying-enemy presence an anti-air operator's (ranged or 领主) range covers at its best facing.
@@ -473,7 +485,7 @@ enum PlacementHeuristic {
                 s += 3 * Double(n)
                 if n > 0 { notes.append("stack") }
             }
-            if let tile { notes.append("tile:" + tile.rawValue) }
+            if let tile { notes.append("tile:" + tile.rawValue + (tile == .airflowDown ? ":" + facing.rawValue : "")) }
             return (s, facing, notes)
         }
 
@@ -496,12 +508,17 @@ enum PlacementHeuristic {
             if notes.contains("stack") { parts.append("贴着同盟约队友叠层") }
             if notes.contains("air") { parts.append("顺带罩住飞行敌人的航线") }
             for n in notes where n.hasPrefix("tile:") {
-                guard let t = MapTile(rawValue: String(n.dropFirst(5))) else { continue }
+                let key = n.dropFirst(5).split(separator: ":")
+                guard let t = key.first.flatMap({ MapTile(rawValue: String($0)) }) else { continue }
                 switch t {
                 case .infection: parts.append(role(o) == 2 ? "站红地板：攻击/攻速提升（会掉血）" : "站在红地板上会掉血")
                 case .speedup: parts.append("站蓝箭头：攻速提升")
                 case .hide: parts.append("隐匿格：敌人远程打不到")
                 case .mire: parts.append("沼泽会降攻速")
+                case .airflowDown:
+                    let f = key.dropFirst().first.map(String.init)
+                    if role(o) == 3 { break }
+                    parts.append(f == Facing.down.rawValue ? "站在气流里朝下：攻击 +30%" : f == Facing.up.rawValue ? "站在气流里朝上，攻击 −30%（朝上才罩得住敌人）" : "站在气流里横着朝，攻击不受影响")
                 }
             }
             return (moving ? "移过去：" : "上场放这里：") + parts.joined(separator: "，")
