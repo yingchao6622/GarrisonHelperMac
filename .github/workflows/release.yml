@@ -86,7 +86,8 @@ jobs:
 
           ---
           **安装**：下载 dmg，双击打开，把「卫戍协议小助手」拖到旁边的「Applications」文件夹。应用没有 Apple 开发者签名，第一次打开会提示无法验证开发者：到 系统设置 → 隐私与安全性，点「仍要打开」。之后在「屏幕与系统录音」里勾选它，再重新打开。
-          **校验**：`shasum -a 256 -c SHA256SUMS.txt`
           EOF
-          if [ "$PRIVATE" != "true" ]; then echo "；构建来源：\`gh attestation verify <dmg> --repo ${{ github.repository }}\`" >> notes.md; fi
+          check='**校验**：`shasum -a 256 -c SHA256SUMS.txt`'
+          if [ "$PRIVATE" != "true" ]; then check="$check；构建来源：\`gh attestation verify <dmg> --repo ${{ github.repository }}\`"; fi
+          echo "$check" >> notes.md
           gh release create "$TAG" --draft --verify-tag --title "卫戍协议小助手 $TAG" --notes-file notes.md "$PKG" SHA256SUMS.txt
