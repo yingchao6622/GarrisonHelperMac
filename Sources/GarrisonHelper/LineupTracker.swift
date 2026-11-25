@@ -15,12 +15,20 @@ struct LineupTracker {
     private var corrections: [String: String] = [:]  // "guess#tier" → name
     /// Copies the board added that no purchase has claimed yet, and for how many more readings a purchase may claim them.
     private var unclaimed: [String: (count: Int, ttl: Int)] = [:]
+    /// Units the player added by hand (the board never showed them, e.g. hidden behind another unit): held at least this
+    /// many until removed by hand.
+    private var manual: [String: Int] = [:]
 
     static let upReadings = 2
     static let downReadings = 3
     static let sightingReadings = 6
 
-    mutating func reset() { stable = [:]; history = [:]; pending = []; corrections = [:]; unclaimed = [:] }
+    mutating func reset() { stable = [:]; history = [:]; pending = []; corrections = [:]; unclaimed = [:]; manual = [:] }
+
+    /// The player added a unit the board doesn't show.
+    mutating func addManual(_ name: String) { manual[name, default: 0] += 1 }
+    /// The player removed `name` from the lineup.
+    mutating func removeManual(_ name: String) { if let k = manual[name] { manual[name] = k > 1 ? k - 1 : nil } }
 
     mutating func purchased(_ name: String) {
         if let u = unclaimed[name], u.count > 0 {
@@ -85,6 +93,10 @@ struct LineupTracker {
             return p.ttl > 1 ? (p.name, p.ttl - 1, p.count) : nil
         }
         names += pending.map(\.name)
+        for (n, k) in manual {
+            let have = names.filter { $0 == n }.count
+            if have < k { names += Array(repeating: n, count: k - have) }
+        }
         return names.sorted()
     }
 }

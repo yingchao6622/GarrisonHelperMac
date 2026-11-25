@@ -23,6 +23,15 @@ enum SelfTest {
             run("report first (want 1 1 1 1)", [(true, 0), (false, 1), (false, 1), (false, 1)])
             run("second copy bought later (want 1 1 … 2 2 2)", [(false, 1), (false, 1), (false, 1), (false, 1), (false, 1), (false, 1), (false, 1),
                                                                  (false, 1), (true, 1), (false, 2), (false, 2)])
+            do {
+                // 补录: a unit added by hand stays although the board never shows it; once the board shows it, no double.
+                var t = LineupTracker(), out: [Int] = []
+                t.addManual("极光")
+                for board in [0, 0, 0, 0, 1, 1, 1] { out.append(t.update(Array(repeating: unit("极光"), count: board)).filter { $0 == "极光" }.count) }
+                t.removeManual("极光")
+                out.append(t.update([]).filter { $0 == "极光" }.count)
+                print("manual add (want 1 1 1 1 1 1 1 1): " + out.map(String.init).joined(separator: " "))
+            }
             exit(0)
         }
         // GH_KEYS_FILE=/tmp/x.json --keytest: save / load / delete round trip of the API key file.

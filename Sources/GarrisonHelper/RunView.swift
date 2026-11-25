@@ -8,6 +8,7 @@ struct RunView: View {
     @EnvironmentObject var coach: Coach
     @AppStorage("ui.setupOpen") private var setupOpen = true
     @State private var addingOwned = false
+    @State private var boardCell: BoardCell?
     @State private var pickingSelf = false
     @State private var pickingWatch = false
     /// The route list shows the first 16; the rest behind 「显示全部」.
@@ -212,7 +213,20 @@ struct RunView: View {
                               suggestions: coach.actions.compactMap { a in
                                   guard a.kind == .place, let c = a.cell, c.count == 2 else { return nil }
                                   return (a.title.components(separatedBy: " ").first ?? a.title, c[0], c[1], a.facing ?? "")
-                              })
+                              },
+                              onTap: { c, r in boardCell = BoardCell(col: c, row: r) })
+                        .popover(item: $boardCell) { cell in
+                            let unit = coach.liveField?.units.first { !$0.bench && $0.cell == [cell.col, cell.row] }
+                            VStack(alignment: .leading, spacing: 6) {
+                                Text(unit.map { "(\(cell.col),\(cell.row)) 现在认成「\($0.name ?? "?")」，改成：" } ?? "(\(cell.col),\(cell.row)) 没认出人：补录").font(.caption)
+                                OperatorPicker { name in
+                                    if let unit { coach.correctLive(unit, name) } else { coach.addMissed(name) }
+                                    boardCell = nil
+                                }
+                            }
+                            .padding(8)
+                        }
+                    Text("点小地图上的格子：补录没认出的干员，或改正认错的").font(.caption2).foregroundStyle(.secondary)
                     HStack(spacing: 10) {
                         legend(.red, "地面路线"); legend(.cyan, "飞行路线"); legend(.orange, "场上干员"); legend(.mint, "建议站位")
                     }
@@ -474,7 +488,7 @@ struct RunView: View {
                         IconView(path: catalog.op(name)?.iconPath ?? "", size: 16)
                         Text(name).font(.system(size: 11, weight: locked ? .bold : .regular))
                         Text("\(catalog.op(name)?.tier ?? 0)").font(.system(size: 9)).foregroundStyle(.secondary)
-                        Button { run.owned.remove(at: i) } label: { Image(systemName: "xmark").font(.system(size: 8)) }.buttonStyle(.plain).foregroundStyle(.secondary)
+                        Button { coach.removeOwned(at: i) } label: { Image(systemName: "xmark").font(.system(size: 8)) }.buttonStyle(.plain).foregroundStyle(.secondary)
                     }
                     .padding(.horizontal, 4).padding(.vertical, 2)
                     .help(locked ? "必带（右键取消）" : "右键：设为必带")
@@ -484,7 +498,7 @@ struct RunView: View {
                         Button(locked ? "取消必带" : "设为必带（路线一定保留）") {
                             if locked { run.locked.removeAll { $0 == name } } else { run.locked.append(name) }
                         }
-                        Button("移除") { run.owned.remove(at: i) }
+                        Button("移除") { coach.removeOwned(at: i) }
                     }
                 }
             }
@@ -904,4 +918,10 @@ struct MarkdownText: View {
     private func inline(_ s: String) -> AttributedString {
         (try? AttributedString(markdown: s, options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))) ?? AttributedString(s)
     }
+}
+
+/// A mini-board cell the player clicked (popover item).
+struct BoardCell: Identifiable, Hashable {
+    let col: Int, row: Int
+    var id: String { "\(col),\(row)" }
 }

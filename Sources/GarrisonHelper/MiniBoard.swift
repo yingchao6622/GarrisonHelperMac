@@ -12,6 +12,8 @@ struct MiniBoard: View {
     let units: [(name: String, col: Int, row: Int, unsure: Bool)]
     /// Suggested cells: (name, col, row, facing arrow).
     let suggestions: [(name: String, col: Int, row: Int, facing: String)]
+    /// Click on a deployable cell (补录 / correct the unit there).
+    var onTap: ((Int, Int) -> Void)? = nil
 
     /// Columns that hold anything (deployable ground, spawn, defence point).
     private var cols: ClosedRange<Int> {
@@ -25,6 +27,18 @@ struct MiniBoard: View {
         Canvas { ctx, size in draw(&ctx, size) }
             .frame(height: min(30, 340 / Double(cols.count)) * Double(rows))
             .clipped()
+            .overlay {
+                if let onTap {
+                    GeometryReader { g in
+                        Color.clear.contentShape(Rectangle()).onTapGesture { p in
+                            let side = min(g.size.width / Double(cols.count), g.size.height / Double(rows))
+                            let ox = (g.size.width - side * Double(cols.count)) / 2
+                            let c = Int(((p.x - ox) / side).rounded(.down)) + cols.lowerBound, r = Int((p.y / side).rounded(.down))
+                            if cols.contains(c), (0..<rows).contains(r), "GTH".contains(map.type(c, r)) { onTap(c, r) }
+                        }
+                    }
+                }
+            }
             .accessibilityLabel("战场小地图")
     }
 

@@ -397,6 +397,31 @@ final class Coach: ObservableObject {
         }
     }
 
+    /// 补录 from the mini board: a unit the recognition missed.
+    func addMissed(_ name: String) {
+        if autoSyncField { tracker.addManual(name) }
+        run.owned.append(name)
+    }
+
+    /// Fix the name of a unit on the live board (mini board).
+    func correctLive(_ unit: FieldUnit, _ name: String) {
+        if var f = liveField, let i = f.units.firstIndex(where: { $0.id == unit.id }) {
+            f.units[i].chosen = name
+            liveField = f
+        }
+        let old = tracker.name(of: unit)
+        tracker.pin(unit, name: name)
+        if let old, old != name, let j = run.owned.firstIndex(of: old) { run.owned[j] = name }
+        else if !run.owned.contains(name) { run.owned.append(name) }
+    }
+
+    /// Remove one copy from the lineup by hand.
+    func removeOwned(at i: Int) {
+        guard run.owned.indices.contains(i) else { return }
+        tracker.removeManual(run.owned[i])
+        run.owned.remove(at: i)
+    }
+
     func choose(_ unit: FieldUnit, _ name: String) {
         guard var f = field, let i = f.units.firstIndex(where: { $0.id == unit.id }) else { return }
         f.units[i].chosen = name
