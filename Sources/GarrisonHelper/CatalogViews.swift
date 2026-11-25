@@ -11,6 +11,7 @@ struct OperatorListView: View {
     @State private var additionals: Set<String> = []
     @State private var traitTypes: Set<String> = []
     @State private var status = 0   // 0 all, 1 available, 2 banned
+    @State private var roles: Set<String> = []
     @AppStorage("showSelfSelected") private var showSelfSelected = false
     @State private var showFilters = true
     @State private var expanded: String?
@@ -22,7 +23,9 @@ struct OperatorListView: View {
     private var filtered: [Operator] {
         catalog.operators.filter { op in
             (showSelfSelected || !op.isSelfSelected)
-                && (query.isEmpty || op.name.localizedCaseInsensitiveContains(query) || op.normal.traits.contains { $0.traitDescription.contains(query) })
+                && (query.isEmpty || op.name.localizedCaseInsensitiveContains(query) || Pinyin.matches(op.name, query)
+                    || op.normal.traits.contains { $0.traitDescription.contains(query) })
+                && roles.allSatisfy { Self.hasRole(op, $0, catalog.profiles[op.name]) }
                 && (tiers.isEmpty || tiers.contains(op.tier))
                 && (cores.isEmpty || !cores.isDisjoint(with: op.coreCovenants))
                 && (additionals.isEmpty || !additionals.isDisjoint(with: op.additionalCovenants))
@@ -32,11 +35,24 @@ struct OperatorListView: View {
         .sorted { ($0.tier, $0.name) < ($1.tier, $1.name) }
     }
 
+    static let roleTags = ["无核心盟约", "无附加盟约", "盾位", "奶位", "叠层手", "近战", "远程"]
+    static func hasRole(_ op: Operator, _ role: String, _ p: OperatorProfile?) -> Bool {
+        switch role {
+        case "无核心盟约": return op.coreCovenants.isEmpty
+        case "无附加盟约": return op.additionalCovenants.isEmpty
+        case "盾位": return p?.isTank == true
+        case "奶位": return p?.isHealer == true
+        case "叠层手": return p?.isStacker == true
+        case "近战", "远程": return p?.position == role
+        default: return true
+        }
+    }
+
     var body: some View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
-                    TextField("搜索干员名或效果", text: $query).textFieldStyle(.roundedBorder)
+                    TextField("搜索干员名（可用拼音或首字母）或效果", text: $query).textFieldStyle(.roundedBorder)
                     Button { showFilters.toggle() } label: { Image(systemName: "line.3.horizontal.decrease.circle" + (showFilters ? ".fill" : "")) }
                         .buttonStyle(.plain).help("筛选")
                 }
@@ -67,9 +83,12 @@ struct OperatorListView: View {
                 ForEach(catalog.additionalCovenants) { c in FilterTag(title: c.name, on: additionals.contains(c.name), icon: c.iconPath) { additionals.toggle(c.name) } }
             }
             FlowLayout(spacing: 4) {
+                ForEach(Self.roleTags, id: \.self) { t in FilterTag(title: t, on: roles.contains(t)) { roles.toggle(t) } }
+            }
+            FlowLayout(spacing: 4) {
                 ForEach(allTraitTypes, id: \.self) { t in FilterTag(title: t, on: traitTypes.contains(t)) { traitTypes.toggle(t) } }
-                if !(tiers.isEmpty && cores.isEmpty && additionals.isEmpty && traitTypes.isEmpty && status == 0) {
-                    Button("重置") { tiers = []; cores = []; additionals = []; traitTypes = []; status = 0 }.font(.caption)
+                if !(tiers.isEmpty && cores.isEmpty && additionals.isEmpty && traitTypes.isEmpty && roles.isEmpty && status == 0) {
+                    Button("重置") { tiers = []; cores = []; additionals = []; traitTypes = []; roles = []; status = 0 }.font(.caption)
                 }
             }
         }
@@ -413,5 +432,26 @@ struct DebugToggle: View {
             let u = DebugRecorder.usage()
             DispatchQueue.main.async { usage = u }
         }
+    }
+}
+
+/// Pinyin search for operator names: full pinyin ("yinhui") or initials ("yh"), case-insensitive.
+enum Pinyin {
+    private static var cache: [String: (full: String, initials: String)] = [:]
+    static func forms(_ name: String) -> (full: String, initials: String) {
+        if let c = cache[name] { return c }
+        let m = NSMutableString(string: name)
+        CFStringTransform(m, nil, kCFStringTransformToLatin, false)
+        CFStringTransform(m, nil, kCFStringTransformStripDiacritics, false)
+        let words = (m as String).lowercased().split { !$0.isLetter && !$0.isNumber }
+        let r = (words.joined(), String(words.compactMap(\.first)))
+        cache[name] = r
+        return r
+    }
+    static func matches(_ name: String, _ query: String) -> Bool {
+        let q = query.lowercased().filter { !$0.isWhitespace }
+        guard !q.isEmpty, q.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber) }) else { return false }
+        let f = forms(name)
+        return f.full.contains(q) || f.initials.hasPrefix(q)
     }
 }
