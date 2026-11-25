@@ -48,6 +48,16 @@ struct GarrisonHelperApp: App {
         .commands {
             CommandGroup(replacing: .newItem) {}
         }
+        // Floating guide (攻略悬浮窗), opened from the routes card.
+        Window("攻略", id: "guide") {
+            GuideView()
+                .environmentObject(catalog)
+                .environmentObject(run)
+                .environmentObject(scanner)
+                .environmentObject(coach)
+        }
+        .defaultSize(width: 320, height: 420)
+        .windowResizability(.contentMinSize)
     }
 }
 

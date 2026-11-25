@@ -8,6 +8,7 @@ struct RunView: View {
     @EnvironmentObject var coach: Coach
     @AppStorage("ui.setupOpen") private var setupOpen = true
     @State private var addingOwned = false
+    @Environment(\.openWindow) private var openWindow
     @State private var boardCell: BoardCell?
     @State private var pickingSelf = false
     @State private var pickingWatch = false
@@ -572,6 +573,8 @@ struct RunView: View {
             SectionHeader(title: "能玩的路线", trailing: AnyView(HStack(spacing: 6) {
                 Text("上场 \(run.deployCap) 人 · 转职次数自动").foregroundStyle(.secondary)
                     .help("上场人数从游戏读取（场上人数 + 剩余可放置）；转职次数由规划器在策略允许的范围内自动选最少的")
+                Button { openWindow(id: "guide") } label: { Image(systemName: "rectangle.on.rectangle") }
+                    .buttonStyle(.borderless).help("攻略悬浮窗：当前阶段的建议和自己写的攻略，浮在游戏上面")
                 if coach.planning { ProgressView().controlSize(.small) }
             }.font(.caption)))
             if let e = coach.planError { Text(e).font(.caption).foregroundStyle(.red) }
