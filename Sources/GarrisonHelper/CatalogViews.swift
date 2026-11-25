@@ -276,6 +276,7 @@ struct SettingsView: View {
     var body: some View {
         Form {
             AISettingsSection()
+            MusicSettingsSection()
             Section("窗口") {
                 Toggle("侧栏总在最前", isOn: $alwaysOnTop)
                     .onChange(of: alwaysOnTop) { _, v in scanner.sidebarWindow?.level = v ? .floating : .normal }

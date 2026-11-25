@@ -8,6 +8,8 @@ import SwiftUI
 /// playable routes; runs field recognition and the optional AI coach.
 @MainActor
 final class Coach: ObservableObject {
+    /// Background music at chosen moments of a match (设置 → 音乐).
+    let music = MusicPlayer()
     // Planning
     @Published var candidates: [PlanCandidate] = []
     @Published var selected: String?
@@ -481,6 +483,7 @@ final class Coach: ObservableObject {
     func handle(_ frame: Scanner.LiveFrame) async {
         defer { if (recordOverride ?? debugCapture) && frame.fullRead && !eliminated { record(frame) } }
         if frame.fullRead { detectNewMatch(frame); recordSelfPicks(frame); trackElimination() }
+        music.update(hud: scanner.hud, eliminated: eliminated)
         if eliminated { return }
         let hud = scanner.hud
         // Choice popups cover the HUD: check them first (full reads only).

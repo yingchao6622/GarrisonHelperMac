@@ -18,6 +18,7 @@ struct RunView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
                 topBar
+                MusicMiniBar()
                 actionsCard
                 Divider()
                 DisclosureGroup(isExpanded: $setupOpen) { setup.padding(.top, 6) } label: { setupLabel }

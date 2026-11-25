@@ -36,6 +36,7 @@ struct GarrisonHelperApp: App {
                 .environmentObject(scanner)
                 .environmentObject(coach)
                 .environmentObject(coach.history)
+                .environmentObject(coach.music)
                 .frame(minWidth: 380, idealWidth: 420, minHeight: 560, idealHeight: 760)
                 .background(WindowAccessor { win in
                     scanner.sidebarWindow = win

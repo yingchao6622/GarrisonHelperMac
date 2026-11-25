@@ -26,6 +26,27 @@ enum SelfTest {
             exit(0)
         }
         // GH_KEYS_FILE=/tmp/x.json --keytest: save / load / delete round trip of the API key file.
+        if args.contains("--musictest") {
+            // When the music plays for each phase (default: 联防 only), and which files a folder yields.
+            MainActor.assumeIsolated {
+                func hud(_ f: (inout HudReading) -> Void) -> HudReading { var h = HudReading(); f(&h); return h }
+                let cases: [(String, HudReading, Bool)] = [
+                    ("休整期", hud { $0.isRest = true }, false), ("作战中", hud { $0.inBattle = true }, false),
+                    ("联防", hud { $0.inBattle = true; $0.coDefense = true; $0.otherBoard = true }, false),
+                    ("首领", hud { $0.inBattle = true; $0.bossRound = true }, false), ("出局", HudReading(), true)]
+                for set in [[MusicPlayer.Moment.coDefense], [.rest, .boss], [.battle, .eliminated]] {
+                    print(set.map(\.label).joined(separator: "+") + ": " + cases.map { c in
+                        "\(c.0)=\(MusicPlayer.wanted(Set(set), hud: c.1, eliminated: c.2) ? 1 : 0)" }.joined(separator: " "))
+                }
+                if let dir = args.firstIndex(of: "--musictest").map({ $0 + 1 }).flatMap({ args.indices.contains($0) ? args[$0] : nil }) {
+                    let m = MusicPlayer(); let old = m.folder
+                    m.folder = dir
+                    print("tracks: " + m.tracks.map(\.lastPathComponent).joined(separator: ", ") + (m.error.map { "  (\($0))" } ?? ""))
+                    m.folder = old
+                }
+            }
+            exit(0)
+        }
         if args.contains("--keytest") {
             APIKeyStore.save(" sk-test-123 ", for: .deepseek)
             APIKeyStore.save("claude-key", for: .claude)
