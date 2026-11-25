@@ -358,6 +358,7 @@ struct RunView: View {
                 .frame(maxWidth: 280)
                 if coach.modifiers.piece == .mech { Toggle("铁皮已精锐", isOn: $run.mechElite).font(.caption) }
             }
+            if let n = coach.strategyNote { Text(n).font(.caption2).foregroundStyle(.green).fixedSize(horizontal: false, vertical: true) }
             if let s = coach.strategy {
                 Text(s.description).font(.caption2).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
                 let m = coach.modifiers

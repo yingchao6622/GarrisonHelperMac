@@ -57,6 +57,21 @@ enum SelfTest {
         }
         if let i = args.firstIndex(of: "--plan") { runPlan(Array(args.dropFirst(i + 1))); exit(0) }
         if let i = args.firstIndex(of: "--field"), i + 1 < args.count { runField(args[i + 1]); exit(0) }
+        if let i = args.firstIndex(of: "--strategy") {
+            // `--strategy a.png b.png …`: the strategy portrait read on each screenshot.
+            let catalog = Catalog()
+            guard let r = StrategyRecognizer(resourceRoot: catalog.resourceRoot) else { print("no portraits"); exit(1) }
+            let names = Dictionary(catalog.strategies.map { ($0.id, $0.name) }, uniquingKeysWith: { a, _ in a })
+            for path in args.dropFirst(i + 1) {
+                guard let img = NSImage(contentsOfFile: path)?.cgImage(forProposedRect: nil, context: nil, hints: nil),
+                      let vp = img.cropped(Viewport.find(PixelBuffer(img), insets: CropInsets())) else { print("\(path): cannot open"); continue }
+                let t0 = Date()
+                let m = r.read(vp)
+                let ms = Date().timeIntervalSince(t0) * 1000
+                print(String(format: "%@  %@ score %.2f margin %.2f (top %@)%@", (path as NSString).lastPathComponent, m.id.map { names[$0] ?? $0 } ?? "-", m.score, m.margin, m.top.map { names[$0] ?? $0 } ?? "-", ProcessInfo.processInfo.environment["STRATEGY_TIMING"] != nil ? String(format: " %.0fms", ms) : ""))
+            }
+            exit(0)
+        }
         if let i = args.firstIndex(of: "--board"), i + 2 < args.count { runBoard(args[i + 1], out: args[i + 2]); exit(0) }
         if let i = args.firstIndex(of: "--hud") { runHud(Array(args.dropFirst(i + 1))); exit(0) }
         if let i = args.firstIndex(of: "--place") { runPlace(Array(args.dropFirst(i + 1))); exit(0) }

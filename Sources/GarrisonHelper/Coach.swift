@@ -439,8 +439,43 @@ final class Coach: ObservableObject {
     /// Operators bought this match (from the shop), for naming units that show a shared stand-in sprite.
     private var boughtThisMatch: [String: Int] = [:]
 
+    // MARK: Strategy from the screen
+
+    private lazy var strategyReader = StrategyRecognizer(resourceRoot: catalog.resourceRoot)
+    private var strategyReads: [String?] = []
+    /// Strategy this match was set to from the screen; the player choosing another one stops the automation.
+    private var autoStrategy: String?
+    private var strategySettled = false
+    /// Shown next to the strategy picker.
+    @Published var strategyNote: String?
+
+    /// Reads the strategy portrait (top right) on our own board until 5 of the last 7 reads agree, then sets it.
+    private func readStrategy(_ frame: Scanner.LiveFrame) {
+        let hud = scanner.hud
+        if let a = autoStrategy, run.strategyID != a { strategySettled = true; strategyNote = nil }
+        guard !strategySettled, !hud.otherBoard, !hud.playerList, hud.isRest || hud.inBattle, let reader = strategyReader else { return }
+        strategyReads.append(reader.read(frame.image).id)
+        if strategyReads.count > 7 { strategyReads.removeFirst() }
+        let votes = Dictionary(grouping: strategyReads.compactMap { $0 }, by: { $0 }).mapValues(\.count)
+        guard let (id, n) = votes.max(by: { $0.value < $1.value }), n >= 5 else { return }
+        strategySettled = true
+        autoStrategy = id
+        let name = catalog.strategies.first { $0.id == id }?.name ?? id
+        if run.strategyID != id {
+            let before = strategy?.name
+            run.strategyID = id
+            strategyNote = "按画面右上角的头像认出策略：\(name)" + (before.map { "（原来选的是 \($0)）" } ?? "") + "。不对的话手动改，本局不再自动换"
+        } else {
+            strategyNote = "画面上的策略头像也是 \(name)"
+        }
+    }
+
     /// Called when a new run starts.
     func resetRun() {
+        strategyReads = []
+        autoStrategy = nil
+        strategySettled = false
+        strategyNote = nil
         DebugRecorder.newMatch()
         roundEnemies = RoundEnemies()
         scanner.roundStart.reset()
@@ -484,6 +519,7 @@ final class Coach: ObservableObject {
         defer { if (recordOverride ?? debugCapture) && frame.fullRead && !eliminated { record(frame) } }
         if frame.fullRead { detectNewMatch(frame); recordSelfPicks(frame); trackElimination() }
         music.update(hud: scanner.hud, eliminated: eliminated)
+        if frame.fullRead && !eliminated { readStrategy(frame) }
         if eliminated { return }
         let hud = scanner.hud
         // Choice popups cover the HUD: check them first (full reads only).
