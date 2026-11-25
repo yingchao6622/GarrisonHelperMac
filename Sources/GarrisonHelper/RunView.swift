@@ -429,13 +429,23 @@ struct RunView: View {
 
     // MARK: 当前阵容
 
-    private var activeCounts: [(String, Int)] {
+    /// Covenants of the held lineup: count, the next threshold (activation, then Ⅱ), who counts, and the layers the top
+    /// bar shows. Active first, core before additional.
+    private var covenantStatus: [(name: String, n: Int, target: Int, note: String, members: [String], active: Bool)] {
         let d = PlannerData(ops: catalog.operators, covenants: catalog.covenants, profiles: catalog.profiles,
                             selfSelected: Set(run.selfSelected), strategy: coach.modifiers)
-        let counts = d.count(Array(Set(run.owned)))
-        return counts.filter { $0.value > 0 && $0.key != PlanRules.harmony }
-            .sorted { (d.isActive(counts, $0.key) ? 0 : 1, d.isCore($0.key) ? 0 : 1, -$0.value) < (d.isActive(counts, $1.key) ? 0 : 1, d.isCore($1.key) ? 0 : 1, -$1.value) }
-            .map { ($0.key, $0.value) }
+        let held = Array(Set(run.owned))
+        let counts = d.count(held)
+        let harmony = held.filter { catalog.op($0)?.allCovenants.contains(PlanRules.harmony) == true }
+        return counts.filter { $0.value > 0 && $0.key != PlanRules.harmony }.map { name, n in
+            let act = d.activate(name), second = d.secondCount(name)
+            let target = n < act ? act : (second != Int.max && n < second ? second : (second != Int.max ? second : act))
+            let note = n < act ? "差 \(act - n) 人激活" : (second != Int.max && n < second ? "差 \(second - n) 人到Ⅱ" : (second != Int.max ? "Ⅱ" : "已激活"))
+            var members = held.filter { catalog.op($0)?.allCovenants.contains(name) == true }.sorted()
+            if d.isCore(name) && !members.isEmpty { members += harmony.map { $0 + "（调和）" } }
+            return (name, n, target, note, members, n >= act)
+        }
+        .sorted { ($0.active ? 0 : 1, d.isCore($0.name) ? 0 : 1, -$0.n) < ($1.active ? 0 : 1, d.isCore($1.name) ? 0 : 1, -$1.n) }
     }
 
     private var lineupCard: some View {
@@ -479,10 +489,19 @@ struct RunView: View {
                 }
             }
             if !run.owned.isEmpty {
-                FlowLayout(spacing: 3) {
-                    ForEach(activeCounts, id: \.0) { name, n in
-                        let need = catalog.covenant(named: name)?.activateCount ?? 2
-                        chip("\(name) \(n)/\(need)", icon: "icons/covenants/\(name).png", color: n >= need ? .green : .secondary)
+                // Each covenant: who counts and how many are missing for the next level; layers from the top bar.
+                VStack(alignment: .leading, spacing: 2) {
+                    ForEach(covenantStatus, id: \.name) { c in
+                        let bar = scanner.bar.first { $0.name == c.name }
+                        HStack(alignment: .firstTextBaseline, spacing: 4) {
+                            IconView(path: "icons/covenants/\(c.name).png", size: 13)
+                            Text("\(c.name) \(c.n)/\(c.target)").font(.system(size: 11, weight: c.active ? .semibold : .regular))
+                                .foregroundStyle(c.active ? .green : .secondary)
+                            Text(c.note).font(.system(size: 10)).foregroundStyle(c.active ? Color.secondary : Color.orange)
+                            if let l = bar?.layers, l > 0 { Text("\(l)层").font(.system(size: 10)).foregroundStyle(.secondary) }
+                            Text(c.members.joined(separator: "、")).font(.system(size: 10)).foregroundStyle(.secondary).lineLimit(1)
+                        }
+                        .help("\(c.name)：\(c.members.joined(separator: "、"))；\(c.note)")
                     }
                 }
             } else {
