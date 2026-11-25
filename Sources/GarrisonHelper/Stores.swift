@@ -157,6 +157,7 @@ final class RunState: ObservableObject {
         var mapID: String? = nil
         var deployCap: Int? = nil
         var ownedEquipment: [String]? = nil
+        var elites: [String]? = nil
     }
 
     @Published var bannedCovenants: Set<String> = [] { didSet { save() } }
@@ -182,6 +183,9 @@ final class RunState: ObservableObject {
     @Published var deployCap = 8 { didSet { save() } }
     /// 买到的装备（用于推荐合成 / 给谁带）。
     @Published var ownedEquipment: [String] = [] { didSet { save() } }
+    /// Operators already merged into 精锐 this run (a 精锐 can't be merged again, so more copies are no use). Set when the
+    /// third copy is bought, or by hand from the route panel.
+    @Published var elites: [String] = [] { didSet { save() } }
     /// Covenants outside the chosen mode's pool (set by the coach from the catalog).
     @Published var outOfMode: Set<String> = []
 
@@ -205,6 +209,7 @@ final class RunState: ObservableObject {
             mapID = s.mapID
             deployCap = s.deployCap ?? 8
             ownedEquipment = s.ownedEquipment ?? []
+            elites = s.elites ?? []
         }
         loading = false
     }
@@ -214,7 +219,7 @@ final class RunState: ObservableObject {
         let s = Saved(autoBannedCovenants: Array(bannedCovenants), manualBannedOperators: Array(manualBannedOperators),
                       manualUnbannedOperators: Array(manualUnbannedOperators), bossName: bossName, owned: owned, locked: locked,
                       autoRecordPurchases: autoRecordPurchases, mode: mode, strategyID: strategyID, mechElite: mechElite,
-                      specialEnemies: specialEnemies, selfSelected: selfSelected, mapID: mapID, deployCap: deployCap, ownedEquipment: ownedEquipment)
+                      specialEnemies: specialEnemies, selfSelected: selfSelected, mapID: mapID, deployCap: deployCap, ownedEquipment: ownedEquipment, elites: elites)
         if let data = try? JSONEncoder().encode(s) { UserDefaults.standard.set(data, forKey: key) }
     }
 
@@ -257,6 +262,7 @@ final class RunState: ObservableObject {
         bossName = nil
         specialEnemies = []
         ownedEquipment = []
+        elites = []
         mapID = nil
         deployCap = 8
     }

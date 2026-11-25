@@ -412,6 +412,9 @@ final class Coach: ObservableObject {
             return
         }
         boughtThisMatch[name, default: 0] += 1
+        // The third copy merges into 精锐 at once (the board then shows one unit).
+        let held = autoSyncField ? tracker.held(name) : run.owned.filter { $0 == name }.count
+        if held >= 2 && !run.elites.contains(name) { run.elites.append(name) }
         if autoSyncField { tracker.purchased(name) } else if run.autoRecordPurchases { run.owned.append(name) }
     }
 
@@ -653,7 +656,7 @@ final class Coach: ObservableObject {
             catalog: (tier: { [catalog] n in catalog.op(n)?.tier ?? catalog.equipment.first(where: { e in e.name == n })?.tier },
                       isOperator: { [catalog] n in catalog.op(n) != nil },
                       op: { [catalog] n in catalog.op(n) }),
-            profiles: catalog.profiles, eliteFocus: modifiers.eliteFocus, ownedEquipment: run.ownedEquipment,
+            profiles: catalog.profiles, eliteFocus: modifiers.eliteFocus, elites: Set(run.elites), ownedEquipment: run.ownedEquipment,
             equipment: equipmentInfo, round: scanner.hud.round, forecast: forecast, enemyRoutes: enemyRoutes)
         actions = ActionAdvisor.advise(input)
         // Items bought this round that are used by equipping them: whom to give them (they can't be read off the screen
@@ -1224,7 +1227,7 @@ final class Coach: ObservableObject {
         l.append("这回合升本价 \(up.map(String.init) ?? "?")，刷新 \(refresh.map(String.init) ?? "?")"
                  + ((hud.money != nil && up != nil) ? "；升本后剩 \(max(0, hud.money! - up!))" : ""))
         l.append("本局不可用盟约：\(run.unavailableCovenants.isEmpty ? "无" : run.unavailableCovenants.sorted().joined(separator: "、"))")
-        let owned = run.owned.map { n in "\(n)(\(catalog.op(n).map { "\($0.tier)阶 \($0.allCovenants.joined(separator: "/"))" } ?? ""))" }
+        let owned = run.owned.map { n in "\(n)(\(catalog.op(n).map { "\($0.tier)阶 \($0.allCovenants.joined(separator: "/"))" } ?? "")\(run.elites.contains(n) ? " 已精锐" : ""))" }
         l.append("当前阵容：\(owned.isEmpty ? "未知" : owned.joined(separator: "、"))")
         if let f = forecast {
             l.append("下回合资金约 \(f.nextMoney.map(String.init) ?? "?")，升本价 \(f.nextUpgradeCost.map(String.init) ?? "?")；剩的钱" + (f.carries ? "能" : "不能") + "留到下回合")

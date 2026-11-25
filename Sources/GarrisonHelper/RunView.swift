@@ -763,6 +763,7 @@ struct OpTile: View {
         if let obtain = o?.obtain { return ("赠送", .purple, obtain) }
         if o?.isSelfSelected == true { return ("自选", .purple, "开局自选干员，商店不刷") }
         let copies = run.owned.filter { $0 == op.name }.count
+        if copies > 0 && run.elites.contains(op.name) { return ("已精锐", .orange, "已合成精锐，不能再合成，不用再买（右键可取消标记）") }
         if copies >= 2 { return ("\(copies)/3 差1精锐", .green, "再买 1 张合成精锐；合成后得到晋升调配特许：商店刷出几名比当前终端高一阶的干员，免费选 1 名") }
         if copies == 1 { return ("1/3", .green, "已有 1 张；3 张合成精锐") }
         guard let level = scanner.hud.level else { return ("\(op.tier)本起", .secondary, "终端 \(op.tier) 本及以上才刷得到") }
@@ -789,6 +790,14 @@ struct OpTile: View {
         }
         .frame(width: 50)
         .help(tip)
+        .contextMenu {
+            // Merges the helper didn't see (晋升调配特许, 升精锐 items, before it was running) are marked by hand.
+            if run.owned.contains(op.name) {
+                Button(run.elites.contains(op.name) ? "取消精锐标记" : "标记为已精锐") {
+                    if let i = run.elites.firstIndex(of: op.name) { run.elites.remove(at: i) } else { run.elites.append(op.name) }
+                }
+            }
+        }
     }
 }
 

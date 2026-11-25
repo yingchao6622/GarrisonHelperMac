@@ -31,6 +31,9 @@ struct LineupTracker {
         pending.append((name, 4, before + 1))
     }
 
+    /// Copies of `name` held or bought and not yet on the board.
+    func held(_ name: String) -> Int { (stable[name] ?? 0) + pending.filter { $0.name == name }.count }
+
     /// The player picked `name` for a unit the model read as something else.
     mutating func pin(_ u: FieldUnit, name: String) {
         if let guess = u.candidates.first?.name, guess != name { corrections["\(guess)#\(u.tier)"] = name }

@@ -314,6 +314,7 @@ enum SelfTest {
                                  catalog: (tier: { n in catalog.op(n)?.tier ?? catalog.equipment.first(where: { $0.name == n })?.tier },
                                            isOperator: { n in catalog.op(n) != nil }, op: { n in catalog.op(n) }),
                                  profiles: catalog.profiles, eliteFocus: mods.eliteFocus,
+                                 elites: Set((o["elite"] ?? "").split(separator: ",").map(String.init)),
                                  equipment: Dictionary(catalog.equipment.map { ($0.name, (catalog.equipmentCategories[$0.name] ?? [], $0.normal.effectDescription)) }, uniquingKeysWith: { a, _ in a }),
                                  round: hud.round)
         let actions = ActionAdvisor.advise(input)

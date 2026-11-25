@@ -48,6 +48,8 @@ struct AdvisorInput {
     var catalog: (tier: (String) -> Int?, isOperator: (String) -> Bool, op: (String) -> Operator?)
     var profiles: [String: OperatorProfile]
     var eliteFocus: Bool
+    /// Operators already merged into 精锐: more copies can't merge again.
+    var elites: Set<String> = []
     var ownedEquipment: [String] = []
     var equipment: [String: (categories: [String], effect: String)] = [:]
     var round: Int? = nil
@@ -184,7 +186,8 @@ enum ActionAdvisor {
         // Who carries equipment: from the held lineup (see GearAdvisor).
         let holders = GearAdvisor.holders(x.owned, op: x.catalog.op, profiles: x.profiles)
         let goalCovs = Set(route.candidate.goals.map(\.name))
-        func value(_ name: String) -> (Double, String) {
+        /// `before`: copies of the same name further up the shop row (each would be bought first).
+        func value(_ name: String, before: Int = 0) -> (Double, String) {
             if !x.catalog.isOperator(name) {
                 var r = ActionAdvisor.equipmentValue(name, info: x.equipment[name], gearNeeded: gearNeeded, goals: goalCovs,
                                                      owned: x.ownedEquipment, round: x.round, holders: holders)
@@ -195,7 +198,11 @@ enum ActionAdvisor {
                 }
                 return r
             }
+            // A 精锐 can't be merged again, and a second copy of the same name doesn't count for covenants.
+            if x.elites.contains(name) && ownedCount[name, default: 0] > 0 { return (0, "") }
             let have = ownedCount[name, default: 0]
+            // Two held + the first copy in the shop already merge; another copy would be a spare.
+            if have >= 2 && have + before >= 3 { return (0, "") }
             let inRoute = laterNames.contains(name) || finalNames.contains(name)
             if have >= 2 && inRoute { return (110, "第三张：合成精锐，还得一张晋升调配特许（商店刷出几名高一阶干员，免费选 1 名）") }
             if keys.contains(name) && have == 0 { return (100, "本阶段关键牌") }
@@ -235,7 +242,11 @@ enum ActionAdvisor {
                                       rect: best.rect, order: 1))
             return actions
         }
-        let ranked = x.cards.map { ($0, value($0.name)) }.filter { $0.1.0 > 0 }.sorted { $0.1.0 > $1.1.0 }
+        var seen: [String: Int] = [:]
+        let ranked = x.cards.map { c -> (ShopCard, (Double, String)) in
+            defer { seen[c.name, default: 0] += 1 }
+            return (c, value(c.name, before: seen[c.name, default: 0]))
+        }.filter { $0.1.0 > 0 }.sorted { $0.1.0 > $1.1.0 }
         let upgradeCost = x.controls.upgradeCost
         // Only advise 升本 when the terminal level, the funds and the upgrade price were all read this round.
         let canUpgrade = x.hud.level != nil && level < 6 && x.controls.level != nil && !x.controls.maxed && moneyKnown && upgradeCost != nil
