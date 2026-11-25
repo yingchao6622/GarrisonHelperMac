@@ -495,6 +495,23 @@ final class Coach: ObservableObject {
         }
     }
 
+    /// The chosen boss: HP in this run's mode (game data) and its damage types.
+    var bossStatsLine: String? {
+        guard let name = run.bossName, let b = catalog.bosses.first(where: { $0.name == name }) else { return nil }
+        func wan(_ n: Int) -> String { n >= 10000 ? String(format: "%g 万", (Double(n) / 1000).rounded() / 10) : "\(n)" }
+        var parts: [String] = []
+        if let mode = run.mode, let hp = b.hpByMode?[mode] { parts.append("\(mode)血量 \(wan(hp))") }
+        else if let hp = b.hpByMode, !hp.isEmpty {
+            var each: [String] = []
+            for m in ["标准模拟", "险境模拟", "绝境模拟", "终极模拟"] { if let n = hp[m] { each.append(String(m.prefix(2)) + " " + wan(n)) } }
+            parts.append(each.joined(separator: " / "))
+        }
+        let names: [String: String] = ["PHYSIC": "物理", "MAGIC": "法术", "HEAL": "治疗"]
+        let dmg: [String] = (b.damageTypes ?? []).map { names[$0] ?? $0 }
+        if !dmg.isEmpty { parts.append("伤害：" + dmg.joined(separator: "、")) }
+        return parts.isEmpty ? nil : "领袖 " + parts.joined(separator: "；")
+    }
+
     /// Called when a new run starts.
     func resetRun() {
         strategyReads = []
@@ -1018,6 +1035,17 @@ final class Coach: ObservableObject {
     }
 
     /// Short traits of a listed enemy: 飞行 / 法术 / 高防 / 高法抗 and its first ability.
+    /// Base stats from the game data (each round adds a mode-dependent bonus on top, which isn't in the public data).
+    func enemyStats(_ name: String) -> String? {
+        guard let e = catalog.enemies.first(where: { $0.name == name }), let hp = e.hp else { return nil }
+        var s = String(format: "%@ 基础：生命 %.0f", name, hp)
+        if let a = e.atk { s += String(format: "、攻击 %.0f", a) }
+        if let d = e.def { s += String(format: "、防御 %.0f", d) }
+        if let r = e.res { s += String(format: "、法抗 %.0f", r) }
+        let abilities = e.abilities ?? []
+        return s + "（每回合还有按模式的加成）" + (abilities.isEmpty ? "" : "\n" + abilities.joined(separator: "\n"))
+    }
+
     func enemyTraits(_ name: String) -> String {
         guard let e = catalog.enemies.first(where: { $0.name == name }) else { return name }
         var t: [String] = []
@@ -1276,7 +1304,7 @@ final class Coach: ObservableObject {
         var l: [String] = []
         l.append("模式：\(run.mode ?? "未设定")；策略：\(strategy.map { "\($0.name)（\($0.description.replacingOccurrences(of: "\n", with: " "))）" } ?? "未选择")")
         let needs = enemyNeeds()
-        l.append("敌方领袖：\(run.bossName ?? "未知")；特训敌人：\(run.specialEnemies.isEmpty ? "未知" : run.specialEnemies.joined(separator: "、"))")
+        l.append("敌方领袖：\(run.bossName ?? "未知")\(bossStatsLine.map { "（\($0)）" } ?? "")；特训敌人：\(run.specialEnemies.isEmpty ? "未知" : run.specialEnemies.joined(separator: "、"))")
         if let r = enemyRoutes { l.append(r.summary + (nextEnemyRoutes.map { "；下回合 \($0.kinds)" } ?? "") + "（人数每局随机，未知）") }
         if roundEnemies.round == scanner.hud.round, !roundEnemies.enemies.isEmpty {
             l.append("本回合敌人列表：" + roundEnemies.enemies.map(enemyTraits).joined(separator: "、"))

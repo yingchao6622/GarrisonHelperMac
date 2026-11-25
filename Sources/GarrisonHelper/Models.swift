@@ -74,6 +74,8 @@ struct Boss: Codable, Identifiable, Hashable {
     var damageTypes: [String]?
     var abilityList: [String]?
     var iconPath: String
+    /// HP by mode name (终极模拟, 规程等级20 …), from activity_table bossInfoDict (scripts/build-boss-hp.py).
+    var hpByMode: [String: Int]?
     var id: String { enemyId }
 }
 

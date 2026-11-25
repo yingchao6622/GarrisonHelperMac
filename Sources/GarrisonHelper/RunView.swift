@@ -425,6 +425,7 @@ struct RunView: View {
                 }
                 .fixedSize()
             }
+            if let line = coach.bossStatsLine { Text(line).font(.caption2).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true) }
             if !run.specialEnemies.isEmpty {
                 FlowLayout(spacing: 4) {
                     ForEach(run.specialEnemies, id: \.self) { n in
@@ -433,6 +434,7 @@ struct RunView: View {
                             Button { run.specialEnemies.removeAll { $0 == n } } label: { Image(systemName: "xmark.circle.fill") }.buttonStyle(.plain)
                         }
                         .padding(.horizontal, 5).padding(.vertical, 2).background(Color.red.opacity(0.12)).clipShape(Capsule())
+                        .help(coach.enemyStats(n) ?? n)
                     }
                 }
             }
