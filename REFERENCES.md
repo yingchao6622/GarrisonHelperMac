@@ -61,6 +61,7 @@ MaaFramework 本身跨平台（Windows / Linux / macOS / Android），推理走 
 | 阵容规划器 | hongxue `Services/LineupPlanner.cs` | DFS + 转职分配 + 调和/独行/奶位规则；策略棋子 Mech/Pith/变形同构见 `Models/LineupPlannerModels.cs` |
 | 自动推荐 | hongxue `Services/AutoPlanner.cs` | 每个本家一个候选、先大后小/先小后大判定、逐等级建议（节奏 Rush/Stay/Steady/Max、留牌、关键牌、资金） |
 | 路线阶段 | hongxue `Services/LineupRoutePlanner.cs`、`Models/LineupRouteModels.cs` | 阶段：开局(2本,≤2阶,6人)、前期(3,≤3,8)、中期(4,≤4,8)、后期叠层(6)、成型；倒推+正推，贪心填充+交换改进；叠层含放大器 |
+| 替补建议 | hongxue v1.9.8 `Services/LineupSubstitutionAdvice.cs`（思路） | 成型阵容缺人时给一个顶替的人和何时换回；挑人规则和文字是 Mac 版自写：必须保住本家盟约、至少同一个路线盟约，优先已有 / 当前终端刷得到，再按覆盖的路线盟约、同定位、阶数接近排序 |
 
 ## 没有移植的
 

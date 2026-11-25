@@ -227,6 +227,7 @@ enum SelfTest {
                 print("       \(a.upgrade)" + (a.reserve.isEmpty ? "" : "  留：\(a.reserve.joined(separator: "、"))"))
             }
         }
+        for x in route.substitutes { print("  替补 " + x.text) }
     }
 
     /// `--field 截图.png`：场上认人（角标 + Core ML）。

@@ -850,12 +850,70 @@ struct RouteStage: Identifiable, Hashable {
     func hash(into h: inout Hasher) { h.combine(def); h.combine(ops) }
 }
 
-struct PlannedRoute { let candidate: PlanCandidate; let style: PlanStyle; let stages: [RouteStage]; let equipment: [String] }
+struct PlannedRoute {
+    let candidate: PlanCandidate; let style: PlanStyle; let stages: [RouteStage]; let equipment: [String]
+    var substitutes: [RouteSubstitute] = []
+}
+
+/// A stand-in for a missing operator of the final lineup: covers the same route covenants for now.
+struct RouteSubstitute: Hashable {
+    let missing: String
+    let standIn: String
+    /// Held now (else: the current terminal can roll it).
+    let owned: Bool
+    let text: String
+}
 
 struct RouteState { var owned: Set<String> = []; var level: Int?; var money: Int?; var round: Int? }
 
 struct RoutePlanner {
     let d: PlannerData
+
+    /// Stand-ins for final-lineup operators not held yet. A stand-in keeps the 本家 count when the missing operator is a
+    /// 本家 member, shares at least one of its route covenants, is held or rollable at the current terminal level, and is
+    /// not already in the final lineup. Held first, then the most of the missing operator's route covenants, the most
+    /// route covenants overall, the same role (tank / healer / melee or ranged), and the closest tier. The text names
+    /// the route covenants the stand-in doesn't carry. Operators the route needs only through a job change are skipped.
+    func substitutes(_ c: PlanCandidate, pool: [Operator], owned: Set<String>, level: Int?, limit: Int = 4) -> [RouteSubstitute] {
+        let goalNames = Set(c.goals.map(\.name))
+        let final = c.final.operators
+        let finalSet = Set(final)
+        var used = Set<String>()
+        var out: [RouteSubstitute] = []
+        for name in final where !owned.contains(name) && c.final.transforms[name] == nil {
+            guard out.count < limit, let m = d.byName[name] else { continue }
+            let need = Set(m.allCovenants).intersection(goalNames)
+            guard !need.isEmpty else { continue }
+            let mp = d.profile(name)
+            func role(_ p: OperatorProfile?) -> String { p?.isHealer == true ? "奶" : p?.isTank == true ? "盾" : p?.position ?? "" }
+            let terminal = level ?? max(1, m.tier - 1)
+            let best = pool.filter { o in
+                !finalSet.contains(o.name) && !used.contains(o.name) && o.obtain == nil
+                    && (owned.contains(o.name) || o.tier <= terminal)
+                    && (!need.contains(c.main) || o.allCovenants.contains(c.main)) && !need.isDisjoint(with: o.allCovenants)
+            }.max { a, b in
+                func key(_ o: Operator) -> [Int] {
+                    [owned.contains(o.name) ? 1 : 0, need.intersection(o.allCovenants).count, Set(o.allCovenants).intersection(goalNames).count,
+                     role(d.profile(o.name)) == role(mp) ? 1 : 0, -abs(o.tier - m.tier)]
+                }
+                return key(a).lexicographicallyPrecedes(key(b))
+            }
+            guard let s = best else { continue }
+            used.insert(s.name)
+            let sp = d.profile(s.name)
+            let back: String
+            if mp?.isHealer == true && sp?.isHealer != true { back = "要奶的时候换回" }
+            else if mp?.isTank == true && sp?.isTank != true { back = "要前排扛伤时换回" }
+            else if mp?.isStacker == true && sp?.isStacker != true { back = "要它叠层时换回" }
+            else { back = "到手后换回" }
+            let kept = need.intersection(s.allCovenants).sorted(), lost = need.subtracting(s.allCovenants).sorted()
+            var text = "缺\(name)：先用\(s.name)（" + (owned.contains(s.name) ? "已有" : "\(s.tier)阶，现在能刷") + "，同样算"
+                + kept.joined(separator: "、") + (lost.isEmpty ? "" : "，少 1 个" + lost.joined(separator: "、")) + "），\(name)" + back
+            if let a = mp?.position, let b = sp?.position, a != b { text += "；\(s.name)是\(b)，换人时站位要跟着换" }
+            out.append(RouteSubstitute(missing: name, standIn: s.name, owned: owned.contains(s.name), text: text))
+        }
+        return out
+    }
 
     func currentStageIndex(_ defs: [StageDef] = StageDef.defaults, level: Int?) -> Int? {
         guard let level else { return nil }
@@ -915,7 +973,8 @@ struct RoutePlanner {
         stages = advise(stages, style: style, candidate: c, state: state)
         let targets = Array(Set(Array(finalTr.values) + c.final.mech)).sorted()
         let gear = targets.map { t in "\(t)：" + (d.jobChange[t]?.joined(separator: " / ") ?? "变形同构体") }
-        return PlannedRoute(candidate: c, style: style, stages: stages, equipment: gear)
+        return PlannedRoute(candidate: c, style: style, stages: stages, equipment: gear,
+                            substitutes: substitutes(c, pool: pool, owned: owned, level: state.level))
     }
 
     private func makeStage(def: StageDef, team: [String], transforms: [String: String], mech: [String], goals: [PlannerGoal],

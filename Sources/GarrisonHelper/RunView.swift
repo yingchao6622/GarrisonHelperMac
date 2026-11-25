@@ -622,6 +622,12 @@ struct RunView: View {
                             .help("装上就会销毁，效果立刻生效")
                     }
                     if !route.equipment.isEmpty { Text("转职装备：" + route.equipment.joined(separator: "；")).font(.caption2).foregroundStyle(.secondary) }
+                    if !route.substitutes.isEmpty {
+                        // Final-lineup operators not held yet: who covers the same covenants until they come.
+                        Text("替补：" + route.substitutes.map(\.text).joined(separator: "\n")).font(.caption2)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .help("成型阵容里还没到手的干员，先用盟约相同的人顶上（优先已有的，其次当前终端刷得到的）")
+                    }
                     if !c.stackers.isEmpty {
                         Text("叠层手：" + c.stackers.prefix(6).map { "\($0.name)(\($0.tier)阶 \(String(format: "%g", $0.perRound))层/回合)" }.joined(separator: "、"))
                             .font(.caption2).foregroundStyle(.secondary)

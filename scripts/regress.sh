@@ -24,7 +24,7 @@ while IFS='|' read -r name envs cmd; do
   # shellcheck disable=SC2086
   env $envs "$BIN" $cmd 2>&1 \
     | grep -vE '^\[ocr|^load |^pass |^tick |^sprite:|^image |^board [0-9]+ms' \
-    | sed -E 's/^(=== [^ ]+)  [0-9.]+s$/\1/' > "$out" || true
+    | sed -E -e 's/^(=== [^ ]+)  [0-9.]+s$/\1/' -e 's/ in [0-9.]+s/ in …s/' > "$out" || true
   if [ "$MODE" = "record" ]; then
     cp "$out" "$DIR/expected/$name.txt"; echo "记录 $name（$(wc -l < "$out" | xargs) 行）"
   elif ! diff -q "$DIR/expected/$name.txt" "$out" >/dev/null 2>&1; then

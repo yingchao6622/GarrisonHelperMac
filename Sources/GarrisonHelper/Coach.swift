@@ -1246,6 +1246,7 @@ final class Coach: ObservableObject {
             let miss = s.ops.filter { !$0.owned }.map(\.name)
             l.append("\(s.def.name)\(s.isFinal ? "" : "（\(s.def.terminal)本）")：\(s.ops.map(\.name).joined(separator: "、"))；还缺 \(miss.isEmpty ? "无" : miss.joined(separator: "、"))")
         }
+        if !r.substitutes.isEmpty { l.append("替补：" + r.substitutes.map(\.text).joined(separator: "；")) }
         let acts = actions.filter { [.buy, .upgrade, .save, .refresh, .freeze, .unfreeze].contains($0.kind) }
         if !acts.isEmpty { l.append("规则建议的操作：" + acts.map { "\($0.title)（\($0.reason)）" }.joined(separator: "；")) }
         let list = aiRouteChoices()
