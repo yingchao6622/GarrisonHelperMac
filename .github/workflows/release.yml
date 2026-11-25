@@ -90,4 +90,17 @@ jobs:
           check='**校验**：`shasum -a 256 -c SHA256SUMS.txt`'
           if [ "$PRIVATE" != "true" ]; then check="$check；构建来源：\`gh attestation verify <dmg> --repo ${{ github.repository }}\`"; fi
           echo "$check" >> notes.md
+          # Every commit since the previous release, each linked by its hash, and the full comparison.
+          url="${{ github.server_url }}/${{ github.repository }}"
+          prev="$(git describe --tags --abbrev=0 "$TAG^" 2>/dev/null || true)"
+          if [ -n "$prev" ]; then
+            {
+              echo
+              echo "### 提交"
+              echo
+              git log --reverse --format="- [\`%h\`]($url/commit/%H) %s" "$prev..$TAG"
+              echo
+              echo "**完整改动**：[$prev...$TAG]($url/compare/$prev...$TAG)"
+            } >> notes.md
+          fi
           gh release create "$TAG" --draft --verify-tag --title "卫戍协议小助手 $TAG" --notes-file notes.md "$PKG" SHA256SUMS.txt
