@@ -12,11 +12,21 @@ VERSION="$(cat VERSION 2>/dev/null || echo 0.0.0)"
 BUILD="$(git rev-list --count HEAD 2>/dev/null || echo 0)"
 COMMIT="$(git rev-parse --short HEAD 2>/dev/null || echo unknown)"
 if [ -n "$(git status --porcelain 2>/dev/null)" ]; then COMMIT="$COMMIT-dirty"; fi
-# Signing: a stable identity keeps the screen-recording permission across rebuilds (ad-hoc signatures change every
-# build, so macOS asks again). Set SIGN_IDENTITY, or create a code-signing certificate named
-# 「卫戍协议小助手 本地签名」 in Keychain Access (see docs/开发.md); otherwise ad-hoc.
+# Signing: a stable identity keeps the screen-recording permission across rebuilds and updates (macOS remembers it by
+# the signature; ad-hoc signatures change every build, so it asks again). In order:
+#   1. SIGN_P12 (+ SIGN_P12_PASSWORD): the release certificate as a .p12 file. Releases use it (GitHub secrets), and a
+#      local build uses ~/Library/Application Support/卫戍协议小助手-签名/signing.p12 when it is there. It is imported
+#      into a throwaway keychain file that is deleted afterwards; the login keychain and its search list are untouched.
+#   2. SIGN_IDENTITY, or a code-signing certificate named 「卫戍协议小助手 本地签名」 in Keychain Access.
+#   3. Otherwise ad-hoc.
+LOCAL_SIGN_DIR="$HOME/Library/Application Support/卫戍协议小助手-签名"
+if [ -z "${SIGN_P12:-}" ] && [ -f "$LOCAL_SIGN_DIR/signing.p12" ] && [ -f "$LOCAL_SIGN_DIR/p12-password.txt" ]; then
+  SIGN_P12="$LOCAL_SIGN_DIR/signing.p12"
+  SIGN_P12_PASSWORD="$(cat "$LOCAL_SIGN_DIR/p12-password.txt")"
+fi
 SIGN_IDENTITY="${SIGN_IDENTITY:-}"
-if [ -z "$SIGN_IDENTITY" ] && security find-identity -v -p codesigning 2>/dev/null | grep -q "卫戍协议小助手 本地签名"; then
+SIGN_KEYCHAIN=""
+if [ -z "$SIGN_IDENTITY" ] && [ -z "${SIGN_P12:-}" ] && security find-identity -v -p codesigning 2>/dev/null | grep -q "卫戍协议小助手 本地签名"; then
   SIGN_IDENTITY="卫戍协议小助手 本地签名"
 fi
 DIST="dist"
@@ -77,7 +87,21 @@ cat > "$APP/Contents/Info.plist" <<PLIST
 </plist>
 PLIST
 
-if [ -n "$SIGN_IDENTITY" ]; then
+if [ -n "${SIGN_P12:-}" ]; then
+  KC_DIR="$(mktemp -d)"
+  SIGN_KEYCHAIN="$KC_DIR/sign.keychain-db"
+  KC_PASS="$(openssl rand -hex 16)"
+  trap 'security delete-keychain "$SIGN_KEYCHAIN" 2>/dev/null || true; rm -rf "$KC_DIR"' EXIT
+  security create-keychain -p "$KC_PASS" "$SIGN_KEYCHAIN"
+  security set-keychain-settings "$SIGN_KEYCHAIN"
+  security unlock-keychain -p "$KC_PASS" "$SIGN_KEYCHAIN"
+  security import "$SIGN_P12" -k "$SIGN_KEYCHAIN" -P "${SIGN_P12_PASSWORD:-}" -T /usr/bin/codesign >/dev/null
+  security set-key-partition-list -S apple-tool:,apple: -s -k "$KC_PASS" "$SIGN_KEYCHAIN" >/dev/null
+  CERT_SHA1="$(security find-identity -p codesigning "$SIGN_KEYCHAIN" | awk '/1\)/{print $2; exit}')"
+  [ -n "$CERT_SHA1" ] || { echo "签名证书导入失败" >&2; exit 1; }
+  codesign --force --deep --keychain "$SIGN_KEYCHAIN" --sign "$CERT_SHA1" "$APP"
+  SIGNED="签名：发布证书 ${CERT_SHA1:0:8}（屏幕录制权限更新后保留）"
+elif [ -n "$SIGN_IDENTITY" ]; then
   codesign --force --deep --sign "$SIGN_IDENTITY" "$APP"
   SIGNED="签名：$SIGN_IDENTITY（屏幕录制权限重建后保留）"
 else

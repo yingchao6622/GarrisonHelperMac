@@ -2,7 +2,10 @@
 # the maintainer downloads it, tries it and publishes the Release by hand.
 # - Built from the tagged commit only: nothing from the maintainer's Mac (debug recordings, keys, local files) can end
 #   up in the download.
-# - No secrets are used. Third-party actions are pinned to commit hashes.
+# - One secret: the release signing certificate (SIGN_P12_BASE64 + SIGN_P12_PASSWORD, a self-signed code-signing
+#   certificate). Every release is signed with the same certificate, so macOS keeps the screen-recording permission
+#   across updates. It is only used in the build step, through a throwaway keychain. Third-party actions are pinned to
+#   commit hashes.
 # - The DMG gets a SHA-256 checksum and a build provenance attestation
 #   (`gh attestation verify <dmg> --repo <owner>/<repo>` proves it was built here from this commit).
 name: Release
@@ -45,8 +48,21 @@ jobs:
       - name: Privacy check (keys, paths, commit authors)
         run: ./scripts/privacy-check.sh
 
-      - name: Build and package
-        run: ./scripts/build-app.sh
+      - name: Build, package and sign
+        env:
+          SIGN_P12_BASE64: ${{ secrets.SIGN_P12_BASE64 }}
+          SIGN_P12_PASSWORD: ${{ secrets.SIGN_P12_PASSWORD }}
+          # SHA-1 of the release certificate: a release signed with anything else fails here.
+          RELEASE_CERT_SHA1: 6619c5e8a5f7a847ed2fbec40b085d865c7e8e00
+        run: |
+          if [ -z "$SIGN_P12_BASE64" ]; then echo "缺少签名证书 secret（SIGN_P12_BASE64）"; exit 1; fi
+          export SIGN_P12="$RUNNER_TEMP/signing.p12"
+          (umask 077; printf '%s' "$SIGN_P12_BASE64" | base64 --decode > "$SIGN_P12")
+          ./scripts/build-app.sh
+          rm -f "$SIGN_P12"
+          codesign --verify --deep --strict "dist/卫戍协议小助手.app"
+          codesign -dr - "dist/卫戍协议小助手.app" 2>&1 | tee req.txt
+          grep -q "certificate root = H\"$RELEASE_CERT_SHA1\"" req.txt
 
       - name: Self-tests that need no recordings
         run: |
@@ -85,7 +101,7 @@ jobs:
           cat >> notes.md <<'EOF'
 
           ---
-          **安装**：下载 dmg，双击打开，把「卫戍协议小助手」拖到旁边的「Applications」文件夹。应用没有 Apple 开发者签名，第一次打开会提示无法验证开发者：到 系统设置 → 隐私与安全性，点「仍要打开」。之后在「屏幕与系统录音」里勾选它，再重新打开。
+          **安装**：下载 dmg，双击打开，把「卫戍协议小助手」拖到旁边的「Applications」文件夹。应用没有 Apple 开发者签名，第一次打开会提示无法验证开发者：到 系统设置 → 隐私与安全性，点「仍要打开」。之后在「屏幕与系统录音」里勾选它，再重新打开。从 0.4.2 起每个版本用同一张证书签名，以后更新不用再勾（从 0.4.1 或更早版本更新时还要再勾最后一次）。
           EOF
           check='**校验**：`shasum -a 256 -c SHA256SUMS.txt`'
           if [ "$PRIVATE" != "true" ]; then check="$check；构建来源：\`gh attestation verify <dmg> --repo ${{ github.repository }}\`"; fi
