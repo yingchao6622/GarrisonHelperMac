@@ -243,6 +243,14 @@ final class RunState: ObservableObject {
         return isAutoBanned(op)
     }
 
+    /// Banned by this match (covenant bans / mode pool / a manual ban), leaving out 自选 operators not picked yet:
+    /// a lineup with one of those is still playable once it is picked.
+    func isBannedThisMatch(_ op: Operator) -> Bool {
+        if manualBannedOperators.contains(op.name) { return true }
+        if manualUnbannedOperators.contains(op.name) { return false }
+        return isAutoBanned(op)
+    }
+
     func toggleManualBan(_ op: Operator) {
         if isBanned(op) {
             manualBannedOperators.remove(op.name)

@@ -142,6 +142,17 @@ final class SklandLineupLibrary: ObservableObject {
         save()
     }
 
+    /// Operators of the lineup (any stage) that this match bans. A lineup with one is hidden on the 本局 page.
+    static func banned(_ l: SklandLineup, catalog: Catalog, run: RunState) -> [String] {
+        var out: [String] = []
+        for s in l.stages {
+            for op in s.ops where !out.contains(op.name) {
+                if let o = catalog.op(op.name), run.isBannedThisMatch(o) { out.append(op.name) }
+            }
+        }
+        return out
+    }
+
     /// The operators 「照这套打」 sets as 必带: the 成型阵容 minus operators the planner can't take (自选 not picked,
     /// only obtainable some other way, not in the catalog), at most `people` of them (the planner finds no route with
     /// more 必带 than places; non-elite operators are left out first).
@@ -266,29 +277,48 @@ struct LineupLibraryView: View {
 /// 本局 → 阵容: pick an imported lineup, see its stage for this round, play it (必带). Importing is on the 阵容 tab.
 struct SklandLineupCard: View {
     @EnvironmentObject var run: RunState
+    @EnvironmentObject var coach: Coach
     @EnvironmentObject var scanner: Scanner
     @EnvironmentObject var catalog: Catalog
     @ObservedObject private var lib = SklandLineupLibrary.shared
     @AppStorage("tab") private var tab: Tab = .run
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        // Lineups with an operator this match bans are left out of the picker (the one in use stays, marked).
+        let bans = Dictionary(uniqueKeysWithValues: lib.lineups.map { ($0.id, SklandLineupLibrary.banned($0, catalog: catalog, run: run)) })
+        let hidden = lib.lineups.filter { !(bans[$0.id] ?? []).isEmpty && $0.id != lib.selectedID }
+        let shown = lib.lineups.filter { l in !hidden.contains { $0.id == l.id } }
+        return VStack(alignment: .leading, spacing: 8) {
             SectionHeader(title: "阵容", trailing: AnyView(HStack(spacing: 6) {
                 if lib.lineups.isEmpty {
                     Button("去「阵容」页导入") { tab = .lineups }.buttonStyle(.link)
                 } else {
                     Picker("", selection: $lib.selectedID) {
                         Text("不用").tag(String?.none)
-                        ForEach(lib.lineups) { l in Text(l.title).tag(Optional(l.id)) }
+                        ForEach(shown) { l in
+                            Text(l.title + ((bans[l.id] ?? []).isEmpty ? "" : "（有被禁干员）")).tag(Optional(l.id))
+                        }
                     }
                     .labelsHidden().fixedSize().frame(maxWidth: 220)
                 }
             }.font(.caption)))
-            if let l = lib.selected { detail(l) }
+            if !hidden.isEmpty {
+                DisclosureGroup {
+                    VStack(alignment: .leading, spacing: 2) {
+                        ForEach(hidden) { l in
+                            Text("「\(l.title)」：" + (bans[l.id] ?? []).joined(separator: "、") + " 本局被禁").font(.caption2).foregroundStyle(.secondary)
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                } label: {
+                    Text("已隐藏 \(hidden.count) 套含本局被禁干员的阵容").font(.caption2).foregroundStyle(.secondary)
+                }
+            }
+            if let l = lib.selected { detail(l, banned: bans[l.id] ?? []) }
         }
     }
 
-    private func detail(_ l: SklandLineup) -> some View {
+    private func detail(_ l: SklandLineup, banned: [String]) -> some View {
         let owned = Set(run.owned)
         let round = scanner.hud.round
         let stage = l.stage(round: round)
@@ -296,6 +326,10 @@ struct SklandLineupCard: View {
         let following = !plan.lock.isEmpty && Set(run.locked) == Set(plan.lock)
         return VStack(alignment: .leading, spacing: 5) {
             Text(lineupMeta(l)).font(.caption2).foregroundStyle(.secondary)
+            if !banned.isEmpty {
+                Text("⚠️ 这套里的 " + banned.joined(separator: "、") + " 本局被禁，可以让 AI 改成本局能打的版本")
+                    .font(.caption2).foregroundStyle(.orange).fixedSize(horizontal: false, vertical: true)
+            }
             if let s = stage {
                 if !s.final, let f = l.formation { LineupStageView(label: "成型", stage: f, owned: owned, showNotes: false) }
                 LineupStageView(label: s.final ? "成型" : s.title + (round != nil ? "（本回合）" : ""), stage: s, owned: owned)
@@ -307,6 +341,7 @@ struct SklandLineupCard: View {
                 Spacer()
             }
             .font(.caption).buttonStyle(.link)
+            aiSection(l)
             if !plan.over.isEmpty {
                 Text("超出上场 \(run.deployCap) 人，没设为必带：" + plan.over.joined(separator: "、")).font(.caption2).foregroundStyle(.secondary)
             }
@@ -318,5 +353,39 @@ struct SklandLineupCard: View {
         .padding(8)
         .background(Color.secondary.opacity(0.06))
         .clipShape(RoundedRectangle(cornerRadius: 6))
+    }
+}
+
+extension SklandLineupCard {
+    /// 「AI 改成本局版」: the AI rewrites the lineup for this match; its 必带 line can be played with one click.
+    @ViewBuilder func aiSection(_ l: SklandLineup) -> some View {
+        let r = coach.lineupAI
+        let mine = r.lineupID == l.id
+        let following = mine && !r.lock.isEmpty && Set(run.locked) == Set(r.lock)
+        HStack(spacing: 10) {
+            if mine && r.busy {
+                ProgressView().controlSize(.small)
+                Button("停止") { coach.stopLineupAI() }
+            } else {
+                Button(mine && !r.text.isEmpty ? "让 AI 重新改" : "AI 改成本局版") { coach.adaptLineup(l) }
+                    .help("把这套阵容连同本局的禁用、模式卡池、策略、已有的牌和商店交给 AI，换掉用不了的干员，给出本局的必带和这回合怎么做")
+            }
+            if mine, !r.busy, !r.lock.isEmpty {
+                Button(following ? "取消必带" : "照 AI 版打（\(r.lock.count) 人设为必带）") { run.locked = following ? [] : r.lock }
+            }
+            Spacer()
+        }
+        .font(.caption).buttonStyle(.link)
+        if mine {
+            if let e = r.error { Text(e).font(.caption2).foregroundStyle(.red).fixedSize(horizontal: false, vertical: true) }
+            if !r.text.isEmpty {
+                Text(r.text).font(.caption2).textSelection(.enabled).fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(6).background(Color.blue.opacity(0.06)).clipShape(RoundedRectangle(cornerRadius: 5))
+            }
+            if !r.busy, !r.text.isEmpty, r.lock.isEmpty, r.error == nil {
+                Text("AI 的回答里没找到能用的「必带」名单，可以再问一次。").font(.caption2).foregroundStyle(.secondary)
+            }
+        }
     }
 }

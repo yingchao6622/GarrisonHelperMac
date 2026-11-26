@@ -261,6 +261,11 @@ enum SelfTest {
             let shown = Array(cands.prefix(12))
             print("AI pick: " + (Coach.routePick(in: answer, routes: shown).map { "R\($0.index + 1) \(shown[$0.index].title)  ← \($0.line)" } ?? "none"))
         }
+        // AI_LOCK="- 必带：…": the 必带 the 「照 AI 版打」 button would set (banned / unknown names left out, at most 8).
+        if let answer = ProcessInfo.processInfo.environment["AI_LOCK"] {
+            let lock = Coach.lockLine(in: answer, catalog: catalog, cap: 8) { o in !req.bannedOperators.contains(o.name) && o.obtain == nil }
+            print("AI lock: " + (lock.isEmpty ? "none" : lock.joined(separator: "、")))
+        }
         let pick = ProcessInfo.processInfo.environment["PLAN_PICK"].flatMap(Int.init) ?? 0
         guard cands.indices.contains(pick) else { return }
         let top = cands[pick]

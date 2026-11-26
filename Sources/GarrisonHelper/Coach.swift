@@ -96,6 +96,9 @@ final class Coach: ObservableObject {
     @Published var aiPickNote: String?
     /// The route list the last question showed the AI, in its R1, R2… order.
     private var aiRouteIDs: [String] = []
+    /// 「AI 改成本局版」 for an imported lineup: the answer, and the 必带 list read from it.
+    @Published var lineupAI = LineupAIResult()
+    private var lineupAITask: Task<Void, Never>?
     @AppStorage("ai.provider") var provider: AIProvider = .deepseek
     @AppStorage("ai.strength") var strength: AIStrength = .fast
     /// Longer prompt with the full reference (标准 / 深入).
@@ -1299,6 +1302,27 @@ final class Coach: ObservableObject {
     /// The last full read matched the board, or showed the same camera as the last fit (overlays on the board are
     /// only drawn then: with the enemy list open the camera pans to the enemy staging area).
     private var boardUsable = false
+    /// Items (道具) parked in the 整备区 wear a tier badge like a unit, but with a 「X3」 count right of it; operators
+    /// never have one. The full-screen OCR reads that count, so a 整备区 unit with one beside its badge is dropped
+    /// (a 「X3」 item there was taken for 赫拉格, 2026-11-26). Only texts read from a frame of the same size count.
+    func dropItems(_ reading: inout FieldReading, texts: [OCRText]) {
+        let size = reading.sourceSize
+        guard size.width > 0 else { return }
+        let counts = texts.filter { t in
+            abs(t.imageSize.width - size.width) < 2 && abs(t.imageSize.height - size.height) < 2
+                && t.text.replacingOccurrences(of: " ", with: "").range(of: #"^[Xx×✕]\d{1,2}$"#, options: .regularExpression) != nil
+        }
+        guard !counts.isEmpty else { return }
+        let field = reading
+        reading.units.removeAll { u in
+            guard u.bench else { return false }
+            let r = field.toViewport(CGRect(x: u.x + 10, y: u.y - 28, width: 110, height: 56))
+            let hit = counts.contains { r.contains(CGPoint(x: $0.box.midX, y: $0.box.midY)) }
+            if hit, ProcessInfo.processInfo.environment["BADGE_DEBUG"] != nil { print("skip \(Int(u.x)),\(Int(u.y)) as item (count badge)") }
+            return hit
+        }
+    }
+
     /// Live readings in a row that missed many units.
     private var partialReadings = 0
 
@@ -1307,6 +1331,7 @@ final class Coach: ObservableObject {
     /// operator already held / bought through such a card first, then one the route uses; the rest stay as alternatives.
     /// A 自选 stand-in the player picked stays itself.
     private func resolveStandIns(_ reading: inout FieldReading) {
+        dropItems(&reading, texts: scanner.lastTexts)
         let held = run.owned
         let routeNames = Set(route?.stages.flatMap { $0.ops.map(\.name) } ?? [])
         // Copies known to be on the board or bench: the held lineup and this match's purchases. A stand-in sprite
@@ -1548,6 +1573,116 @@ final class Coach: ObservableObject {
         } catch {
             if (error as NSError).code != NSURLErrorCancelled { aiError = error.localizedDescription }
         }
+    }
+}
+
+struct LineupAIResult {
+    var lineupID: String?
+    var text = ""
+    var busy = false
+    var error: String?
+    /// The operators on the answer's 「必带」 line that this match can use, at most 上场上限.
+    var lock: [String] = []
+    var timing: AITiming?
+}
+
+extension Coach {
+    /// Operators of the lineup this match can't use, each with up to four stand-ins: same tier, a shared covenant,
+    /// usable this match (not banned, 自选 only when picked, no special way to obtain).
+    func lineupGaps(_ l: SklandLineup) -> [(name: String, why: String, subs: [String])] {
+        let ops = l.stages.flatMap(\.ops).map(\.name).reduce(into: [String]()) { if !$0.contains($1) { $0.append($1) } }
+        var out: [(String, String, [String])] = []
+        for n in ops {
+            guard let o = catalog.op(n) else { out.append((n, "资料里没有", [])); continue }
+            let why: String
+            if run.isBannedThisMatch(o) { why = "本局被禁" }
+            else if o.isSelfSelected && !run.selfSelected.contains(n) { why = "自选没选" }
+            else { continue }
+            let subs = catalog.operators
+                .filter { $0.tier == o.tier && $0.name != n && usable($0) && !Set($0.allCovenants).isDisjoint(with: o.allCovenants) }
+                .sorted { Set($0.allCovenants).intersection(o.allCovenants).count > Set($1.allCovenants).intersection(o.allCovenants).count }
+                .prefix(4).map(\.name)
+            out.append((n, why, Array(subs)))
+        }
+        return out
+    }
+
+    func usable(_ o: Operator) -> Bool {
+        !run.isBanned(o) && o.obtain == nil
+    }
+
+    func lineupPrompt(_ l: SklandLineup) -> String {
+        var t: [String] = ["森空岛阵容「\(l.title)」" + (l.strategies.isEmpty ? "" : "（原文策略：\(l.strategies.joined(separator: "、"))）")]
+        func ops(_ s: SklandLineup.Stage) -> String { s.ops.map { $0.name + ($0.elite ? "★" : "") }.joined(separator: "、") }
+        for s in l.stages {
+            var line = "\(s.title)：\(ops(s))"
+            if !s.equipment.isEmpty { line += "；装备 " + s.equipment.joined(separator: "、") }
+            if !s.covenants.isEmpty { line += "；盟约 " + s.covenants.joined(separator: "、") }
+            t.append(line)
+        }
+        if let notes = l.formation?.notes.nonEmpty { t.append("作者思路（节选）：" + String(notes.replacingOccurrences(of: "\n", with: " ").prefix(160))) }
+        let gaps = lineupGaps(l)
+        if gaps.isEmpty { t.append("本局这套里的干员都能用。") }
+        for g in gaps { t.append("用不了：\(g.name)（\(g.why)）" + (g.subs.isEmpty ? "" : "，同阶同盟约可换：" + g.subs.joined(separator: "、"))) }
+        t.append("★ = 要精锐。上场上限 \(run.deployCap) 人。")
+        return t.joined(separator: "\n")
+    }
+
+    /// Asks the AI to turn an imported lineup into one that fits this match (bans, mode pool, strategy, what is held).
+    /// Kept fast on purpose: short answer, no thinking.
+    func adaptLineup(_ l: SklandLineup) {
+        lineupAITask?.cancel()
+        lineupAITask = Task { await runAdaptLineup(l) }
+    }
+
+    func stopLineupAI() { lineupAITask?.cancel(); lineupAI.busy = false }
+
+    private func runAdaptLineup(_ l: SklandLineup) async {
+        lineupAI = LineupAIResult(lineupID: l.id, busy: true)
+        defer { lineupAI.busy = false }
+        var config = aiConfig()
+        config.thinking = false
+        config.claudeEffort = "low"
+        if config.key == nil && provider != .custom { lineupAI.error = "请先在「设置 → AI」填写 \(provider.title) 的 API Key"; return }
+        let user = """
+        \(stateSummary())
+
+        \(lineupPrompt(l))
+
+        把这套阵容改成本局能打的版本：用不了的换掉，按本局策略、可用盟约和已有的牌调整。严格按以下格式，每行一句，总共不超过 150 字：
+        - 必带：（成型时上场的干员名，最多 \(run.deployCap) 个，用、分隔；只能用本局能用的干员）
+        - 替换：（换了谁、为什么）
+        - 这回合：（买/留/升本，花费不超过当前资金）
+        - 之后：（接下来要找的关键牌和节奏）
+        """
+        do {
+            let client = AIClient(config: config)
+            let (_, timing) = try await client.stream(system: AIPrompts.system, cachedContext: nil, user: user, image: nil,
+                                                      maxTokens: config.provider.isAnthropic ? 900 : 360) { [weak self] t in
+                self?.lineupAI.text += t
+            }
+            lineupAI.timing = timing
+        } catch is CancellationError {
+        } catch {
+            if (error as NSError).code != NSURLErrorCancelled { lineupAI.error = error.localizedDescription }
+        }
+        lineupAI.lock = Self.lockLine(in: lineupAI.text, catalog: catalog, cap: run.deployCap) { [run] o in !run.isBanned(o) && o.obtain == nil }
+    }
+
+    /// The operators on the 「必带：」 line, in order, known to the catalog and usable, at most `cap`.
+    static func lockLine(in text: String, catalog: Catalog, cap: Int, usable: (Operator) -> Bool) -> [String] {
+        let lines = text.split(whereSeparator: \.isNewline).map { $0.trimmingCharacters(in: CharacterSet(charactersIn: " \t-*#>·•")) }
+        guard let line = lines.first(where: { $0.hasPrefix("必带") }) else { return [] }
+        // Notes in brackets (「塞雷娅（精锐）」) are not names.
+        let body = String(line.drop { $0 != "：" && $0 != ":" }.dropFirst())
+            .replacingOccurrences(of: #"[（(][^）)]*[）)]"#, with: "", options: .regularExpression)
+        var out: [String] = []
+        for raw in body.split(whereSeparator: { "、,，;；/ ".contains($0) }) {
+            let n = raw.trimmingCharacters(in: CharacterSet(charactersIn: "★*（）()「」\"'。. "))
+            guard let o = catalog.op(n), usable(o), !out.contains(n) else { continue }
+            out.append(n)
+        }
+        return Array(out.prefix(max(1, cap)))
     }
 }
 
