@@ -92,11 +92,19 @@ if [ -n "${SIGN_P12:-}" ]; then
   SIGN_KEYCHAIN="$KC_DIR/sign.keychain-db"
   KC_PASS="$(openssl rand -hex 16)"
   trap 'security delete-keychain "$SIGN_KEYCHAIN" 2>/dev/null || true; rm -rf "$KC_DIR"' EXIT
+  echo "签名：导入证书到临时钥匙串"
   security create-keychain -p "$KC_PASS" "$SIGN_KEYCHAIN"
-  security set-keychain-settings "$SIGN_KEYCHAIN"
+  security set-keychain-settings -lut 3600 "$SIGN_KEYCHAIN"
   security unlock-keychain -p "$KC_PASS" "$SIGN_KEYCHAIN"
-  security import "$SIGN_P12" -k "$SIGN_KEYCHAIN" -P "${SIGN_P12_PASSWORD:-}" -T /usr/bin/codesign >/dev/null
-  security set-key-partition-list -S apple-tool:,apple: -s -k "$KC_PASS" "$SIGN_KEYCHAIN" >/dev/null
+  # On CI the throwaway keychain also goes on the user search list (codesign and the key partition list look the
+  # private key up there on the runner); a local build leaves the search list alone.
+  if [ -n "${GITHUB_ACTIONS:-}" ]; then
+    # shellcheck disable=SC2046
+    security list-keychains -d user -s "$SIGN_KEYCHAIN" $(security list-keychains -d user | tr -d '"')
+  fi
+  security import "$SIGN_P12" -k "$SIGN_KEYCHAIN" -f pkcs12 -P "${SIGN_P12_PASSWORD:-}" -T /usr/bin/codesign -T /usr/bin/security
+  security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$KC_PASS" "$SIGN_KEYCHAIN" >/dev/null
+  security find-identity -p codesigning "$SIGN_KEYCHAIN"
   CERT_SHA1="$(security find-identity -p codesigning "$SIGN_KEYCHAIN" | awk '/1\)/{print $2; exit}')"
   [ -n "$CERT_SHA1" ] || { echo "签名证书导入失败" >&2; exit 1; }
   codesign --force --deep --keychain "$SIGN_KEYCHAIN" --sign "$CERT_SHA1" "$APP"

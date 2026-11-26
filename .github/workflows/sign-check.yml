@@ -1,0 +1,33 @@
+# Manual check that the release signing works on GitHub's runner (same build script and secrets as release.yml),
+# without tagging or creating a Release. Nothing is uploaded.
+name: Sign check
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sign:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Build and sign
+        env:
+          SIGN_P12_BASE64: ${{ secrets.SIGN_P12_BASE64 }}
+          SIGN_P12_PASSWORD: ${{ secrets.SIGN_P12_PASSWORD }}
+          RELEASE_CERT_SHA1: 6619c5e8a5f7a847ed2fbec40b085d865c7e8e00
+        run: |
+          if [ -z "$SIGN_P12_BASE64" ]; then echo "缺少签名证书 secret（SIGN_P12_BASE64）"; exit 1; fi
+          export SIGN_P12="$RUNNER_TEMP/signing.p12"
+          (umask 077; printf '%s' "$SIGN_P12_BASE64" | base64 --decode > "$SIGN_P12")
+          ls -l "$SIGN_P12"
+          ./scripts/build-app.sh
+          rm -f "$SIGN_P12"
+          codesign --verify --deep --strict "dist/卫戍协议小助手.app"
+          codesign -dr - "dist/卫戍协议小助手.app" 2>&1 | tee req.txt
+          grep -q "certificate root = H\"$RELEASE_CERT_SHA1\"" req.txt
