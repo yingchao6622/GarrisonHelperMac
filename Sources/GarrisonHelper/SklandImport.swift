@@ -209,6 +209,9 @@ struct SklandClient {
         return (cred, token, role)
     }
 
+    /// Unsigned GET (public endpoints).
+    func fetch(_ path: String, query: String = "") async throws -> Any { try await json(request(path, query: query)) }
+
     func catalog() async throws -> SklandCatalog {
         try SklandCatalog(json: try await json(request("/web/v1/game/garrison/guide/resource")))
     }

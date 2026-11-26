@@ -35,6 +35,7 @@ enum SelfTest {
             exit(0)
         }
         if args.contains("--sklandtest") { runSklandTest(); exit(0) }
+        if let i = args.firstIndex(of: "--sklandguide"), i + 1 < args.count { runSklandGuide(args[i + 1]); exit(0) }
         // GH_KEYS_FILE=/tmp/x.json --keytest: save / load / delete round trip of the API key file.
         if args.contains("--musictest") {
             // When the music plays for each phase (default: 联防 only), and which files a folder yields.
@@ -236,6 +237,8 @@ enum SelfTest {
             let p = kv.split(separator: ":"); if p.count == 2, let n = Double(p[1]) { req.contested[String(p[0])] = n }
         }
         req.currentLevel = level
+        // PLAN_LOCKED="蓝毒,瑰盐,…": 必带 operators (as set by a 森空岛 lineup's 「照这套打」).
+        req.locked = (ProcessInfo.processInfo.environment["PLAN_LOCKED"] ?? "").split(separator: ",").map(String.init)
         let counts = data.count(Array(Set(owned)))
         req.keepSmall = Array(catalog.additionalCovenants.compactMap { c -> PlannerGoal? in
             let n = counts[c.name, default: 0]
@@ -631,8 +634,60 @@ enum SelfTest {
                 }
             }
             do { _ = try SklandParse.data(["code": 10002, "message": "x"]) } catch { print("expired: " + (error.localizedDescription)) }
+            // Lineup guides: links, share text, bare ids; tabs → stages (成型 last), names from seasonResourceMap.
+            for t in ["https://game.skland.com/arknights/stronghold-guide/detail?guideId=2120358988790611711",
+                      "【森空岛】巫王驾到！ https://game.skland.com/arknights/stronghold-guide/detail?guideId=123456789&from=share 复制打开",
+                      "2120358988790611711", "https://example.com/detail?guideId=1", "guideId=abc"] {
+                print("guide id: \(SklandParse.guideID(t) ?? "-")")
+            }
+            let res: [String: Any] = ["chars": ["char_a": ["name": "极光"], "char_b": ["name": "艾丝黛尔"]], "items": ["i1": ["name": "维式重锤"]],
+                                      "strategies": ["band_x": ["name": "众志合一"]], "bonds": ["yanShip": ["name": "炎"]]]
+            let guideJSON: [String: Any] = ["code": 0, "data": [
+                "guide": ["invalid": 0, "poster": ["nickname": "作者"], "guide": [
+                    "title": "测试阵容", "seasonId": "s1", "versionId": "V3_1", "strategyIds": ["band_x"],
+                    "tabs": [["tabType": 1, "startRound": 0, "endRound": 0, "recChars": [["charId": "char_a", "mergeLevel": 1], ["charId": "char_b", "mergeLevel": 0]],
+                              "recItems": [["itemId": "i1"]], "activeBonds": ["seasonBondIds": ["yanShip"], "regularBondIds": ["jingShip"]], "operationIdea": "思路"],
+                             ["tabType": 2, "startRound": 1, "endRound": 7, "recChars": [["charId": "char_b"], ["charId": "char_c"]], "recItems": [], "operationIdea": ""]]]],
+                "seasonResourceMap": ["s1": ["versionResourceMap": ["V3_1": res]]]]]
+            let l = try SklandParse.lineup(guideJSON, id: "42", now: Date(timeIntervalSince1970: 0))
+            print("lineup \(l.title) by \(l.author) strategies=\(l.strategies.joined(separator: "、")) url=\(l.url.absoluteString)")
+            for st in l.stages {
+                let ops: String = st.ops.map { $0.name + ($0.elite ? "★" : "") }.joined(separator: "、")
+                let eq: String = st.equipment.joined(separator: "、"), cov: String = st.covenants.joined(separator: "、")
+                print("  \(st.title): \(ops) | 装备 \(eq) | 盟约 \(cov) | \(st.notes)")
+            }
+            print("stage for round 3: \(l.stage(round: 3)?.title ?? "-"); round 9: \(l.stage(round: 9)?.title ?? "-"); unknown: \(l.stage(round: nil)?.title ?? "-")")
+            do { _ = try SklandParse.lineup(["code": 0, "data": ["guide": ["invalid": 1, "guide": [:]]]], id: "1") } catch { print("invalid: " + error.localizedDescription) }
         } catch {
             print("error: \(error.localizedDescription)")
+        }
+    }
+
+    /// --sklandguide <guideId | link | saved info JSON>: a real 森空岛 lineup guide (network unless a file), and what
+    /// 「照这套打」 would lock. Manual check only.
+    static func runSklandGuide(_ arg: String) { MainActor.assumeIsolated { sklandGuide(arg) } }
+
+    @MainActor private static func sklandGuide(_ arg: String) {
+        do {
+            let catalog = Catalog()
+            var l: SklandLineup?
+            if FileManager.default.fileExists(atPath: arg), let d = FileManager.default.contents(atPath: arg), let j = try? JSONSerialization.jsonObject(with: d) {
+                l = try? SklandParse.lineup(j, id: "file")
+            } else if let id = SklandParse.guideID(arg) {
+                let sem = DispatchSemaphore(value: 0)
+                Task.detached { l = try? await SklandClient().guide(id: id); sem.signal() }
+                while sem.wait(timeout: .now() + 0.05) == .timedOut { RunLoop.main.run(until: Date().addingTimeInterval(0.05)) }
+            }
+            guard let l else { print("读不到"); return }
+            print("\(l.title) · 策略 \(l.strategies.joined(separator: "、"))")
+            let names = Set(catalog.operators.map(\.name))
+            for st in l.stages {
+                let ops: [String] = st.ops.map { o in o.name + (o.elite ? "★" : "") + (names.contains(o.name) ? "" : "(不在图鉴)") }
+                print("  \(st.title): \(ops.joined(separator: "、"))")
+            }
+            let p = SklandLineupLibrary.lockable(l, catalog: catalog, selfSelected: [], people: 8)
+            let lock: String = p.lock.joined(separator: ","), skip: String = p.skipped.joined(separator: ","), over: String = p.over.joined(separator: ",")
+            print("必带: \(lock)  跳过: \(skip)  超员: \(over)")
         }
     }
 }

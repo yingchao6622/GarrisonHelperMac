@@ -1,11 +1,12 @@
 import SwiftUI
 
 enum Tab: String, CaseIterable, Identifiable {
-    case run = "本局", operators = "干员", equipment = "装备", covenants = "盟约", strategies = "策略", enemies = "敌人", history = "战绩", settings = "设置"
+    case run = "本局", lineups = "阵容", operators = "干员", equipment = "装备", covenants = "盟约", strategies = "策略", enemies = "敌人", history = "战绩", settings = "设置"
     var id: String { rawValue }
     var symbol: String {
         switch self {
         case .run: "scope"
+        case .lineups: "square.stack.3d.up"
         case .history: "list.number"
         case .operators: "person.3"
         case .equipment: "shield.lefthalf.filled"
@@ -47,6 +48,7 @@ struct RootView: View {
             Group {
                 switch tab {
                 case .run: RunView()
+                case .lineups: LineupLibraryView()
                 case .history: HistoryView()
                 case .operators: OperatorListView()
                 case .equipment: EquipmentListView()

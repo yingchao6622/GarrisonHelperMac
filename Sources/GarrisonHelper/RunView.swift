@@ -27,6 +27,8 @@ struct RunView: View {
                 Divider()
                 lineupCard
                 Divider()
+                SklandLineupCard()
+                Divider()
                 routesCard
                 Divider()
                 aiCard
