@@ -96,27 +96,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           PRIVATE: ${{ github.event.repository.private }}
         run: |
-          # Release notes: this version's section of CHANGELOG.md, plus how to open an unsigned app.
-          awk -v v="## ${TAG#v} " 'index($0, v) == 1 {on=1; next} /^## / && on {exit} on' CHANGELOG.md > notes.md
-          cat >> notes.md <<'EOF'
-
-          ---
-          **安装**：下载 dmg，双击打开，把「卫戍协议小助手」拖到旁边的「Applications」文件夹。应用没有 Apple 开发者签名，第一次打开会提示无法验证开发者：到 系统设置 → 隐私与安全性，点「仍要打开」。之后在「屏幕与系统录音」里勾选它，再重新打开。从 0.4.2 起每个版本用同一张证书签名，以后更新不用再勾（从 0.4.1 或更早版本更新时还要再勾最后一次）。
-          EOF
-          check='**校验**：`shasum -a 256 -c SHA256SUMS.txt`'
-          if [ "$PRIVATE" != "true" ]; then check="$check；构建来源：\`gh attestation verify <dmg> --repo ${{ github.repository }}\`"; fi
-          echo "$check" >> notes.md
-          # Every commit since the previous release, each linked by its hash, and the full comparison.
-          url="${{ github.server_url }}/${{ github.repository }}"
-          prev="$(git describe --tags --abbrev=0 "$TAG^" 2>/dev/null || true)"
-          if [ -n "$prev" ]; then
-            {
-              echo
-              echo "### 提交"
-              echo
-              git log --reverse --format="- [\`%h\`]($url/commit/%H) %s" "$prev..$TAG"
-              echo
-              echo "**完整改动**：[$prev...$TAG]($url/compare/$prev...$TAG)"
-            } >> notes.md
-          fi
+          # Release notes in immich's style (scripts/release-notes.sh): the CHANGELOG section (intro + grouped changes),
+          # every commit with its author and link grouped by kind, 新贡献者, install / verify notes, full comparison.
+          ./scripts/release-notes.sh "$TAG" "${{ github.repository }}" "$PRIVATE" > notes.md
+          cat notes.md
           gh release create "$TAG" --draft --verify-tag --title "卫戍协议小助手 $TAG" --notes-file notes.md "$PKG" SHA256SUMS.txt
