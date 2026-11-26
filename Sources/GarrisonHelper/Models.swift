@@ -38,7 +38,12 @@ struct Equipment: Codable, Identifiable, Hashable {
     var tier: Int
     var normal: EffectText
     var elite: EffectText
+    /// 合成: with this other item, becomes `result` (game data, see ASSETS.md).
+    var fuse: Fuse?
+    /// Operators that bring this item.
+    var sources: [String]?
     var id: String { name }
+    struct Fuse: Codable, Hashable { var with: String; var result: String }
 }
 
 struct Covenant: Codable, Identifiable, Hashable {

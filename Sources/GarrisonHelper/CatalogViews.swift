@@ -156,9 +156,16 @@ struct EquipmentListView: View {
     @State private var query = ""
     @State private var tiers: Set<Int> = []
 
+    /// result → the two items that make it.
+    private var fusedFrom: [String: [String]] {
+        var out: [String: [String]] = [:]
+        for e in catalog.equipment { if let f = e.fuse, out[f.result] == nil { out[f.result] = [e.name, f.with] } }
+        return out
+    }
+
     private var filtered: [Equipment] {
         catalog.equipment.filter {
-            (query.isEmpty || $0.name.contains(query) || $0.normal.effectDescription.contains(query))
+            (query.isEmpty || $0.name.contains(query) || $0.normal.effectDescription.contains(query) || ($0.sources ?? []).contains { $0.contains(query) })
                 && (tiers.isEmpty || tiers.contains($0.tier))
         }.sorted { ($0.tier, $0.name) < ($1.tier, $1.name) }
     }
@@ -166,7 +173,7 @@ struct EquipmentListView: View {
     var body: some View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 6) {
-                TextField("搜索装备名或效果", text: $query).textFieldStyle(.roundedBorder)
+                TextField("搜索装备名、效果或来源干员", text: $query).textFieldStyle(.roundedBorder)
                 FlowLayout(spacing: 4) {
                     ForEach(1...6, id: \.self) { t in FilterTag(title: "\(t)阶", on: tiers.contains(t)) { tiers.toggle(t) } }
                 }
@@ -183,6 +190,15 @@ struct EquipmentListView: View {
                         }
                         Text("普通：" + e.normal.effectDescription).font(.system(size: 12)).fixedSize(horizontal: false, vertical: true)
                         Text("精锐：" + e.elite.effectDescription).font(.system(size: 12)).foregroundStyle(.orange).fixedSize(horizontal: false, vertical: true)
+                        if let f = e.fuse {
+                            Text("合成：\(e.name) + \(f.with) → \(f.result)").font(.system(size: 12)).foregroundStyle(.teal)
+                        }
+                        if let made = fusedFrom[e.name] {
+                            Text("由 " + made.joined(separator: " + ") + " 合成").font(.system(size: 12)).foregroundStyle(.teal)
+                        }
+                        if let src = e.sources, !src.isEmpty {
+                            Text("来源：" + src.joined(separator: "、")).font(.caption).foregroundStyle(.secondary)
+                        }
                     }
                     Spacer(minLength: 0)
                 }

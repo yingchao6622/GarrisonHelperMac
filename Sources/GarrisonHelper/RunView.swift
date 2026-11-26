@@ -156,11 +156,19 @@ struct RunView: View {
                         Toggle("刷新", isOn: $coach.showRefresh)
                         Toggle("冻结", isOn: $coach.showFreeze)
                         Toggle("上场 / 站位 / 出售", isOn: $coach.showPlace)
+                        Menu("站位显示") {
+                            Toggle("格子", isOn: $coach.showPlaceCell)
+                            Toggle("干员名", isOn: $coach.showPlaceName)
+                            Toggle("朝向", isOn: $coach.showPlaceFacing)
+                        }
+                        .disabled(!coach.showPlace)
                         Toggle("本回合敌人路线", isOn: $coach.showRoutes)
+                        Toggle("认不准的人头上画「?」（点它选是谁）", isOn: $coach.showUnsure)
                     }
                     .fixedSize()
                 }.font(.caption)))
                 if let note = coach.newMatchNote { Text(note).font(.caption).foregroundStyle(.blue) }
+                if let a = coach.banAlert, (scanner.hud.round ?? 0) <= 3 { Text(a).font(.caption).foregroundStyle(.orange) }
                 if let note = coach.liveNote { Text(note).font(.caption).foregroundStyle(.orange) }
                 if coach.actions.isEmpty && coach.liveNote == nil {
                     Text(scanner.live ? "等待商店和休整期画面…" : "开启「实时」后，这里会给出买谁、升不升本、刷不刷新、冻不冻结、谁上场站哪，弹出悬赏 / 道具 / 战术选择时推荐选哪个。")
@@ -301,6 +309,7 @@ struct RunView: View {
                 Text("禁用盟约（点击切换；灰色为本模式没有）").font(.caption).foregroundStyle(.secondary)
                 covenantGrid(catalog.coreCovenants)
                 covenantGrid(catalog.additionalCovenants)
+                if let a = coach.banAlert { Text(a).font(.caption).foregroundStyle(.orange).fixedSize(horizontal: false, vertical: true) }
             }
             enemies
             watchlistRow

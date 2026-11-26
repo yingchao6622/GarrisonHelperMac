@@ -109,6 +109,10 @@ final class MatchHistory: ObservableObject {
     struct Stats {
         var matches = 0
         var averageRounds = 0.0
+        /// Matches with a known result (imported from 森空岛) and the share cleared.
+        var withResult = 0
+        var clearRate: Double?
+        var averageSpent: Double?
         var ranked = 0
         var averageRank: Double?
         var top4: Double?
@@ -117,10 +121,19 @@ final class MatchHistory: ObservableObject {
         var strategies: [(name: String, count: Int, rank: Double?)] = []
     }
 
-    var stats: Stats {
+    var stats: Stats { stats(days: nil) }
+
+    /// Stats of the matches that ended in the last `days` days (nil: all).
+    func stats(days: Int?, now: Date = Date()) -> Stats {
+        let records = days.map { d in self.records.filter { now.timeIntervalSince($0.ended) <= Double(d) * 86400 } } ?? self.records
         var s = Stats()
         s.matches = records.count
         guard !records.isEmpty else { return s }
+        let results = records.compactMap(\.success)
+        s.withResult = results.count
+        if !results.isEmpty { s.clearRate = Double(results.filter { $0 }.count) / Double(results.count) }
+        let spent = records.compactMap(\.coinSpent)
+        if !spent.isEmpty { s.averageSpent = Double(spent.reduce(0, +)) / Double(spent.count) }
         s.averageRounds = Double(records.map(\.rounds).reduce(0, +)) / Double(records.count)
         let ranks = records.compactMap(\.rank)
         s.ranked = ranks.count
@@ -146,21 +159,31 @@ struct HistoryView: View {
     @EnvironmentObject var history: MatchHistory
     @EnvironmentObject var catalog: Catalog
     @ObservedObject private var skland = SklandImporter.shared
+    @AppStorage("history.range") private var range = 0
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
-                let s = history.stats
-                SectionHeader(title: "统计")
-                if s.matches == 0 {
+                let s = history.stats(days: range == 0 ? nil : range)
+                SectionHeader(title: "统计", trailing: AnyView(Picker("", selection: $range) {
+                    Text("全部").tag(0); Text("近 30 天").tag(30); Text("近 7 天").tag(7)
+                }.pickerStyle(.segmented).labelsHidden().fixedSize()))
+                if history.records.isEmpty {
                     Text("还没有对局记录。开着「实时」打完一局（打到第 3 回合以上），新的一局开始或点「开始新的一局」时会自动记下。")
                         .font(.caption).foregroundStyle(.secondary)
+                } else if s.matches == 0 {
+                    Text(range == 7 ? "近 7 天没有对局。" : "近 30 天没有对局。").font(.caption).foregroundStyle(.secondary)
                 } else {
                     HStack(spacing: 16) {
                         stat("对局", "\(s.matches)")
                         stat("平均回合", String(format: "%.1f", s.averageRounds))
                         stat("平均名次", s.averageRank.map { String(format: "%.1f", $0) } ?? "-")
                         stat("前四率", s.top4.map { String(format: "%.0f%%", $0 * 100) } ?? "-")
+                        stat("通关率", s.clearRate.map { String(format: "%.0f%%", $0 * 100) } ?? "-")
+                        stat("平均花费", s.averageSpent.map { String(format: "%.0f", $0) } ?? "-")
+                    }
+                    if s.withResult < s.matches {
+                        Text("通关率和花费只算从森空岛导入过的 \(s.withResult) 局。").font(.caption2).foregroundStyle(.secondary)
                     }
                     if s.ranked < s.matches {
                         Text("名次要自己填（下面每局右边的菜单），填了才算平均名次和前四率。").font(.caption2).foregroundStyle(.secondary)

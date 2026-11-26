@@ -384,6 +384,12 @@ enum SelfTest {
             if let r = a.rect { ctx.stroke(r) }
             if let q = a.quad { ctx.addLines(between: q + [q[0]]); ctx.strokePath() }
         }
+        // 「?」 where the live overlay puts its clickable button (same rule as Coach.overlayQuestions).
+        for u in field.units where u.chosen == nil && !u.confident && u.candidates.count >= 2 {
+            let c = field.toViewport(CGRect(x: u.x + 34, y: u.y, width: 0, height: 0)).origin, r = 13.0
+            ctx.setFillColor(CGColor(red: 1, green: 0.6, blue: 0, alpha: 1))
+            ctx.fillEllipse(in: CGRect(x: c.x - r, y: c.y - r, width: 2 * r, height: 2 * r))
+        }
         if let p = proj {   // board grid for reference
             ctx.setStrokeColor(CGColor(gray: 1, alpha: 0.3)); ctx.setLineWidth(1)
             for r in 0...3 { for c in -2...9 { let q = p.cell(c, r, in: size); ctx.addLines(between: q + [q[0]]); ctx.strokePath() } }
@@ -629,6 +635,11 @@ enum SelfTest {
                 h.useForTest([local])
                 let a = h.merge(ms), b = h.merge(ms)
                 print("merge (want added 1 merged 1, then unchanged 2): added \(a.added) merged \(a.merged) unchanged \(a.unchanged); again unchanged \(b.unchanged)")
+                for (days, after) in [(7, 2), (7, 10), (30, 10)] {
+                    let st = h.stats(days: days, now: Date(timeIntervalSince1970: TimeInterval(t0 + after * 86400)))
+                    let rate = st.clearRate.map { String(format: "%.0f%%", $0 * 100) } ?? "-", spent = st.averageSpent.map { String(format: "%.0f", $0) } ?? "-"
+                    print("stats \(days)d at day \(after): matches \(st.matches) clear \(rate) spent \(spent)")
+                }
                 for r in h.records {
                     print("record \(r.sklandId ?? "-"): rounds=\(r.rounds) rank=\(r.rank.map(String.init) ?? "-") map=\(r.map ?? "-") route=\(r.route ?? "-") lineup=\(r.lineup.joined(separator: "、")) boss=\(r.boss ?? "-")")
                 }

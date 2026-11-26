@@ -27,6 +27,12 @@ final class Coach: ObservableObject {
     @AppStorage("overlay.freeze") var showFreeze = true
     @AppStorage("overlay.place") var showPlace = true
     @AppStorage("overlay.routes") var showRoutes = true
+    // 站位 marks drawn piece by piece (hongxue 1.10.0 lets the cell, the name and the facing be switched separately).
+    @AppStorage("overlay.placeCell") var showPlaceCell = true
+    @AppStorage("overlay.placeName") var showPlaceName = true
+    @AppStorage("overlay.placeFacing") var showPlaceFacing = true
+    /// Clickable 「?」 over units the recognition isn't sure about (SA draws them on the game screen).
+    @AppStorage("overlay.unsure") var showUnsure = true
     @AppStorage("field.autoSync") var autoSyncField = true
     @AppStorage("debug.capture") var debugCapture = false
     /// Self-tests decide recording here instead of the saved setting (shared by every command-line run).
@@ -769,9 +775,55 @@ final class Coach: ObservableObject {
             if let q = a.quad { pts = q.map(toWindow) }
             else if let r = a.rect { pts = [CGPoint(x: r.minX, y: r.minY), CGPoint(x: r.maxX, y: r.minY), CGPoint(x: r.maxX, y: r.maxY), CGPoint(x: r.minX, y: r.maxY)].map(toWindow) }
             else { return nil }
+            if a.kind == .place {
+                let name = a.facing.map { f in a.title.hasSuffix(" " + f) ? String(a.title.dropLast(f.count + 1)) : a.title } ?? a.title
+                let label = [showPlaceName ? name : nil, showPlaceFacing ? a.facing : nil].compactMap { $0 }.joined(separator: " ")
+                guard showPlaceCell || !label.isEmpty else { return nil }
+                return OverlayMark(kind: a.kind, label: label, points: pts, order: 0, shape: showPlaceCell)
+            }
             return OverlayMark(kind: a.kind, label: a.title, points: pts, order: a.kind == .buy ? a.order : 0)
         }
-        overlay.show(over: frame.windowFrame, marks: marks, lines: showRoutes ? routeLines(frame) : [])
+        overlay.onPick = { [weak self] id, name in
+            guard let self, let u = self.liveField?.units.first(where: { $0.id == id }) else { return }
+            self.correctLive(u, name)
+            self.refreshOverlayQuestions()
+        }
+        lastOverlayFrame = frame
+        overlay.show(over: frame.windowFrame, marks: marks, lines: showRoutes ? routeLines(frame) : [], questions: overlayQuestions(frame))
+    }
+
+    /// 特别关注 (SA): the 本家 the player plays most, watched operators and 必带 operators that this match bans.
+    var banAlert: String? {
+        var parts: [String] = []
+        // 常用本家: core covenants of at least 3 recorded matches, the two most played.
+        let cores = Set(catalog.coreCovenants.map(\.name))
+        let usual = history.stats.covenants.filter { cores.contains($0.name) && $0.count >= 3 }.prefix(2).map(\.name)
+        let bannedUsual = usual.filter(run.bannedCovenants.contains)
+        if !bannedUsual.isEmpty { parts.append("你常玩的" + bannedUsual.joined(separator: "、") + "本局被禁") }
+        let watched = watchlist.filter { n in catalog.op(n).map(run.isBanned) ?? false }
+        if !watched.isEmpty { parts.append("特别关注的" + watched.joined(separator: "、") + "本局用不了") }
+        let locked = run.locked.filter { n in catalog.op(n).map(run.isBanned) ?? false }
+        if !locked.isEmpty { parts.append("必带的" + locked.joined(separator: "、") + "本局用不了") }
+        return parts.isEmpty ? nil : "⚠️ " + parts.joined(separator: "；")
+    }
+
+    private var lastOverlayFrame: Scanner.LiveFrame?
+
+    /// Units on our board the recognition isn't sure about, as clickable 「?」 over their badges.
+    func overlayQuestions(_ frame: Scanner.LiveFrame) -> [OverlayQuestion] {
+        guard showUnsure, let f = liveField, !scanner.hud.otherBoard else { return [] }
+        // Right of the unit's tier badge (badges are in 1920×1080 frame coordinates).
+        func at(_ u: FieldUnit) -> CGPoint { f.toViewport(CGRect(x: u.x + 34, y: u.y, width: 0, height: 0)).origin }
+        return f.units.filter { $0.chosen == nil && !$0.confident && $0.candidates.count >= 2 }.map { u in
+            OverlayQuestion(id: u.id, point: frame.toWindow(at(u)),
+                            options: u.candidates.prefix(4).map { "\($0.name)（\(Int(($0.p * 100).rounded()))%）" },
+                            names: u.candidates.prefix(4).map(\.name))
+        }
+    }
+
+    private func refreshOverlayQuestions() {
+        guard let frame = lastOverlayFrame else { return }
+        overlay.updateQuestions(over: frame.windowFrame, overlayQuestions(frame))
     }
 
     /// This round's routes for the map on screen: the recognised board, else the map picked for the run.

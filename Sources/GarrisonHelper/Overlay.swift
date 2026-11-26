@@ -10,8 +10,9 @@ final class OverlayController {
     var suppressed = false
 
     /// - Parameters: marks and lines in window points (top-left origin of the game window).
-    func show(over windowFrame: CGRect, marks: [OverlayMark], lines: [OverlayLine] = []) {
-        guard !suppressed, !marks.isEmpty || !lines.isEmpty, let primary = NSScreen.screens.first else { hide(); return }
+    func show(over windowFrame: CGRect, marks: [OverlayMark], lines: [OverlayLine] = [], questions: [OverlayQuestion] = []) {
+        updateQuestions(over: windowFrame, suppressed ? [] : questions)
+        guard !suppressed, !marks.isEmpty || !lines.isEmpty, let primary = NSScreen.screens.first else { hideMarks(); return }
         let cocoa = CGRect(x: windowFrame.minX, y: primary.frame.height - windowFrame.maxY, width: windowFrame.width, height: windowFrame.height)
         let p = panel ?? makePanel()
         panel = p
@@ -22,9 +23,56 @@ final class OverlayController {
     }
 
     func hide() {
+        hideMarks()
+        updateQuestions(over: .zero, [])
+    }
+
+    private func hideMarks() {
         model.marks = []
         model.lines = []
         panel?.orderOut(nil)
+    }
+
+    // MARK: Clickable 「?」
+
+    /// A pick from a 「?」 menu: unit id, chosen name.
+    var onPick: ((UUID, String) -> Void)?
+    private var questionPanels: [NSPanel] = []
+    private var questions: [OverlayQuestion] = []
+    private var questionsFrame: CGRect = .zero
+    static let questionSize: CGFloat = 24
+
+    /// One small clickable panel per unsure unit (the big overlay stays click-through, so the game keeps every other
+    /// click). Clicking opens a menu with the candidates.
+    func updateQuestions(over windowFrame: CGRect, _ qs: [OverlayQuestion]) {
+        guard qs != questions || windowFrame != questionsFrame else { return }
+        questions = qs
+        questionsFrame = windowFrame
+        guard let primary = NSScreen.screens.first else { return }
+        while questionPanels.count < qs.count { questionPanels.append(makeQuestionPanel()) }
+        for (i, p) in questionPanels.enumerated() {
+            guard i < qs.count else { p.orderOut(nil); continue }
+            let q = qs[i], d = Self.questionSize
+            let x = windowFrame.minX + q.point.x - d / 2, yTop = windowFrame.minY + q.point.y - d / 2
+            p.setFrame(CGRect(x: x, y: primary.frame.height - yTop - d, width: d, height: d), display: false)
+            (p.contentView as? QuestionButton)?.question = q
+            if !p.isVisible { p.orderFrontRegardless() }
+        }
+    }
+
+    private func makeQuestionPanel() -> NSPanel {
+        let d = Self.questionSize
+        let p = NSPanel(contentRect: CGRect(x: 0, y: 0, width: d, height: d), styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
+        p.isOpaque = false
+        p.backgroundColor = .clear
+        p.hasShadow = true
+        p.level = .floating
+        p.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary]
+        p.becomesKeyOnlyIfNeeded = true
+        let b = QuestionButton(frame: CGRect(x: 0, y: 0, width: d, height: d))
+        b.onPick = { [weak self] id, name in self?.onPick?(id, name) }
+        p.contentView = b
+        return p
     }
 
     private func makePanel() -> NSPanel {
@@ -46,6 +94,8 @@ struct OverlayMark: Identifiable, Hashable {
     let label: String
     let points: [CGPoint]          // 4 corners (rect or cell quad), window points
     let order: Int
+    /// Draw the outline / fill (off: only the label, for 站位 with the cell switched off).
+    var shape = true
 
     var color: Color {
         switch kind {
@@ -115,12 +165,15 @@ struct OverlayView: View {
                 }
             }
             for m in model.marks where m.points.count == 4 {
-                var path = Path()
-                path.move(to: m.points[0])
-                for p in m.points.dropFirst() { path.addLine(to: p) }
-                path.closeSubpath()
-                ctx.fill(path, with: .color(m.color.opacity(m.kind == .place ? 0.28 : 0.10)))
-                ctx.stroke(path, with: .color(m.color), style: StrokeStyle(lineWidth: m.kind == .place ? 2 : 3.5, dash: m.kind == .bench || m.kind == .sell ? [6, 4] : []))
+                if m.shape {
+                    var path = Path()
+                    path.move(to: m.points[0])
+                    for p in m.points.dropFirst() { path.addLine(to: p) }
+                    path.closeSubpath()
+                    ctx.fill(path, with: .color(m.color.opacity(m.kind == .place ? 0.28 : 0.10)))
+                    ctx.stroke(path, with: .color(m.color), style: StrokeStyle(lineWidth: m.kind == .place ? 2 : 3.5, dash: m.kind == .bench || m.kind == .sell ? [6, 4] : []))
+                }
+                guard !m.label.isEmpty else { continue }
                 let top = m.points.min { $0.y < $1.y }!
                 let left = m.points.map(\.x).min()!
                 let text = Text(m.order > 0 && m.kind == .buy ? "\(m.order). \(m.label)" : m.label)
@@ -135,5 +188,59 @@ struct OverlayView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .allowsHitTesting(false)
+    }
+}
+
+/// A unit the recognition isn't sure about: where its 「?」 goes (window points) and the candidates to pick from.
+struct OverlayQuestion: Hashable {
+    let id: UUID
+    let point: CGPoint
+    /// Menu titles (name and confidence) and the names they pick.
+    let options: [String]
+    let names: [String]
+}
+
+/// The round 「?」 button in its own small panel; a click opens the candidate menu.
+final class QuestionButton: NSView {
+    var question: OverlayQuestion?
+    var onPick: ((UUID, String) -> Void)?
+
+    override func draw(_ dirtyRect: NSRect) {
+        let r = bounds.insetBy(dx: 1.5, dy: 1.5)
+        NSColor.systemOrange.setFill()
+        NSBezierPath(ovalIn: r).fill()
+        NSColor.black.withAlphaComponent(0.6).setStroke()
+        let ring = NSBezierPath(ovalIn: r)
+        ring.lineWidth = 1.5
+        ring.stroke()
+        let text = NSAttributedString(string: "?", attributes: [.font: NSFont.boldSystemFont(ofSize: 15), .foregroundColor: NSColor.black])
+        let size = text.size()
+        text.draw(at: CGPoint(x: bounds.midX - size.width / 2, y: bounds.midY - size.height / 2))
+    }
+
+    override func acceptsFirstMouse(for event: NSEvent?) -> Bool { true }
+
+    override func mouseDown(with event: NSEvent) {
+        guard let q = question else { return }
+        let menu = NSMenu()
+        let title = NSMenuItem(title: "这是谁？", action: nil, keyEquivalent: "")
+        title.isEnabled = false
+        menu.addItem(title)
+        for (k, option) in q.options.enumerated() where k < q.names.count {
+            let item = NSMenuItem(title: option, action: #selector(pick(_:)), keyEquivalent: "")
+            item.target = self
+            item.representedObject = q.names[k]
+            menu.addItem(item)
+        }
+        menu.addItem(.separator())
+        let other = NSMenuItem(title: "都不是：在小助手的识别面板里改", action: nil, keyEquivalent: "")
+        other.isEnabled = false
+        menu.addItem(other)
+        menu.popUp(positioning: nil, at: CGPoint(x: 0, y: bounds.maxY + 2), in: self)
+    }
+
+    @objc private func pick(_ item: NSMenuItem) {
+        guard let q = question, let name = item.representedObject as? String else { return }
+        onPick?(q.id, name)
     }
 }

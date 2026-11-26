@@ -28,7 +28,10 @@
       },
       "elite": {
         "effectDescription": "攻击力+25%"
-      }
+      },
+      "sources": [
+        "凯瑟琳"
+      ]
     },
     {
       "name": "坚守盾牌",
@@ -50,7 +53,11 @@
       },
       "elite": {
         "effectDescription": "装备时销毁，并获得2资金"
-      }
+      },
+      "sources": [
+        "乌有",
+        "异客"
+      ]
     },
     {
       "name": "随身身份牌",
@@ -127,7 +134,10 @@
       },
       "elite": {
         "effectDescription": "攻击力+35%；若携带者是地面干员则攻击时有10%概率使目标战栗2秒"
-      }
+      },
+      "sources": [
+        "凯瑟琳"
+      ]
     },
     {
       "name": "萨尔贡浓茶",
@@ -138,7 +148,10 @@
       },
       "elite": {
         "effectDescription": "技力自然回复速度+0.25/秒"
-      }
+      },
+      "sources": [
+        "异客"
+      ]
     },
     {
       "name": "精打细算玩偶",
@@ -226,7 +239,10 @@
       },
       "elite": {
         "effectDescription": "攻击距离自身3格及以上的目标时，伤害提高50%"
-      }
+      },
+      "sources": [
+        "承曦格雷伊"
+      ]
     },
     {
       "name": "炎国短刀",
@@ -248,7 +264,10 @@
       },
       "elite": {
         "effectDescription": "部署时，获得6点技力；每有一个同盟约的其他干员，额外获得6点技力"
-      }
+      },
+      "sources": [
+        "卡涅利安"
+      ]
     },
     {
       "name": "歌利亚头盔",
@@ -292,7 +311,10 @@
       },
       "elite": {
         "effectDescription": "攻击力+45%；首次受到致命伤害时生命值不低于1，持续8秒"
-      }
+      },
+      "sources": [
+        "凯瑟琳"
+      ]
     },
     {
       "name": "加速维式重锤",
@@ -303,7 +325,10 @@
       },
       "elite": {
         "effectDescription": "攻击力+45%；攻击速度+30"
-      }
+      },
+      "sources": [
+        "凯瑟琳"
+      ]
     },
     {
       "name": "突袭手雷",
@@ -336,7 +361,10 @@
       },
       "elite": {
         "effectDescription": "阻挡数+1，攻击力+30%，每次再部署时上述加成效果叠加（最多叠加3次）"
-      }
+      },
+      "sources": [
+        "奥尔佳"
+      ]
     },
     {
       "name": "多功能补剂",
@@ -380,6 +408,10 @@
       },
       "elite": {
         "effectDescription": ""
+      },
+      "fuse": {
+        "with": "不退者力场",
+        "result": "不退者卫护系统"
       }
     },
     {
@@ -435,7 +467,10 @@
       },
       "elite": {
         "effectDescription": "攻击力+50%；造成法术伤害时附带相当于10%伤害的灼燃损伤"
-      }
+      },
+      "sources": [
+        "凯瑟琳"
+      ]
     },
     {
       "name": "护盾无人机",
@@ -468,7 +503,10 @@
       },
       "elite": {
         "effectDescription": "携带者攻击范围内每次有单位被击倒时回复4技力"
-      }
+      },
+      "sources": [
+        "车尔尼"
+      ]
     },
     {
       "name": "谢拉格不融冰",
@@ -479,7 +517,10 @@
       },
       "elite": {
         "effectDescription": "造成伤害时有20%概率对目标施加1.5秒的寒冷"
-      }
+      },
+      "sources": [
+        "耶拉"
+      ]
     },
     {
       "name": "可靠怀表",
@@ -512,6 +553,10 @@
       },
       "elite": {
         "effectDescription": ""
+      },
+      "fuse": {
+        "with": "驱逐者瓦斯",
+        "result": "驱逐者防暴装备"
       }
     },
     {
@@ -523,6 +568,10 @@
       },
       "elite": {
         "effectDescription": ""
+      },
+      "fuse": {
+        "with": "动能加速器",
+        "result": "动能轰击弩"
       }
     },
     {
@@ -534,6 +583,10 @@
       },
       "elite": {
         "effectDescription": ""
+      },
+      "fuse": {
+        "with": "汲取者之心",
+        "result": "汲取者之镰"
       }
     },
     {
@@ -567,7 +620,10 @@
       },
       "elite": {
         "effectDescription": ""
-      }
+      },
+      "sources": [
+        "异客"
+      ]
     },
     {
       "name": "博士投影",
@@ -589,6 +645,10 @@
       },
       "elite": {
         "effectDescription": ""
+      },
+      "fuse": {
+        "with": "天马之枪",
+        "result": "天马之耀"
       }
     },
     {
@@ -600,7 +660,10 @@
       },
       "elite": {
         "effectDescription": "攻击力+50%；造成伤害时有5%概率使目标获得1层麻痹，且对麻痹的敌人造成伤害时无视其30%防御和法术抗性"
-      }
+      },
+      "sources": [
+        "凯瑟琳"
+      ]
     },
     {
       "name": "佣兵名牌",
@@ -644,6 +707,10 @@
       },
       "elite": {
         "effectDescription": ""
+      },
+      "fuse": {
+        "with": "不退者之盾",
+        "result": "不退者卫护系统"
       }
     },
     {
@@ -655,6 +722,10 @@
       },
       "elite": {
         "effectDescription": ""
+      },
+      "fuse": {
+        "with": "驱逐者警棍",
+        "result": "驱逐者防暴装备"
       }
     },
     {
@@ -677,6 +748,10 @@
       },
       "elite": {
         "effectDescription": ""
+      },
+      "fuse": {
+        "with": "天马之盔",
+        "result": "天马之耀"
       }
     },
     {
@@ -699,7 +774,10 @@
       },
       "elite": {
         "effectDescription": ""
-      }
+      },
+      "sources": [
+        "缪尔赛思"
+      ]
     },
     {
       "name": "动能加速器",
@@ -710,6 +788,10 @@
       },
       "elite": {
         "effectDescription": ""
+      },
+      "fuse": {
+        "with": "动能单手弩",
+        "result": "动能轰击弩"
       }
     },
     {
@@ -721,6 +803,10 @@
       },
       "elite": {
         "effectDescription": ""
+      },
+      "fuse": {
+        "with": "汲取者之喙",
+        "result": "汲取者之镰"
       }
     },
     {
@@ -732,7 +818,10 @@
       },
       "elite": {
         "effectDescription": ""
-      }
+      },
+      "sources": [
+        "凯瑟琳"
+      ]
     },
     {
       "name": "不退者卫护系统",
