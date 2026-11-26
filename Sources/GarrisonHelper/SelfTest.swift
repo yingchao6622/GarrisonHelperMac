@@ -34,6 +34,7 @@ enum SelfTest {
             }
             exit(0)
         }
+        if args.contains("--sklandtest") { runSklandTest(); exit(0) }
         // GH_KEYS_FILE=/tmp/x.json --keytest: save / load / delete round trip of the API key file.
         if args.contains("--musictest") {
             // When the music plays for each phase (default: 联防 only), and which files a folder yields.
@@ -582,5 +583,56 @@ enum SelfTest {
         }
         if let d = try? JSONSerialization.data(withJSONObject: rows) { try? d.write(to: URL(fileURLWithPath: out)) }
         print("wrote \(rows.count) templates")
+    }
+
+    /// --sklandtest: 森空岛 request signature, history parsing and merging with local matches (synthetic data, no network).
+    static func runSklandTest() {
+        print("sign: " + SklandParse.sign(path: "/api/v1/game/player/binding", query: "", timestamp: "1700000000", token: "test-token"))
+        print("sign query: " + SklandParse.sign(path: "/web/v1/game/garrison/guide/history-log", query: "seasonId=act3autochess",
+                                                 timestamp: "1700000000", token: "test-token"))
+        let catalogJSON: [String: Any] = ["code": 0, "data": [
+            "chars": [["charId": "char_a", "name": "极光"], ["charId": "char_b", "name": "艾丝黛尔"]],
+            "items": [["itemId": "i1", "name": "维式重锤"]],
+            "strategies": [["strategyId": "band_x", "name": "众志合一"]],
+            "bonds": [["bondId": "yanShip", "name": "炎"]],
+            "versionInfo": ["seasonId": "act3autochess", "versionId": "V3_1"]]]
+        let t0 = 1_700_000_000
+        func rec(_ id: String, start: Int, end: Int, round: Int, done: Int) -> [String: Any] {
+            ["id": id, "gameStartTs": String(start), "gameEndTs": String(end), "modeType": "MULTI", "modeDifficulty": "NORMAL",
+             "passRound": round, "completeState": done, "bandId": "band_x", "coinCost": 120, "killCnt": 300,
+             "chessSquad": [["charId": "char_a", "chessId": "c_a_b", "chessInfo": ["goldenChessId": "c_a_b"]],
+                            ["charId": "char_b", "chessId": "c_b", "chessInfo": ["goldenChessId": "c_b_b"]]],
+             "bondInfo": [["bondId": "yanShip", "layer": 3]],
+             "acBossInfo": [["bossId": "boss_1", "isKilled": true]]]
+        }
+        let historyJSON: [String: Any] = ["code": 0, "data": ["records": [
+            rec("r1", start: t0, end: t0 + 1800, round: 14, done: 1),
+            rec("r2", start: t0 + 7200, end: t0 + 8000, round: 6, done: 0),
+            rec("r1", start: t0, end: t0 + 1800, round: 14, done: 1)]]]
+        do {
+            let cat = try SklandCatalog(json: catalogJSON)
+            let ms = try SklandParse.history(historyJSON, cat) { $0 == "enemy_9013_acstmk" ? "假想敌：胄" : nil }
+            for m in ms {
+                print("match \(m.id): \(m.multiplayer ? "联机" : "单人") \(m.mode) rounds=\(m.rounds) success=\(m.success) strategy=\(m.strategy ?? "-") "
+                      + "lineup=\(m.lineup.joined(separator: "、")) elites=\(m.elites.joined(separator: "、")) covenants=\(m.covenants.joined(separator: "、")) "
+                      + "bosses=\(m.bosses.joined(separator: "、"))")
+            }
+            MainActor.assumeIsolated {
+                let h = MatchHistory()
+                h.enabled = false
+                let local = MatchRecord(started: Date(timeIntervalSince1970: TimeInterval(t0 + 20)), ended: Date(timeIntervalSince1970: TimeInterval(t0 + 1700)),
+                                        mode: "险境模拟", strategy: "众志合一", map: "m05", rounds: 13, lineup: ["极光"], covenants: ["炎Ⅰ"],
+                                        route: "炎", rank: 2)
+                h.useForTest([local])
+                let a = h.merge(ms), b = h.merge(ms)
+                print("merge (want added 1 merged 1, then unchanged 2): added \(a.added) merged \(a.merged) unchanged \(a.unchanged); again unchanged \(b.unchanged)")
+                for r in h.records {
+                    print("record \(r.sklandId ?? "-"): rounds=\(r.rounds) rank=\(r.rank.map(String.init) ?? "-") map=\(r.map ?? "-") route=\(r.route ?? "-") lineup=\(r.lineup.joined(separator: "、")) boss=\(r.boss ?? "-")")
+                }
+            }
+            do { _ = try SklandParse.data(["code": 10002, "message": "x"]) } catch { print("expired: " + (error.localizedDescription)) }
+        } catch {
+            print("error: \(error.localizedDescription)")
+        }
     }
 }

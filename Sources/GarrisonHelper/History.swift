@@ -23,6 +23,13 @@ struct MatchRecord: Codable, Identifiable, Hashable {
     var route: String?
     /// 名次 the player entered (1–8).
     var rank: Int?
+    // From 森空岛 (从森空岛导入战绩); nil for matches only the helper saw.
+    var sklandId: String? = nil
+    var success: Bool? = nil
+    var multiplayer: Bool? = nil
+    var kills: Int? = nil
+    var coinSpent: Int? = nil
+    var elites: [String]? = nil
 }
 
 @MainActor
@@ -44,6 +51,47 @@ final class MatchHistory: ObservableObject {
         if records.count > Self.limit { records.removeLast(records.count - Self.limit) }
         save()
     }
+
+    struct MergeResult { var added = 0, merged = 0, unchanged = 0 }
+
+    /// Adds matches read from 森空岛. One already imported is left alone; one the helper also recorded (times overlap)
+    /// gets 森空岛's lineup, rounds and result while keeping the rank, map and route; the rest are added.
+    @discardableResult
+    func merge(_ matches: [SklandMatch]) -> MergeResult {
+        var res = MergeResult()
+        let slack: TimeInterval = 5 * 60
+        for m in matches {
+            if records.contains(where: { $0.sklandId == m.id }) { res.unchanged += 1; continue }
+            let start = m.started ?? m.ended ?? Date(), end = max(m.ended ?? start, start)
+            func overlap(_ r: MatchRecord) -> TimeInterval { min(r.ended, end + slack).timeIntervalSince(max(r.started, start - slack)) }
+            let local = records.indices.filter { records[$0].sklandId == nil && overlap(records[$0]) > 0 }
+                .max { overlap(records[$0]) < overlap(records[$1]) }
+            var r = local.map { records[$0] }
+                ?? MatchRecord(started: start, ended: end, rounds: 0, lineup: [], covenants: [])
+            r.sklandId = m.id
+            r.started = start
+            r.ended = end
+            r.success = m.success
+            r.multiplayer = m.multiplayer
+            r.kills = m.kills
+            r.coinSpent = m.coinSpent
+            r.elites = m.elites
+            r.rounds = m.rounds
+            if !m.mode.isEmpty { r.mode = m.mode }
+            if let s = m.strategy { r.strategy = s }
+            if !m.lineup.isEmpty { r.lineup = m.lineup }
+            if !m.covenants.isEmpty { r.covenants = m.covenants }
+            if !m.bosses.isEmpty { r.boss = m.bosses.joined(separator: "、") }
+            if let i = local { records[i] = r; res.merged += 1 } else { records.append(r); res.added += 1 }
+        }
+        records.sort { $0.started > $1.started }
+        if records.count > Self.limit { records.removeLast(records.count - Self.limit) }
+        save()
+        return res
+    }
+
+    /// Self-tests only (with `enabled` off): start from these records instead of the saved ones.
+    func useForTest(_ r: [MatchRecord]) { records = r }
 
     func setRank(_ id: UUID, _ rank: Int?) {
         guard let i = records.firstIndex(where: { $0.id == id }) else { return }
@@ -96,6 +144,8 @@ final class MatchHistory: ObservableObject {
 
 struct HistoryView: View {
     @EnvironmentObject var history: MatchHistory
+    @EnvironmentObject var catalog: Catalog
+    @ObservedObject private var skland = SklandImporter.shared
 
     var body: some View {
         ScrollView {
@@ -119,7 +169,16 @@ struct HistoryView: View {
                     table("策略", s.strategies.prefix(6))
                 }
                 Divider()
-                SectionHeader(title: "对局记录")
+                HStack {
+                    SectionHeader(title: "对局记录")
+                    Spacer()
+                    Button("从森空岛导入…") { skland.open(history: history, catalog: catalog) }
+                        .font(.caption)
+                        .help("登录鹰角账号，读取森空岛上本赛季的卫戍协议战绩（阵容、回合、结果），和本机记录合并")
+                }
+                if let s = skland.status, !skland.busy, s.hasPrefix("读到") || s.hasPrefix("森空岛上") {
+                    Text(s).font(.caption2).foregroundStyle(.secondary)
+                }
                 ForEach(history.records) { r in row(r) }
             }
             .padding(12)
@@ -148,10 +207,12 @@ struct HistoryView: View {
     }
 
     private func summary(_ r: MatchRecord) -> String {
-        var parts = ["打到第 \(r.rounds) 回合"]
+        var parts = [r.success == true ? "通关（\(r.rounds) 回合）" : "打到第 \(r.rounds) 回合"]
         if let l = r.level { parts.append("等级 \(l)") }
         if let x = r.route { parts.append("路线 \(x)") }
         if let b = r.boss { parts.append("领袖 \(b)") }
+        if let k = r.kills { parts.append("击倒 \(k)") }
+        if let c = r.coinSpent { parts.append("花费 \(c)") }
         return parts.joined(separator: " · ")
     }
 
@@ -159,7 +220,8 @@ struct HistoryView: View {
         VStack(alignment: .leading, spacing: 2) {
             HStack {
                 Text(r.started.formatted(date: .abbreviated, time: .shortened)).font(.caption.weight(.semibold))
-                Text([r.mode, r.strategy].compactMap { $0 }.joined(separator: " · ")).font(.caption2).foregroundStyle(.secondary).lineLimit(1)
+                Text([r.multiplayer.map { $0 ? "联机" : "单人" }, r.mode, r.strategy].compactMap { $0 }.joined(separator: " · ")).font(.caption2).foregroundStyle(.secondary).lineLimit(1)
+                if r.sklandId != nil { Text("森空岛").font(.caption2).foregroundStyle(.teal).help("这局的阵容、回合和结果来自森空岛战绩") }
                 Spacer()
                 Menu(r.rank.map { "第 \($0) 名" } ?? "名次") {
                     ForEach(1...8, id: \.self) { k in Button("第 \(k) 名") { history.setRank(r.id, k) } }
@@ -171,7 +233,7 @@ struct HistoryView: View {
             }
             Text(summary(r)).font(.caption2).foregroundStyle(.secondary)
             if !r.covenants.isEmpty { Text("盟约：" + r.covenants.joined(separator: "、")).font(.caption2) }
-            if !r.lineup.isEmpty { Text("阵容：" + r.lineup.joined(separator: "、")).font(.caption2).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true) }
+            if !r.lineup.isEmpty { Text("阵容：" + r.lineup.map { (r.elites ?? []).contains($0) ? $0 + "★" : $0 }.joined(separator: "、")).font(.caption2).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true) }
         }
         .padding(8)
         .background(Color.secondary.opacity(0.06))
