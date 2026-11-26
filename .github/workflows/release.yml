@@ -58,6 +58,7 @@ jobs:
           if [ -z "$SIGN_P12_BASE64" ]; then echo "缺少签名证书 secret（SIGN_P12_BASE64）"; exit 1; fi
           export SIGN_P12="$RUNNER_TEMP/signing.p12"
           (umask 077; printf '%s' "$SIGN_P12_BASE64" | base64 --decode > "$SIGN_P12")
+          unset SIGN_P12_BASE64
           ./scripts/build-app.sh
           rm -f "$SIGN_P12"
           codesign --verify --deep --strict "dist/卫戍协议小助手.app"
